@@ -1,0 +1,216 @@
+﻿
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using HutechDriver.Models
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <li class="rd-nav-item">
+        @{
+            IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+            var ID = User.Identity.GetUserId();
+
+            var find = context.Users.FirstOrDefault(p => p.Id == ID);
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    @if (!string.IsNullOrEmpty(find.Avatar))
+                    {
+                        <img class="img-circle elevation-2" alt="User Image" src="~/Content/ImagesAcc/@find.Avatar" />
+                    }
+                    else
+                    {
+                        <img class="img-circle elevation-2" alt="User Image" src="~/Content/th.jpg" />
+                    }
+                </div>
+                <div class="info">
+                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ActionLink(find.FullName.ToString(), "Updata", "Account", new { area = "" }, htmlAttributes: new { title = "Manage", @class = "d-block" })
+                        <a class="rd-nav-link" href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a>
+                    }
+
+                </div>
+            </div>
+
+        }
+    </li>
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                    <i class="fas fa-search fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+            <li class="nav-item">
+                @*<a href="/admin/Category" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Danh mục
+                            Dashboard
+                        <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>*@
+                @*<ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/Content/clients/index.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard v1</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Content/clients/index2.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard v2</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Content/clients/index3.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard v3</p>
+                            </a>
+                        </li>
+                    </ul>*@
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Đơn đặt xe
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/Driver/BookingDriver/Index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Chưa nhận</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Driver/BookingDriver/RunningTrip" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Đang chạy</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Driver/BookingDriver/IsDoneTrip" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Hoàn thành</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--<li class="nav-item">
+                <a href="/Driver/BookingDriver/Index" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>-->
+            @*Widgets
+                <span class="right badge badge-danger">New</span>*@
+            <!--Đơn đặt xe
+                    </p>
+                </a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a href="/admin/news" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>-->
+            @*Widgets
+                <span class="right badge badge-danger">New</span>*@
+            <!--Tin tức
+                    </p>
+                </a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a href="/admin/posts" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>-->
+            @*Widgets
+                <span class="right badge badge-danger">New</span>*@
+            <!--Bài viết
+                    </p>
+                </a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a href="/admin/order" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Đơn Hàng-->
+            @*Widgets
+                <span class="right badge badge-danger">New</span>*@
+            <!--</p>
+                </a>
+            </li>-->
+            @*<li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý sản phẩm
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/admin/productcategory" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh mục </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/admin/product" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sản phẩm</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>*@
+            <li class="nav-item">
+                <a href="/Admin/Statistical/Index" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        @*Widgets
+                            <span class="right badge badge-danger">New</span>*@
+                        Thống kê
+                    </p>
+                </a>
+            </li>
+            <!--<li class="nav-item">
+                <a href="/Admin/newdriver/Index" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>-->
+            @*Widgets
+                <span class="right badge badge-danger">New</span>*@
+            <!--Đơn tuyển dụng
+                    </p>
+                </a>
+            </li>-->
+            <li class="nav-item">
+                <a href="/Account/Updata" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        @*Widgets
+                            <span class="right badge badge-danger">New</span>*@
+                        Thông tin tài khoản
+                    </p>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->

@@ -1,0 +1,155 @@
+﻿@model PagedList.IPagedList<HutechDriver.Models.EF.Trip>
+@using PagedList.Mvc;
+@using HutechDriver.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@{
+    ViewBag.Title = "Danh sách đơn đặt xe";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/driver/home/index" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/driver/bookingdriver" class="nav-link">Danh sách đơn đặt xe</a>
+        </li>
+    </ul>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách đơn đặt xe</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên khách hàng</th>
+                        <th>SDT</th>
+                        <th>Nơi đi</th>
+                        <th>Nơi đến</th>
+                        <th>Khoảng cách</th>
+                        <th>Thời gian</th>
+                        <th>Giá</th>
+                        @*<th>Ngày đặt</th>*@
+                        <th>Thời gian đặt xe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+
+
+                        if (Model != null && Model.Any())
+                        {
+                            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                            foreach (var item in Model)
+                            {
+                                if (item.Status == "Chưa nhận")
+                                {
+                                    var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
+                                    <tr id=" trow_@item.Id">
+                                        <td>@item.Id</td>
+                                        <td>@item.FullName</td>
+                                        <td>@find.PhoneNumber</td>
+                                        <td>@item.StartLocation</td>
+                                        <td>@item.EndLocation</td>
+                                        <td>@item.Distance</td>
+                                        <td>@item.Time</td>
+                                        <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
+                                        @*<td>@item.OrderDate</td>*@
+                                        <td>@item.TimeBook</td>
+
+                                        <td>
+                                            <button id="accept-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-primary">Nhận đơn</button>
+                                            <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Từ chối đơn</button>
+                                        </td>
+
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6" style="text-align:right;">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+
+
+@section scripts{
+    <script>
+       const denyBtns = document.querySelectorAll('#deny-trip');
+
+    denyBtns.forEach(denyBtn => {
+        denyBtn.addEventListener('click', function(event) {
+            const tripId = $(this).data('id');
+            const url = '@Url.Action("DenyTrip", "BookingDriver")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                    if (rs.success) {
+                        $('#trow_' + tripId).remove();
+                    }
+                },
+                error: function (rs) {
+                    alert('Hủy đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+    const acceptBtns = document.querySelectorAll('#accept-trip');
+
+    acceptBtns.forEach(acceptBtn => {
+        acceptBtn.addEventListener('click', function(event) {
+            const tripId = this.getAttribute('data-id');
+            const url = '@Url.Action("AcceptTrip", "BookingDriver")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                    window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                },
+                error: function (rs) {
+                    alert('Nhận đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+    </script>
+}

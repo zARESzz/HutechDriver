@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using HutechDriver.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <li class="rd-nav-item">
+            @{
+                IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+                var ID = User.Identity.GetUserId();
+
+                var find = context.Users.FirstOrDefault(p => p.Id == ID);
+                if (find.FullName != null)
+                {
+                    @Html.ActionLink("Xin Chào " + find.FullName.ToString() + "!", "Updata", "Account", new { area = "" }, htmlAttributes: new { title = "Manage", @class = "rd-nav-link" })
+                }
+            }
+        </li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></li>
+    }
+}
+else
+{
+    <li style="padding-left:20px" class="rd-nav-item">@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "rd-nav-link" })</li>
+    <li class="rd-nav-item">@Html.ActionLink("Đăng Ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "rd-nav-link" })</li>
+
+}

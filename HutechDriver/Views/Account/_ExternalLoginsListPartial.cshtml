@@ -1,0 +1,49 @@
+﻿@model HutechDriver.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0)
+    {
+        <div>
+            <button type="button" class="btn btn-primary" id="tbnGoogle" value="Google"></button>
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                @foreach (AuthenticationDescription p in loginProviders)
+                {
+                    <button type="submit" class="login" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                }
+            </p>
+        }
+    }
+}
+<style>
+    .login {
+        color: #ffffff;
+        background-color: #ff3366;
+        font-weight: 400;
+        padding: 0 2em;
+        text-align: left;
+        transition: 0.5s all;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        display: inline-block;
+        border-radius: 3px;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+        .login:hover {
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -o-transition: 0.5s all;
+        }
+</style>
+

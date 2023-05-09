@@ -1,0 +1,175 @@
+﻿
+@model HutechDriver.Models.EF.Trip
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using HutechDriver.Models
+@{
+    ViewBag.Title = "AcceptTrip";
+    Layout = "~/Areas/Driver/Views/Shared/_Layout.cshtml";
+}
+
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/driver/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/driver/bookingdriver" class="nav-link">Đơn đặt xe</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Cập nhật</a>
+        </li>
+    </ul>}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Chi tiết đơn đặt xe</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Đơn đặt xe</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Chi tiết đơn đặt xe</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                @{
+                                    IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+                                    var find = context.Users.Find(Model.UserId);
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tên khách hàng:</label>
+
+                                        @Html.DisplayFor(model => model.FullName)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Số điện thoại:</label>
+                                        @Html.DisplayFor(model => find.PhoneNumber)
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Điểm bắt đầu:</label>
+
+                                        @Html.DisplayFor(model => model.StartLocation)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Điểm đến:</label>
+                                        @Html.DisplayFor(model => model.EndLocation)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Khoảng cách:</label>
+
+                                        @Html.DisplayFor(model => model.Distance)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Thời gian:</label>
+
+                                        @Html.DisplayFor(model => model.Time)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Giá:</label>
+
+                                        @Html.DisplayFor(model => model.Price)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Thời gian đặt xe:</label>
+
+                                        @Html.DisplayFor(model => model.TimeBook)
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button id="done-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Hoàn thành</button>
+                                        <button id="error-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+            </div>
+            <!-- /.card-footer-->
+        </div>
+    </div>
+    <!-- /.card -->
+    <!-- /.card -->
+</section>
+
+@section scripts{
+    <script>
+       const errorBtns = document.querySelectorAll('#error-trip');
+        errorBtns.forEach(errorBtn => {
+            errorBtn.addEventListener('click', function(event) {
+            const tripId = $(this).data('id');
+            const url = '@Url.Action("ErrorTrip", "BookingDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                    if (rs.success) {
+                        window.location.href = "/driver/home";
+                        alert('Hủy đơn thành công!.');
+                    }
+                },
+                error: function (rs) {
+                    alert('Hủy đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+        const doneBtns = document.querySelectorAll('#done-trip');
+        doneBtns.forEach(doneBtn => {
+            doneBtn.addEventListener('click', function(event) {
+            const tripId = this.getAttribute('data-id');
+            const url = '@Url.Action("DoneTrip", "BookingDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                        window.location.href = "/driver/home";
+                        alert('Bạn đã hoàn thành 1 đơn!.');
+                },
+                error: function (rs) {
+                    alert('Hủy đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+    </script>
+}
+

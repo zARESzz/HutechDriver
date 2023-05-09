@@ -1,0 +1,321 @@
+﻿@using HutechDriver.Models
+@using HutechDriver.Common
+@{
+    ViewBag.Title = "HutechDriver";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <title>Distance and Route Finder</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link href="~/Content/Map/style123.css" rel="stylesheet" />
+
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- style css -->
+    <link href="~/Content/css/style1.css" rel="stylesheet" />
+
+    <!-- Responsive-->
+
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <!-- fevicon -->
+
+    <link href="~/Content/TimePicker/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/TimePicker/css/style.css" rel="stylesheet" />
+    <link href="~/Content/TimePicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+
+
+
+    <div class="contact_section layout_padding">
+        <div class="container">
+            <div class="col-12">
+                <div class="contact_main">
+
+                    <h1 class="request_text">Đặt xe</h1>
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <input type="text" id="origin-add" class="email-bt" placeholder="Chọn điểm đi" name="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="dest-add" class="email-bt" placeholder="Chọn điểm đến" name="Name">
+                        </div>
+                        <div class="input-group date" id="id_0">
+                            <input type="text" value="" class="form-control" id="timepicker" placeholder="DD/MM/YYYY hh:mm:ss" required />
+                        </div>
+
+                    </form>
+                    <form>
+                        <div class="banner_text">
+                            <div id="from_place"></div>
+                        </div>
+                        <div class="banner_text">
+
+                            <div id="to_place" 4px 6px 0 0;"></div>
+                        </div>
+                        <div class="banner_text">
+
+                            <div id="response_distance" 4px 6px 0 0;"></div>
+                        </div>
+                        <div class="banner_text">
+
+                            <div id="response_time" style="padding: 0 6px 4px 0;"></div>
+                        </div>
+
+                        <div class="banner_text" ;>
+
+                            <div id="result" style="padding-right: 6px;"></div>
+                        </div>
+                        <div class="banner_text" ;>
+                            <div id="timebook"></div>
+                        </div>
+                    </form>
+                    <div id="show-details-box">
+
+                        @*<div class="details-fields-boxes">
+                                <div class="details-fields-header" style=" padding: 4px 0 0 6px;">From:</div>
+                                <div id="from_place" style="padding: 4px 6px 0 0;"></div>
+                            </div>*@
+
+
+                        @*<div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding-left: 6px;">To:</div>
+                                <div id="to_place" style="padding-right: 6px;"></div>
+                            </div>
+
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding-left: 6px;">Distance (in kms): </div>
+                                <div id="response_distance" style="padding-right: 6px;"></div>
+                            </div>
+
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding: 0 0 4px 6px;">Travel time: </div>
+                                <div id="response_time" style="padding: 0 6px 4px 0;"></div>
+                            </div>
+
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding-left: 6px;">Price: </div>
+                                <div id="result" style="padding-right: 6px;"></div>
+                            </div>*@
+                    </div>
+                    <div id="no-route">
+                        @*<div id="no-route-found">No Route Found!</div>
+                            <div id="search-again">Không tìm thấy địa chỉ yêu cầu,Hãy thử tìm kiếm lại các địa chỉ khác nhau.</div>*@
+                        <img src="~/Content/assets/z4278591645887_59ca9b127b937fe5c6ca8bda4274f891.jpg" />
+                    </div>
+
+                    <button class="button button-xl button-primary button-winona" id="show-route-btn">Hiển thị quãng đường</button>
+                    <div id="google-map"></div>
+
+                    <button class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
+                </div>
+
+            </div>
+
+
+            @*<div class="col-12">
+
+                </div>*@
+        </div>
+
+    </div>
+    <script>
+
+        var showDetails = 0;
+
+        document.getElementById('show-details-box').style.display = 'none';
+        document.getElementById('no-route').style.display = 'none';
+
+        const initMap = () => {
+            var mapProp = {
+                center: new google.maps.LatLng(10.855298, 106.785043),
+                zoom: 17,
+            };
+
+            var directionsService = new google.maps.DirectionsService();
+            var directionsRenderer = new google.maps.DirectionsRenderer();
+            var distanceService = new google.maps.DistanceMatrixService();
+
+            var map = new google.maps.Map(document.getElementById("google-map"), mapProp);
+            directionsRenderer.setMap(map);
+
+            var origin = document.getElementById('origin-add');
+            var autocompleteOrigin = new google.maps.places.Autocomplete(origin);
+
+            var dest = document.getElementById('dest-add');
+            var autocompleteDest = new google.maps.places.Autocomplete(dest);
+
+            console.log(autocompleteOrigin, autocompleteDest)
+
+            autocompleteOrigin.addListener('place_changed', function () {
+                var place = autocompleteOrigin.getPlace();
+
+                console.log(place)
+                console.log(document.getElementById('origin-add').value)
+
+            });
+
+            document.getElementById('show-route-btn').addEventListener('click', () => {
+                var placeOrigin = autocompleteOrigin.getPlace();
+                console.log(placeOrigin)
+                var placeDest = autocompleteDest.getPlace();
+                console.log(placeDest)
+
+                var start = document.getElementById('origin-add').value;
+                var end = document.getElementById('dest-add').value;
+                var selectedMode = 'DRIVING';
+
+                var request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: selectedMode
+                };
+                directionsService.route(request, (result, status) => {
+                    if (status == 'OK') {
+                        console.log(result)
+                        directionsRenderer.setDirections(result);
+                        document.getElementById('show-details-box').style.display = 'block';
+                        document.getElementById('no-route').style.display = 'none';
+                    } else {
+                        directionsRenderer.setDirections({ routes: [] });
+                        document.getElementById('show-details-box').style.display = 'none';
+                        document.getElementById('no-route').style.display = 'block';
+                    }
+                });
+
+                const distanceRequest = {
+                    origins: [start],
+                    destinations: [end],
+                    travelMode: selectedMode,
+                    avoidHighways: false,
+                    avoidTolls: false,
+                };
+
+                distanceService.getDistanceMatrix(distanceRequest).then((response) => {
+                    if (response !== null) {
+                        if (response.rows[0].elements[0].status === 'OK') {
+                            console.log(response.rows[0].elements[0].distance)
+                            console.log(response.rows[0].elements[0].duration)
+                            document.getElementById('from_place').innerText ="Điểm đi:   " + document.getElementById('origin-add').value
+                            document.getElementById('to_place').innerText = "Điểm đến:  "+ document.getElementById('dest-add').value
+                            document.getElementById('response_distance').innerText ="Khoảng cách:   " + response.rows[0].elements[0].distance.text
+                            document.getElementById('response_time').innerText = "Thời gian:   " + response.rows[0].elements[0].duration.text
+                            const distanceInKm = response.rows[0].elements[0].distance.value / 1000;
+                            let price = 0;
+                            if (distanceInKm <= 1) {
+                                price = 10000;
+                            } else {
+                                price = distanceInKm * 5000;
+                            }
+                            document.getElementById('result').innerText = "Giá:  " + price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+
+                            var time = $('#timepicker').val();
+                            $('#timebook').text('Giờ đặt xe: ' + time);
+
+
+                        }
+                        else {
+                            console.log('Route Distance not found')
+                        }
+                    }
+                })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+            });
+        }
+
+
+        window.initMap = initMap;
+        // Future enhancements:
+        // Add departure time
+        // Add intermediate locations
+       const saveTripBtn = document.getElementById('save-trip-btn');
+
+        // Đăng ký sự kiện click cho button
+       saveTripBtn.addEventListener('click', function() {
+       // Lấy dữ liệu từ form
+       const from = document.getElementById('origin-add').value.toString();
+       const to = document.getElementById('dest-add').value.toString();
+       const distance = document.getElementById('response_distance').innerText.toString();
+       const time = document.getElementById('response_time').innerText.toString();
+       const price = document.getElementById('result').innerText.replace(/\D/g, '');
+       var timebook = $('#timepicker').val();
+
+
+  // Gửi ajax để lưu chuyến đi
+           const url = '@Url.Action("SaveTrip", "Home")';
+               var conf = confirm('Xác nhận đặt xe');
+               if (conf === true) {
+                   $.ajax({
+                       type: "POST",
+                       url: url,
+                       data: { from: from, to: to, distance: distance, time: time, price: price, timebook: timebook},
+                       success: function (data) {
+                           alert('Đặt xe thành công!.');
+                           location.reload(true);
+                       },
+                       error: function (data) {
+                           alert('Đặt xe không thành công!.');
+                       }
+                   });
+               }
+           //} else {
+           //    alert('Vui lòng đăng nhập để đặt xe!');
+           //}
+});
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM4R4ZQGmaCj3wA4R3ykoEr4EeQPHSvRc&libraries=places&callback=initMap"></script>
+
+
+    <script src="~/Content/TimePicker/js/jquery.min.js"></script>
+
+
+    <script src="~/Content/TimePicker/js/popper.js"></script>
+
+
+
+    <script src="~/Content/TimePicker/js/bootstrap.min.js"></script>
+
+
+    <script src="~/Content/TimePicker/js/moment-with-locales.min.js"></script>
+
+
+    <script src="~/Content/TimePicker/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <script src="~/Content/TimePicker/js/main.js"></script>
+
+
+
+
+</body>
+
+
+<style>
+    .banner_text {
+        text-align: left;
+    }
+
+    .button {
+        margin: auto;
+    }
+</style>

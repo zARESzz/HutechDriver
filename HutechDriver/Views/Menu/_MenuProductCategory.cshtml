@@ -1,0 +1,29 @@
+﻿@model IEnumerable<HutechDriver.Models.EF.ProductCategory>
+
+@if (Model != null && Model.Any())
+{
+    <section class="section section-md bg-default">
+        <div class="container">
+            <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Menu</span></h3>
+            <div class="row row-md row-30">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="oh-desktop">
+                            <!-- Services Terri-->
+                            <article class="services-terri wow slideInUp">
+                                <div class="services-terri-figure">
+                                    <img src="@item.Icon" alt="" width="370" height="278" />
+                                </div>
+                                <div class="services-terri-caption">
+                                    <span class="services-terri-icon linearicons-platter"></span>
+                                    <h5 class="services-terri-title"><a href="#">@item.Title</a></h5>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
