@@ -58,20 +58,20 @@
             @{
                 ApplicationDbContext db = new ApplicationDbContext();
 
-                var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận");
+                var chat = db.Chat.Where(p => p.IsRead == false);
 
 
-                var tripCount = chuaNhanTrips.Count();
+                var chatchuadoc = chat.Count();
             }
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/driver/bookingdriver/index" role="button">
-                        <i class="fas fa-clipboard fa-fw"></i>
-                        <span class="checkout_items circle-badge">@tripCount</span>
+                    <a class="nav-link" href="/admin/customerchat/index" role="button">
+                        <i class="fab fa-rocketchat"></i>
+                        <span class="checkout_items circle-badge">@chatchuadoc</span>
                     </a>
                 </li>
-                <!-- Navbar Search -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                         <i class="fas fa-search"></i>
@@ -382,7 +382,7 @@
         document.querySelector("#actions .cancel").onclick = function () {
             myDropzone.removeAllFiles(true)
         }
-              // DropzoneJS Demo Code End</script>
+                  // DropzoneJS Demo Code End</script>
 
     @RenderSection("scripts", required: false)
     <script src="~/Content/ckeditor/ckeditor/ckeditor.js"></script>

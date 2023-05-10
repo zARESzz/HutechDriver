@@ -9,48 +9,34 @@ using HutechDriver.Models.EF;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Drawing.Printing;
 
+
 namespace HutechDriver.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin,Driver")]
-    
+
     public class BookingController : Controller
     {
         // GET: Admin/Booking
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/Order
-        public ActionResult Index(string SearchText,int? page)
+        [HttpGet]
+        public ActionResult Index(string SearchText, int? page, string filterStatus)
         {
             //var items = db.Trips.OrderByDescending(x => x.OrderDate).ToList();
-
+            ViewBag.filterStatus = filterStatus;
             if (page == null)
             {
                 page = 1;
             }
             IEnumerable<Trip> items = db.Trips.OrderByDescending(x => x.Id);
-           
+            if (filterStatus == "Tất cả") filterStatus = "";
             if (!string.IsNullOrEmpty(SearchText))
             {
-             
-                items = items.Where(x => x.FullName.Contains(SearchText));
+                items = items.Where(x => x.FullName.Contains(SearchText) || x.DriverBook.Contains(SearchText));
             }
-
-            var pageNumber = page ?? 1;
-            var pageSize = 10;
-            ViewBag.PageSize = pageSize;
-            ViewBag.Page = pageNumber;
-            return View(items.ToPagedList(pageNumber, pageSize));
-        }
-        [HttpPost]
-        public ActionResult Filter(string filterStatus, int? page)
-        {
-            if (page == null)
+            else if (!string.IsNullOrEmpty(filterStatus))
             {
-                page = 1;
-            }
-            IEnumerable<Trip> items = db.Trips.OrderByDescending(x => x.Id);
-            if (!string.IsNullOrEmpty(filterStatus))
-            {
-                items = items.Where(x => x.Status == filterStatus).ToList();
+                items = items.Where(x => x.Status == filterStatus);
             }
             var pageNumber = page ?? 1;
             var pageSize = 10;
@@ -58,5 +44,23 @@ namespace HutechDriver.Areas.Admin.Controllers
             ViewBag.Page = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
+        //[HttpPost]
+        //public ActionResult Index(string filterStatus,int? page)
+        //{
+        //    if (page == null)
+        //    {
+        //        page = 1;
+        //    }
+        //    IEnumerable<Trip> items = db.Trips.OrderByDescending(x => x.Id);
+        //    if (!string.IsNullOrEmpty(filterStatus))
+        //    {
+        //        items = items.Where(x => x.Status == filterStatus).ToList();
+        //    }
+        //    var pageNumber = page ?? 1;
+        //    var pageSize = 10;
+        //    ViewBag.PageSize = pageSize;
+        //    ViewBag.Page = pageNumber;
+        //    return View(items.ToPagedList(pageNumber, pageSize));
+        //}
     }
 }

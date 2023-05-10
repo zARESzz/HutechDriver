@@ -162,9 +162,9 @@
                                         <li class="rd-nav-item">
                                             <a class="rd-nav-link" href="/news/index">Tin Tức</a>
                                         </li>
-                                        @*<li class="rd-nav-item">
-                                                <a class="rd-nav-link" href="/products/index">Sản Phẩm</a>
-                                            </li>*@
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="/chat/index">Trò Chuyện</a>
+                                        </li>
                                         <li class="rd-nav-item">
                                             <a class="rd-nav-link" href="/khuyenmai/index">Khuyến Mãi</a>
                                         </li>
@@ -174,7 +174,7 @@
                                         @{
                                             ApplicationDbContext db = new ApplicationDbContext();
                                             var ID = User.Identity.GetUserId();
-                                            var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận" && p.UserId == ID || p.Status == "Đang chạy");
+                                            var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận" && p.UserId == ID || p.Status == "Đang chạy" && p.UserId == ID);
 
 
                                             var tripCount = chuaNhanTrips.Count();

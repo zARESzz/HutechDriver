@@ -41,7 +41,7 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.Status == "Chưa nhận" && item.UserId == ID || item.Status == "Đang chạy")
+                                if ((item.Status == "Chưa nhận" && item.UserId == ID) || (item.Status == "Đang chạy" && item.UserId == ID))
                                 {
                                     <tr id=" trow_@item.Id">
                                         <td>@item.Id</td>

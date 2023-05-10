@@ -44,6 +44,7 @@ namespace HutechDriver.Models
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Trip> Trips { get; set; }
+        public DbSet<Chat> Chat { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
