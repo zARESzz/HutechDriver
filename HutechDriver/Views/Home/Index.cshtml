@@ -118,6 +118,7 @@
                             <div id="search-again">Không tìm thấy địa chỉ yêu cầu,Hãy thử tìm kiếm lại các địa chỉ khác nhau.</div>*@
                         <img src="~/Content/assets/z4278591645887_59ca9b127b937fe5c6ca8bda4274f891.jpg" />
                     </div>
+                    <button class="button button-xl button-primary button-winona" id="reloadtrang">Đặt Lại</button>
 
                     <button class="button button-xl button-primary button-winona" id="show-route-btn">Hiển thị quãng đường</button>
                     <div id="google-map"></div>
@@ -169,7 +170,10 @@
                 console.log(document.getElementById('origin-add').value)
 
             });
-
+            //an map,an dat xe
+            document.getElementById('google-map').style.display = 'none';
+            document.getElementById('save-trip-btn').style.display = 'none';
+            document.getElementById('reloadtrang').style.display = 'none';
             document.getElementById('show-route-btn').addEventListener('click', () => {
                 var placeOrigin = autocompleteOrigin.getPlace();
                 console.log(placeOrigin)
@@ -189,12 +193,17 @@
                     if (status == 'OK') {
                         console.log(result)
                         directionsRenderer.setDirections(result);
-                        document.getElementById('show-details-box').style.display = 'block';
+                        document.getElementById('show-details-box').style.display = 'none';
+                        document.getElementById('show-route-btn').style.display = 'none';
                         document.getElementById('no-route').style.display = 'none';
+                        document.getElementById('google-map').style.display = 'block';
+                        document.getElementById('save-trip-btn').style.display = 'block';
                     } else {
                         directionsRenderer.setDirections({ routes: [] });
                         document.getElementById('show-details-box').style.display = 'none';
                         document.getElementById('no-route').style.display = 'block';
+                        document.getElementById('reloadtrang').style.display = 'block';
+                        document.getElementById('show-route-btn').style.display = 'none';
                     }
                 });
 
@@ -279,9 +288,26 @@
            //} else {
            //    alert('Vui lòng đăng nhập để đặt xe!');
            //}
-});
+       });
 
+        // Lấy thẻ div và button theo id
+        var myDiv = document.getElementById('google-map');
+        var myButton = document.getElementById('show-details-box');
+
+        // Thêm sự kiện click cho button
+        myButton.addEventListener("click", function () {
+            // Thêm thuộc tính CSS "display: none;" vào thẻ div
+            myDiv.style.display = "block";
+        });
     </script>
+    <script>
+        const reloadButton = document.getElementById('reloadtrang');
+
+        reloadButton.addEventListener('click', () => {
+            location.reload();
+        });
+    </script>
+
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM4R4ZQGmaCj3wA4R3ykoEr4EeQPHSvRc&libraries=places&callback=initMap"></script>
 

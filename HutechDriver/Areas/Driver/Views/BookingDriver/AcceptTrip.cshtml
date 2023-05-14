@@ -7,7 +7,7 @@
     ViewBag.Title = "AcceptTrip";
     Layout = "~/Areas/Driver/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/css/call.css" rel="stylesheet" />
 
 @section naviheader{
     <ul class="navbar-nav">
@@ -108,6 +108,7 @@
                                     <div class="form-group">
                                         <button id="done-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Hoàn thành</button>
                                         <button id="error-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
+                                        <div id="button-contact-vr" class=""><div id="gom-all-in-one"><div id="zalo-vr" class="button-contact"><div class="phone-vr"><div class="phone-vr-circle-fill"></div><div class="phone-vr-img-circle"> <a target="_blank" href="https://zalo.me/@find.PhoneNumber"> <img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" data-lazy-src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" class="lazyloaded" data-was-processed="true"><noscript><img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript> </a></div></div></div><div id="phone-vr" class="button-contact"><div class="phone-vr"><div class="phone-vr-circle-fill"></div><div class="phone-vr-img-circle"> <a href="tel:@find.PhoneNumber"> <img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" data-lazy-src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" class="lazyloaded" data-was-processed="true"><noscript><img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" /></noscript> </a></div></div></div></div></div>
                                     </div>
                                 }
                             </div>
@@ -169,7 +170,8 @@
                 }
             });
         });
-    });
+        });
     </script>
 }
+
 
