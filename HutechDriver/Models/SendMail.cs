@@ -13,9 +13,9 @@ namespace HutechDriver.Models
         {
             try
             {
-                string fromMail = "lokino.00002@gmail.com";
-                string fromPassword = "qvmkjgkzfcvfpztu";
-                MailMessage msg = new MailMessage("lokino.00002@gmail.com", to, subject, body);
+                string fromMail = "hutechdriver@gmail.com";
+                string fromPassword = "dlpywleqrnjkjdmm";
+                MailMessage msg = new MailMessage("hutechdriver@gmail.com", to, subject, body);
                 using (var client = new SmtpClient("smtp.gmail.com", 587))
                 {
                     client.EnableSsl = true;

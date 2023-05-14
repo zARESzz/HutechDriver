@@ -13,7 +13,7 @@ namespace HutechDriver.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202305140301125_update"; }
+            get { return "202305140622561_update"; }
         }
         
         string IMigrationMetadata.Source
