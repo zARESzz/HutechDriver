@@ -134,22 +134,45 @@
 
     acceptBtns.forEach(acceptBtn => {
         acceptBtn.addEventListener('click', function(event) {
-            const tripId = this.getAttribute('data-id');
-            const url = '@Url.Action("AcceptTrip", "BookingDriver")';
+        const tripId = this.getAttribute('data-id');
+        const url = '@Url.Action("AcceptTrip", "BookingDriver")';
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: { id: tripId } ,
-                success: function (rs) {
-                    window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
-                },
-                error: function (rs) {
-                    alert('Nhận đơn không thành công!.');
-                    location.reload(true);
-                }
+        const hubConnection = new signalR.HubConnectionBuilder().withUrl("/TripHub").build();
+
+        hubConnection.start()
+            .then(() => {
+                // Kết nối thành công
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { id: tripId },
+                    success: function (rs) {
+                        // Gửi tin nhắn đến Hub
+                        hubConnection.invoke("SendMessage", tripId)
+                            .then(() => {
+                                // Gửi tin nhắn thành công
+                                window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                            })
+                            .catch((error) => {
+                                // Xử lý lỗi khi gửi tin nhắn
+                                console.error("Error sending message:", error);
+                                alert('Nhận đơn không thành công!.');
+                                location.reload(true);
+                            });
+                    },
+                    error: function (rs) {
+                        alert('Nhận đơn không thành công!.');
+                        location.reload(true);
+                    }
+                });
+            })
+            .catch((error) => {
+                // Xử lý lỗi khi kết nối
+                console.error("Connection error:", error);
+                alert('Nhận đơn không thành công!.');
+                location.reload(true);
             });
-        });
     });
-    </script>
+});
+</script>
 }

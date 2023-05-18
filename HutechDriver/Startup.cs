@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Owin;
 using System.Threading;
 
+
 [assembly: OwinStartupAttribute(typeof(HutechDriver.Startup))]
 namespace HutechDriver
 {
@@ -18,6 +19,7 @@ namespace HutechDriver
         {
             services.AddScoped<TripCleanup>();
             services.AddHostedService<TripCleanupServices>();
+            services.AddSignalR();
         }
     }
 }

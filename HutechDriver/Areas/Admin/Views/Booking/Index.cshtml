@@ -66,6 +66,7 @@
                         <th>Tên tài xế</th>
                         <th>Thời gian đặt xe</th>
                         <th>Trạng thái</th>
+                        <th>Thanh toán</th>
                     </tr>
                 </thead>
 
@@ -99,17 +100,31 @@
                                         }
                                         else if (item.Status == "Đang chạy")
                                         {
-                                            <i class="fas fa-circle text-warning"></i>
+                                            <i class="fas fa-motorcycle" style="color: #acc016;"></i>
                                         }
                                         else if (item.Status == "Chưa nhận")
                                         {
                                             <i class="fas fa-circle text-danger"></i>
+                                        }
+                                        else if (item.Status == "Đã nhận đơn")
+                                        {
+                                            <i class="far fa-clipboard-check" style="color: #ba7e17;"></i>
                                         }
                                         else
                                         {
                                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                                         }
                                         @item.Status
+                                    </td>
+                                    <td>
+                                        @if (item.IsPaid == false)
+                                        {
+                                            <i class="fas fa-clock fa-pulse" style="color: #353a82;"></i> <p>Chưa thanh toán</p>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
+                                        }
                                     </td>
                                 </tr>
                                 i++;

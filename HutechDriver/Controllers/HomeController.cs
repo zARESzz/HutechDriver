@@ -50,15 +50,15 @@ namespace HutechDriver.Controllers
                 OrderDate = DateTime.Now,
                 //TimeBook = DateTime.Parse(form["timebook"])
                 Status = "Chưa nhận",
-                TimeBook = DateTime.Parse(timeString)
-
+                TimeBook = DateTime.Parse(timeString),
+                IsPaid = false
 
             };
             dbContext.Trips.Add(trip);
             dbContext.SaveChanges();
             code = new { Success = true, msg = "Đặt xe thành công!" };
             // Trả về kết quả thành công
-            return Json(code);
+            return Json(new { success = false });
 
             // Lưu chuyến đi vào database
 

@@ -44,8 +44,8 @@
                         <th>Khoảng cách</th>
                         <th>Thời gian</th>
                         <th>Giá</th>
-                        @*<th>Ngày đặt</th>*@
                         <th>Thời gian đặt xe</th>
+                        <th>Thanh toán</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,26 +60,34 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.Status == "Đang chạy" && item.DriverId == ID)
+                                if (item.Status == "Đã nhận đơn" && item.DriverId == ID|| item.Status == "Đang chạy" && item.DriverId == ID)
                                 {
                                     var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
-                                    <tr id=" trow_@item.Id">
-                                        <td>@item.Id</td>
-                                        <td>@item.FullName</td>
-                                        <td>@find.PhoneNumber</td>
-                                        <td>@item.StartLocation</td>
-                                        <td>@item.EndLocation</td>
-                                        <td>@item.Distance</td>
-                                        <td>@item.Time</td>
-                                        <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
-                                        @*<td>@item.OrderDate</td>*@
-                                        <td>@item.TimeBook</td>
+                                        <tr id=" trow_@item.Id">
+                                            <td>@item.Id</td>
+                                            <td>@item.FullName</td>
+                                            <td>@find.PhoneNumber</td>
+                                            <td>@item.StartLocation</td>
+                                            <td>@item.EndLocation</td>
+                                            <td>@item.Distance</td>
+                                            <td>@item.Time</td>
+                                            <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
+                                            <td>@item.TimeBook</td>
+                                            <td>
+                                                @if (item.IsPaid == false)
+                                                {
+                                                    <i class="fas fa-clock fa-pulse" style="color: #353a82;"></i> <p>Chưa thanh toán</p>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="/driver/bookingdriver/accepttrip/@item.Id" class="btn btn-sm btn-primary">Chi tiết</a>
+                                            </td>
 
-                                        <td>
-                                            <a href="/driver/bookingdriver/accepttrip/@item.Id" class="btn btn-sm btn-primary">Chi tiết</a>
-                                        </td>
-
-                                    </tr>
+                                        </tr>
                                     i++;
                                 }
                             }

@@ -106,7 +106,14 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <button id="done-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Hoàn thành</button>
+                                        @if (Model.Status == "Đang chạy")
+                                        {
+                                            <button id="done-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Hoàn thành</button>
+                                        }
+                                        else
+                                        {
+                                            <button id="running-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Chạy đơn</button>
+                                        }
                                         <button id="error-trip" type="button" data-id="@Model.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
                                         <div id="button-contact-vr" class=""><div id="gom-all-in-one"><div id="zalo-vr" class="button-contact"><div class="phone-vr"><div class="phone-vr-circle-fill"></div><div class="phone-vr-img-circle"> <a target="_blank" href="https://zalo.me/@find.PhoneNumber"> <img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" data-lazy-src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" class="lazyloaded" data-was-processed="true"><noscript><img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript> </a></div></div></div><div id="phone-vr" class="button-contact"><div class="phone-vr"><div class="phone-vr-circle-fill"></div><div class="phone-vr-img-circle"> <a href="tel:@find.PhoneNumber"> <img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" data-lazy-src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" class="lazyloaded" data-was-processed="true"><noscript><img src="https://www.caoduoctienson.com/wp-content/plugins/button-contact-vr/img/phone.png" /></noscript> </a></div></div></div></div></div>
                                     </div>
@@ -146,6 +153,29 @@
                 },
                 error: function (rs) {
                     alert('Hủy đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+        });
+        const runningBtns = document.querySelectorAll('#running-trip');
+        runningBtns.forEach(runningBtns => {
+            runningBtns.addEventListener('click', function(event) {
+            const tripId = $(this).data('id');
+            const url = '@Url.Action("RunningTrip", "BookingDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                    if (rs.success) {
+                        document.getElementById('running-trip').style.display = 'none';
+                        document.getElementById('done-trip').style.display = 'block';
+                        alert('Bắt đầu chạy!.');
+                    }
+                },
+                error: function (rs) {
+                    alert('Chương trình đã bị lỗi!.');
                     location.reload(true);
                 }
             });

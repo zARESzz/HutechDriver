@@ -93,20 +93,6 @@
                 .Index(t => t.CategoryID);
             
             CreateTable(
-                "dbo.Chat",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserID = c.String(nullable: false, maxLength: 255),
-                        Gmail = c.String(nullable: false, maxLength: 255),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        DateCreate = c.DateTime(),
-                        Writing = c.String(nullable: false),
-                        IsRead = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.tb_Contact",
                 c => new
                     {
@@ -124,6 +110,20 @@
                         CreateDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(nullable: false),
                         ModifierBy = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Chat",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserID = c.String(nullable: false, maxLength: 255),
+                        Gmail = c.String(nullable: false, maxLength: 255),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        DateCreate = c.DateTime(),
+                        Writing = c.String(nullable: false),
+                        IsRead = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -303,8 +303,23 @@
                         DriverBook = c.String(),
                         Status = c.String(),
                         DriverId = c.String(),
+                        IsPaid = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.TripReviews",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Rating = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                        Comment = c.String(),
+                        Trip_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Trip", t => t.Trip_Id)
+                .Index(t => t.Trip_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -361,6 +376,7 @@
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.TripReviews", "Trip_Id", "dbo.Trip");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.tb_ProductImage", "ProductId", "dbo.tb_Product");
             DropForeignKey("dbo.tb_Product", "ProductCategoryID", "dbo.tb_ProductCategory");
@@ -371,6 +387,7 @@
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.TripReviews", new[] { "Trip_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -383,6 +400,7 @@
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.TripReviews");
             DropTable("dbo.Trip");
             DropTable("dbo.tb_Driver");
             DropTable("dbo.tb_SystemSetting");
@@ -394,8 +412,8 @@
             DropTable("dbo.tb_Product");
             DropTable("dbo.tb_Order");
             DropTable("dbo.tb_OrderDetail");
-            DropTable("dbo.tb_Contact");
             DropTable("dbo.Chat");
+            DropTable("dbo.tb_Contact");
             DropTable("dbo.tb_Posts");
             DropTable("dbo.tb_News");
             DropTable("dbo.tb_Category");
