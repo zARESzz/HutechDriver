@@ -8,7 +8,9 @@
     ViewBag.Title = "Danh sách đơn đặt xe";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/sceneapp/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Content/sceneapp/datatables-buttons/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Content/sceneapp/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -52,7 +54,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-bordered" id="tripTable">
+            <table class="table table-bordered table-hover" id="tripTable">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -152,6 +154,14 @@
 
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Content/sceneapp/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Content/sceneapp/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Content/sceneapp/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/Content/sceneapp/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/Content/sceneapp/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="~/Content/sceneapp/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="~/Content/sceneapp/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="~/Content/sceneapp/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
     $(function () {
         $("#filterStatus").change(function () {

@@ -45,7 +45,7 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if ((item.Status == "Chưa nhận" && item.UserId == ID) || (item.Status == "Đang chạy" && item.UserId == ID) || (item.Status == "Đã nhận đơn" && item.UserId == ID))
+                                if ((item.Status == "Chưa nhận" && item.UserId == ID && item.IsPaid != true) || (item.Status == "Đang chạy" && item.UserId == ID && item.IsPaid != true) || (item.Status == "Đã nhận đơn" && item.UserId == ID && item.IsPaid != true))
                                 {
                                         <tr id=" trow_@item.Id">
                                             <td>@item.Id</td>
@@ -81,7 +81,7 @@
                                                 }
                                             </td>
                                             <td>
-                                                <a href="/BookingTrip/DetailsTrip/@item.Id" class="btn btn-sm btn-primary">Xem đơn</a>
+                                                <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
                                                 <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
                                             </td>
 
