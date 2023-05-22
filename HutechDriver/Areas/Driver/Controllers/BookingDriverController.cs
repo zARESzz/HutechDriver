@@ -101,7 +101,7 @@ namespace HutechDriver.Areas.Driver.Controllers
                 trip.DriverBook = find.FullName;
                 db.SaveChanges();
                 var passengerId = trip.UserId;
-                _hubContext.Clients.User(passengerId).SendAsync("SendNotificationToPassenger", passengerId);
+                //_hubContext.Clients.User(passengerId).SendAsync("SendNotificationToPassenger", passengerId);
                 return Json(new { success = true });
             }
             return Json(new { success = false });
