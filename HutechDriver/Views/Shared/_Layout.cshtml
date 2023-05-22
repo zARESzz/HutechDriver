@@ -174,7 +174,7 @@
                                         @{
                                             ApplicationDbContext db = new ApplicationDbContext();
                                             var ID = User.Identity.GetUserId();
-                                            var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận" && p.UserId == ID && p.IsPaid != true || p.Status == "Đang chạy" && p.UserId == ID && p.IsPaid!=true);
+                                            var chuaNhanTrips = db.Trips.Where(p => p.Status != "Hoàn thành" && p.UserId == ID && p.IsPaid != true || p.Status != "Đã hủy" && p.UserId == ID && p.IsPaid!=true);
 
 
                                             var tripCount = chuaNhanTrips.Count();
