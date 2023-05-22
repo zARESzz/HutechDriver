@@ -7,13 +7,13 @@ namespace HutechDriver.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class update : IMigrationMetadata
+    public sealed partial class up1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(up1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202305160346001_update"; }
+            get { return "202305211724404_up1"; }
         }
         
         string IMigrationMetadata.Source

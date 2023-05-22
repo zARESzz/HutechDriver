@@ -18,10 +18,10 @@ namespace HutechDriver.Areas.Driver.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IHubContext<TripHub> _hubContext;
 
-        public BookingDriverController(IHubContext<TripHub> hubContext)
-        {
-            _hubContext = hubContext;
-        }
+        //public BookingDriverController(IHubContext<TripHub> hubContext)
+        //{
+        //    _hubContext = hubContext;
+        //}
         public ActionResult Index(string SearchText, int? page)
         {
             //var items = db.Trips.OrderByDescending(x => x.OrderDate).ToList();

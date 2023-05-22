@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class update : DbMigration
+    public partial class up1 : DbMigration
     {
         public override void Up()
         {
@@ -287,6 +287,20 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.TripReviews",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Rating = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                        Comment = c.String(),
+                        Trip_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Trip", t => t.Trip_Id)
+                .Index(t => t.Trip_Id);
+            
+            CreateTable(
                 "dbo.Trip",
                 c => new
                     {
@@ -306,20 +320,6 @@
                         IsPaid = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.TripReviews",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Rating = c.String(),
-                        CreatedDate = c.DateTime(nullable: false),
-                        Comment = c.String(),
-                        Trip_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Trip", t => t.Trip_Id)
-                .Index(t => t.Trip_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -400,8 +400,8 @@
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.TripReviews");
             DropTable("dbo.Trip");
+            DropTable("dbo.TripReviews");
             DropTable("dbo.tb_Driver");
             DropTable("dbo.tb_SystemSetting");
             DropTable("dbo.tb_Subscribe");

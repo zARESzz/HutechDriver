@@ -130,9 +130,29 @@
             });
         });
     });
-    const acceptBtns = document.querySelectorAll('#accept-trip');
+        const acceptBtns = document.querySelectorAll('#accept-trip');
+        acceptBtns.forEach(acceptBtn => {
+        acceptBtn.addEventListener('click', function(event) {
+            const tripId = this.getAttribute('data-id');
+            const url = '@Url.Action("AcceptTrip", "BookingDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: tripId } ,
+                success: function (rs) {
+                    window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                },
+                error: function (rs) {
+                    alert('Nhận đơn không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+     });
 
-    acceptBtns.forEach(acceptBtn => {
+
+
+    @*acceptBtns.forEach(acceptBtn => {
         acceptBtn.addEventListener('click', function(event) {
         const tripId = this.getAttribute('data-id');
         const url = '@Url.Action("AcceptTrip", "BookingDriver")';
@@ -173,6 +193,6 @@
                 location.reload(true);
             });
     });
-});
-</script>
+});*@
+    </script>
 }
