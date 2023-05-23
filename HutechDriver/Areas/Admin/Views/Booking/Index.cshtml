@@ -8,9 +8,15 @@
     ViewBag.Title = "Danh sách đơn đặt xe";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/sceneapp/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<link href="~/Content/sceneapp/datatables-buttons/css/buttons.bootstrap4.min.css" rel="stylesheet" />
-<link href="~/Content/sceneapp/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/Content/clients/plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+
+<link href="~/Content/clients/dist/css/adminlte.min.css" rel="stylesheet" />
+
+
+<link href="~/Content/clients/dist/css/adminlte.css" rel="stylesheet" />
 @section naviheader{
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -53,94 +59,93 @@
                 }
             </div>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered table-hover" id="tripTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên khách hàng</th>
-                        <th>SDT</th>
-                        <th>Nơi đi</th>
-                        <th>Nơi đến</th>
-                        <th>Khoảng cách</th>
-                        <th>Thời gian</th>
-                        <th>Giá</th>
-                        <th>Tên tài xế</th>
-                        <th>Thời gian đặt xe</th>
-                        <th>Trạng thái</th>
-                        <th>Thanh toán</th>
-                    </tr>
-                </thead>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                    <table class="table table-bordered" id="tripTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên khách hàng</th>
+                                <th>SDT</th>
+                                <th>Trạng thái</th>
+                                <th>Tài xế</th>
+                                <th>Thời gian đặt</th>
 
-                <tbody>
-                    @{
-                        IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
-                        if (Model != null && Model.Any())
-                        {
-                            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                            foreach (var item in Model)
-                            {
-                                var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
 
-                                <tr>
-                                    <td>@item.Id</td>
-                                    <td>@item.FullName</td>
-                                    <td>@find.PhoneNumber</td>
-                                    <td>@item.StartLocation</td>
-                                    <td>@item.EndLocation</td>
-                                    <td>@item.Distance</td>
-                                    <td>@item.Time</td>
-                                    <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
-                                    <td>@item.DriverBook</td>
-                                    @*<td>@item.OrderDate</td>*@
-                                    <td>@item.TimeBook</td>
-                                    <td>
 
-                                        @if (item.Status == "Hoàn thành")
-                                        {
-                                            <i class="fas fa-circle text-success"></i>
-                                        }
-                                        else if (item.Status == "Đang chạy")
-                                        {
-                                            <i class="fas fa-motorcycle" style="color: #acc016;"></i>
-                                        }
-                                        else if (item.Status == "Chưa nhận")
-                                        {
-                                            <i class="fas fa-circle text-danger"></i>
-                                        }
-                                        else if (item.Status == "Đã nhận đơn")
-                                        {
-                                            <i class="far fa-clipboard-check" style="color: #ba7e17;"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                        }
-                                        @item.Status
-                                    </td>
-                                    <td>
-                                        @if (item.IsPaid == false)
-                                        {
-                                            <i class="fas fa-clock fa-pulse" style="color: #353a82;"></i> <p>Chưa thanh toán</p>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
-                                        }
-                                    </td>
-                                </tr>
-                                i++;
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+                                if (Model != null && Model.Any())
+                                {
+                                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                                    foreach (var item in Model)
+                                    {
+                                        var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
+
+                                        <tr data-widget="expandable-table" aria-expanded="false">
+                                            <td>@item.Id</td>
+                                            <td>@item.FullName</td>
+                                            <td>@find.PhoneNumber</td>
+                                            <td>
+                                                @if (item.Status == "Hoàn thành")
+                                                {
+                                                    <i class="fas fa-circle text-success"></i>
+                                                }
+                                                else if (item.Status == "Đang chạy")
+                                                {
+                                                    <i class="fas fa-circle text-warning"></i>
+                                                }
+                                                else if (item.Status == "Chưa nhận")
+                                                {
+                                                    <i class="fas fa-circle text-danger"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                }
+                                                @item.Status
+                                            </td>
+                                            <td> @item.DriverBook</td>
+                                            <td> @item.TimeBook</td>
+
+                                        </tr>
+                                        <tr class="expandable-body">
+                                            <td colspan="10">
+                                                <p>
+
+                                                    Nơi đi:   @item.StartLocation <br />
+                                                    Nơi đến:   @item.EndLocation  <br />
+                                                    Khoảng cách  @item.Distance      <br />
+                                                    Giá :  @HutechDriver.Common.Common.FormatNumber(item.Price) <br />
+                                                    Thời gian đặt @item.Time  <br />
+                                                    Thời gian tạo đơn @item.OrderDate  <br />
+                                                    Mã Số người dùng:@item.UserId  <br />
+                                                    Mã số tài xế    :    @item.DriverId
+
+                                                </p>
+
+                                            </td>
+                                        </tr>
+
+
+                                    }
+                                }
                             }
-                        }
-                    }
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
 
-            <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6" style="text-align:right;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    <div class="row">
+                        <div class="col-6"></div>
+                        <div class="col-6" style="text-align:right;">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,15 +158,13 @@
     <!-- /.card -->
 
 </section>
+<script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<!-- AdminLTE for demo purposes -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="~/Content/sceneapp/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="~/Content/sceneapp/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="~/Content/sceneapp/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="~/Content/sceneapp/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="~/Content/sceneapp/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="~/Content/sceneapp/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="~/Content/sceneapp/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="~/Content/sceneapp/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
     $(function () {
         $("#filterStatus").change(function () {

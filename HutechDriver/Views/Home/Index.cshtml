@@ -4,14 +4,14 @@
     ViewBag.Title = "HutechDriver";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <title>Distance and Route Finder</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
     <!-- site metas -->
 
     <meta name="keywords" content="">
@@ -21,7 +21,7 @@
     <link href="~/Content/Map/style123.css" rel="stylesheet" />
 
 
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />*@
 
     <!-- style css -->
     <link href="~/Content/css/style1.css" rel="stylesheet" />
@@ -48,6 +48,7 @@
                 <div class="contact_main">
 
                     <h1 class="request_text">Đặt xe</h1>
+                   
                     <form action="/action_page.php">
                         <div class="form-group">
                             <input type="text" id="origin-add" class="email-bt" placeholder="Chọn điểm đi" name="Name">
@@ -126,6 +127,8 @@
                     <button class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
                 </div>
 
+
+
             </div>
 
 
@@ -135,6 +138,44 @@
         </div>
 
     </div>
+
+
+    <script>
+        const countEl = document.getElementById('count');
+
+        updateVisitCount();
+
+
+
+        function updateVisitCount() {
+
+            fetch('https://api.countapi.xyz/hit/[104.28.237.73]')
+                .then(res => res.json())
+                .then(res => {
+                    countEl.innerHTML = res.value;
+
+                })
+        }
+    </script>
+    <script>
+        //$.ajax({
+        //    method: 'GET',
+        //    url: 'https://api.api-ninjas.com/v1/counter?id=test_id&hit=true',
+        //    headers: { 'Count': 'CDfZ/pXWDEyXsQb9kkNDKg==jXGowFqP0IsW46Pe' },
+        //    contentType: 'application/json',
+        //    success: function (result) {
+        //        // Update the HTML content
+        //        document.getElementById('result1').innerHTML = result1;
+        //    },
+        //    error: function (jqXHR) {
+        //        console.error('Error: ', jqXHR.responseText);
+        //    }
+        //});
+
+
+
+
+    </script>
     <script>
 
         var showDetails = 0;
