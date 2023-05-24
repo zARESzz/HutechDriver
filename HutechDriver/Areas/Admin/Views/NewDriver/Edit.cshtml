@@ -1,0 +1,163 @@
+﻿@model HutechDriver.Models.EF.Contact
+@{
+    ViewBag.Title = "Cập nhật danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/Admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/newdriver" class="nav-link">Đơn tuyển dụng</a>
+        </li>
+       
+    </ul>}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Đơn tuyển dụng</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Đơn tuyển dụng</a></li>
+                    <li class="breadcrumb-item active">Chi tiết</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thông tin danh mục</h3>
+        </div>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">General</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                      
+                            
+                        <div class="card-body">
+                            <div class="form-group">
+
+                                <label for="inputName" oncontextmenu="return false;" onselectstart="return false;">Họ và Tên</label>
+
+                                <p>@Model.Name</p>
+
+                            </div>
+                            <div class="text">
+                                Email:@Model.Email
+                            </div>
+                            <div class="text">
+                                SDT:@Model.PhoneNumber
+                            </div>
+                            <div class="text">
+                                Địa chỉ :@Model.DiaChi
+                            </div>
+                          <textarea>@Model.Message</textarea>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Budget</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="image-container">
+                                <h4>Hình ảnh</h4>
+                                <img src="@Url.Content(Model.ImagePeople)" class="zoomable-image" alt="Hình ảnh">
+                            </div>
+                            <div class="image-container">
+                                <h4>Căn cước công dân & Chứng minh nhân dân </h4>
+                                <img src="@Url.Content(Model.ImagePapers)" class="zoomable-image" alt="Hình ảnh">
+                            </div>
+
+                          
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="/admin/newdrive" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Create new Project" class="btn btn-success float-right">
+                </div>
+            </div>
+        </section>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+  
+</section>
+<!-- /.content -->
+
+
+<style>
+    .image-container {
+        position: relative;
+    }
+
+    .zoomable-image {
+        cursor: pointer;
+        transition: transform 0.3s;
+        max-width: 300px; /* Giới hạn chiều rộng ảnh là 300px */
+        height: auto;
+    }
+
+        .zoomable-image.zoomed {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            max-height: 90%;
+            max-width: 90%;
+        }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const zoomableImages = document.querySelectorAll('.zoomable-image');
+
+        zoomableImages.forEach(function (image) {
+            image.addEventListener('click', function () {
+                image.classList.toggle('zoomed');
+            });
+        });
+    });
+</script>

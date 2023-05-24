@@ -14,6 +14,9 @@ namespace HutechDriver.Models
         public string FullName { get; set; }
         public string Address { get; set; }
         public string Avatar { get; set; }
+        public string ImageCCCD { get; set; }
+        public string ImageBike { get; set; }
+        public string Text { get; set; }
    
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

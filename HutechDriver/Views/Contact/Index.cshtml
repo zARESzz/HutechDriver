@@ -117,29 +117,22 @@
                                 </div>
 
 
-
-
-
-
                                 <div class="col-md-12">
-
-
-
+                                    @Html.TextBoxFor(x => x.ImagePapers, new { @id = "txtImage1", @class = "form-control" })
+                                    <input type="button" value="Tải ảnh CCCD" onclick="BrowseServer('txtImage1');" />
+                                </div>
+                                <div class="col-md-12">
                                     @Html.TextBoxFor(x => x.ImagePeople, new { @id = "txtImage", @class = "form-control" })
-
-
-                                    <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-
-
+                                    <input type="button" value="Tải ảnh Chụp" onclick="BrowseServer('txtImage');" />
                                 </div>
 
                                 @*<div class="col-12">
-                                        <div class="form-wrap">
-                                            <textarea class="form-input textarea-lg" id="Message" name="Message" placeholder="Message*" data-constraints="@Required"></textarea>
-                                        </div>
-                                        @Html.ValidationMessageFor(row => row.Message)
+            <div class="form-wrap">
+                <textarea class="form-input textarea-lg" id="Message" name="Message" placeholder="Message*" data-constraints="@Required"></textarea>
+            </div>
+            @Html.ValidationMessageFor(row => row.Message)
 
-                                    </div>*@
+        </div>*@
 
 
 
@@ -148,16 +141,16 @@
 
 
                                 @*<div class="form-group">
-                                        <label for="exampleInputFile">Ảnh</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
-                                            </div>
-                                            <div class="input-group-append">
-                                                <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-                                            </div>
-                                        </div>
-                                    </div>*@
+            <label for="exampleInputFile">Ảnh</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
+                </div>
+                <div class="input-group-append">
+                    <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
+                </div>
+            </div>
+        </div>*@
                             </div>
                             <button class="button button-secondary button-winona" type="submit">Contact us</button>
                         </form>

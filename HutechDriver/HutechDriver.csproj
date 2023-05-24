@@ -346,6 +346,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BookingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerChatController.cs" />
     <Compile Include="Areas\Admin\Controllers\DriverController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -370,9 +371,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202305211724404_up1.cs" />
-    <Compile Include="Migrations\202305211724404_up1.designer.cs">
-      <DependentUpon>202305211724404_up1.cs</DependentUpon>
+    <Compile Include="Migrations\202305240204267_u2.cs" />
+    <Compile Include="Migrations\202305240204267_u2.designer.cs">
+      <DependentUpon>202305240204267_u2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4421,6 +4422,11 @@
     <Content Include="Content\fonts\SVN-PoppinsThinItalic.ttf" />
     <Content Include="Content\fonts\SVN-PoppinsThinItalic.woff" />
     <Content Include="Content\fonts\SVN-PoppinsThinItalic.woff2" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\NewDriver\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\NewDriver\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4483,7 +4489,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Driver\Data\" />
-    <Folder Include="Views\ApiCount\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -4497,8 +4502,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202305211724404_up1.resx">
-      <DependentUpon>202305211724404_up1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305240204267_u2.resx">
+      <DependentUpon>202305240204267_u2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

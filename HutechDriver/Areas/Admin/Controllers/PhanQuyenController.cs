@@ -59,7 +59,7 @@ namespace HutechDriver.Areas.Admin.Controllers
         public async Task<ActionResult> Edit(string id)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            var allRoles = roleManager.Roles.ToList();           
+            var allRoles = roleManager.Roles.Where(p => p.Name != "Admin").ToList();
             ViewBag.Roles = allRoles;
             var userRoles = await UserManager.GetRolesAsync(id);
             ViewBag.UserRoles = userRoles;
@@ -88,6 +88,9 @@ namespace HutechDriver.Areas.Admin.Controllers
                 user.Email = model.Email;
                 user.FullName = model.FullName;
                 user.PhoneNumber = model.PhoneNumber;
+                user.ImageCCCD = model.ImageCCCD;
+                user.ImageBike= model.ImageBike;
+                user.Text = model.Text;
 
                 // Remove old roles and add new roles to user
                 var result = await UserManager.UpdateAsync(user);
