@@ -352,6 +352,7 @@
     <Compile Include="Areas\Driver\Controllers\HomeController.cs" />
     <Compile Include="Areas\Driver\DriverAreaRegistration.cs" />
     <Compile Include="Areas\Manager\Controllers\BookingController.cs" />
+    <Compile Include="Areas\Manager\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Manager\Controllers\CustomerChatController.cs" />
     <Compile Include="Areas\Manager\Controllers\DriverController.cs" />
     <Compile Include="Areas\Manager\Controllers\HomeController.cs" />
@@ -373,10 +374,6 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202305240204267_u2.cs" />
-    <Compile Include="Migrations\202305240204267_u2.designer.cs">
-      <DependentUpon>202305240204267_u2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4434,6 +4431,9 @@
     <Content Include="Areas\Manager\Views\NewDriver\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4508,11 +4508,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202305240204267_u2.resx">
-      <DependentUpon>202305240204267_u2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

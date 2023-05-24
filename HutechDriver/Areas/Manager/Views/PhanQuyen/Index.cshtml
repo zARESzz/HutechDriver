@@ -56,6 +56,7 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
+                                var userRoles = userManager.GetRolesAsync(item.Id);
                                 if (item.LockoutEndDateUtc == null)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
@@ -72,8 +73,9 @@
                                             }
                                         </td>
                                         <td>
-                                            <a href="/manager/phanquyen/edit/@item.Id" class="btn btn-sm btn-success">Sửa</a>
-                                            <button id="lock-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id">Khóa tài khoản</button>
+                                            <a href="#" class="btn btn-primary btn-sm"> <i class="fas fa-folder"> </i> Xem</a>
+                                            <a href="/manager/phanquyen/edit/@item.Id" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"> </i> Sửa</a>
+                                            <button id="lock-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-lock" style="color: #1f8104;"></i> Khóa</button>
                                         </td>
                                     </tr>
                                     i++;

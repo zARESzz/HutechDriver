@@ -40,7 +40,7 @@
     </div><!-- /.container-fluid -->
 </section>
 
-<section class="content">
+<<section class="content">
 
     <!-- Default box -->
     <!-- Default box -->
@@ -99,11 +99,37 @@
                                         @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Image CCCD</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                @Html.TextBoxFor(x => x.ImageCCCD, new { @id = "txtImageCCCD", @class = "form-control" })
+                                            </div>
+                                            <div class="input-group-append">
+                                                <input type="button" value="Tải ảnh CCCD" onclick="BrowseServer('txtImageCCCD');" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Image Bike</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                @Html.TextBoxFor(x => x.ImageBike, new { @id = "txtImageBike", @class = "form-control" })
+                                            </div>
+                                            <div class="input-group-append">
+                                                <input type="button" value="Tải ảnh Bike" onclick="BrowseServer('txtImageBike');" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Chi tiết</label>
+                                        @Html.TextAreaFor(x => x.Text, new { @class = "form-control" })
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success" id="save-btn">Lưu Lại</button>
-                                    <a href="/manager/phanquyen" class="btn btn-danger">Quay lại</a>
+                                    <a href="/admin/phanquyen" class="btn btn-danger">Quay lại</a>
                                 </div>
                             </div>
                         </div>
@@ -143,6 +169,22 @@
             });
         });
     });
+</script>
+
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('txtDetail', {
+            customConfig: '/content/ckeditor/config.js',
+            extraAllowedContent: 'span',
+        });
+    });
+    function BrowseServer(field) {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            document.getElementById(field).value = fileUrl;
+        };
+        finder.popup();
+    }
 </script>
 
 
