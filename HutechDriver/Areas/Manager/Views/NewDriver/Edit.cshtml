@@ -1,7 +1,7 @@
 ﻿@model HutechDriver.Models.EF.Contact
 @{
     ViewBag.Title = "Cập nhật danh mục";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
 }
 
 @section naviheader{
@@ -10,12 +10,12 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/Admin/home" class="nav-link">Trang chủ</a>
+            <a href="/Manager/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/newdriver" class="nav-link">Đơn tuyển dụng</a>
+            <a href="/Manager/newdriver" class="nav-link">Đơn tuyển dụng</a>
         </li>
-       
+
     </ul>}
 
 
@@ -56,8 +56,8 @@
                                 </button>
                             </div>
                         </div>
-                      
-                            
+
+
                         <div class="card-body">
                             <div class="form-group">
 
@@ -75,7 +75,7 @@
                             <div class="text">
                                 Địa chỉ :@Model.DiaChi
                             </div>
-                          <textarea>@Model.Message</textarea>
+                            <textarea>@Model.Message</textarea>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -102,7 +102,7 @@
                                 <img src="@Url.Content(Model.ImagePapers)" class="zoomable-image" alt="Hình ảnh">
                             </div>
 
-                          
+
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -111,7 +111,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="/admin/newdrive" class="btn btn-secondary">Cancel</a>
+                    <a href="/Manager/newdrive" class="btn btn-secondary">Cancel</a>
                     <input type="submit" value="Create new Project" class="btn btn-success float-right">
                 </div>
             </div>
@@ -123,7 +123,7 @@
         <!-- /.card-footer-->
     </div>
     <!-- /.card -->
-  
+
 </section>
 <!-- /.content -->
 
@@ -153,7 +153,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const zoomableImages = document.querySelectorAll('.zoomable-image');
-
         zoomableImages.forEach(function (image) {
             image.addEventListener('click', function () {
                 image.classList.toggle('zoomed');
