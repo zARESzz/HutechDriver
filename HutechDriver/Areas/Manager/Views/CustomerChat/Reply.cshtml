@@ -1,0 +1,115 @@
+﻿@model HutechDriver.Models.EF.Chat
+@using HutechDriver.Models
+@{
+    ViewBag.Title = "Reply";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/manager/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/manager/customerchat/reply" class="nav-link">Phản hồi</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Cập nhật</a>
+        </li>
+    </ul>}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Phản hồi</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Phản hồi</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Phản hồi</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tới:</label>
+
+                                    @Html.DisplayFor(model => model.Name)
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Gmail:</label>
+                                    @Html.DisplayFor(model => model.Gmail)
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-wrap">
+                                        <textarea class="form-input os-textarea-cover" rows=" 6" cols="50" id="Writing" name="Writing" placeholder="Content*"></textarea> @*data-constraints="@Numeric"*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button id="send-chat" type="button" data-id="@Model.Id" class="btn btn-sm btn-success">Gửi</button>
+                                    <a href="/manager/customerchat/index" type="button" class="btn btn-sm btn-danger">Quay lại</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+            </div>
+            <!-- /.card-footer-->
+        </div>
+    </div>
+    <!-- /.card -->
+    <!-- /.card -->
+</section>
+@section scripts{
+    <script>
+        const sendBtns = document.querySelectorAll('#send-chat');
+        sendBtns.forEach(sendBtn => {
+            sendBtn.addEventListener('click', function(event) {
+            const chatID = this.getAttribute('data-id');
+            var content = document.getElementById("Writing").value.toString();
+            const url = '@Url.Action("Send", "Customerchat")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: chatID , writing: content} ,
+                success: function (rs) {
+                        window.location.href = "/manager/home";
+                        alert('Bạn đã phản hồi thành công!.');
+                },
+                error: function (rs) {
+                    alert('Phản hồi không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+    </script>
+}

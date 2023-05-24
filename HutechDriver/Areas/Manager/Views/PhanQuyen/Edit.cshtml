@@ -1,0 +1,151 @@
+﻿@model HutechDriver.Models.ApplicationUser
+@using HutechDriver.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/manager/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/manager/phanquyen" class="nav-link">Phân quyền</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Cập nhật</a>
+        </li>
+    </ul>}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Cập nhật tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+    <!-- Default box -->
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Chỉnh sửa tài khoản</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Edit", "PhanQuyen", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tên</label>
+                                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">SDT</label>
+                                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="role">Vai trò</label>
+                                        <select id="role" name="roleid">
+
+                                            @foreach (var role in ViewBag.Roles)
+                                            {
+                                                if (ViewBag.UserRoles.Contains(role.Name))
+                                                {
+                                                    <option value="@role.Name" selected>@role.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@role.Name">@role.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">UserName</label>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success" id="save-btn">Lưu Lại</button>
+                                    <a href="/manager/phanquyen" class="btn btn-danger">Quay lại</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+    <!-- /.card -->
+
+</section>
+
+<script>
+    const saveBtns = document.querySelectorAll('#save-btn');
+
+    saveBtns.forEach(saveBtn => {
+        saveBtn.addEventListener('click', function(event) {
+            const roleId = document.getElementById("role").value.ToString();
+            const url = '@Url.Action("Edit", "PhanQuyen")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { roleid : roleId } ,
+                success: function (data) {
+                    location.reload(true);
+                },
+                error: function (data) {
+                    location.reload(true);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+

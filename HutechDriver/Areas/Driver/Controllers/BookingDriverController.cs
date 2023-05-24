@@ -16,7 +16,7 @@ namespace HutechDriver.Areas.Driver.Controllers
     {
         // GET: Driver/BookingDriver
         private ApplicationDbContext db = new ApplicationDbContext();
-        private readonly IHubContext<TripHub> _hubContext;
+        //private readonly IHubContext<TripHub> _hubContext;
 
         //public BookingDriverController(IHubContext<TripHub> hubContext)
         //{
