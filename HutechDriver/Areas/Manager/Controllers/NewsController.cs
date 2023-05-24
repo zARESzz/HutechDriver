@@ -44,7 +44,7 @@ namespace HutechDriver.Areas.Manager.Controllers
             if (ModelState.IsValid)
             {
                 model.CreateDate=DateTime.Now;
-                model.CategoryID = 2;
+                model.CategoryID = 6;
                 model.ModifiedDate=DateTime.Now;
                 model.Alias = HutechDriver.Models.Common.Filter.FilterChar(model.Title);
                 db.News.Add(model);

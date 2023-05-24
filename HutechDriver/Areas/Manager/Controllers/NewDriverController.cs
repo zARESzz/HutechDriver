@@ -32,6 +32,15 @@ namespace HutechDriver.Areas.Manager.Controllers
             ViewBag.Page = page;
             return View(items);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var item = db.Contacts.Find(id);
+            return View(item);
+        }
+
+
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
