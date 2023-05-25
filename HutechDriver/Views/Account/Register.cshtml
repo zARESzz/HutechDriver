@@ -125,7 +125,10 @@
                                         </div>
                                         @Html.ValidationMessageFor(row => row.ConfirmPassword)
                                     </div>
-                                    <div class="g-recaptcha" data-sitekey="6Lc2-gQmAAAAAIbh-DQ2dWPwOyPxLRUQSQkamnch"></div>
+
+                                    <a href="/fag" style="margin:auto">Chính sách,Điều khoản</a>
+                                    <input type="checkbox" id="myCheckbox" onchange="toggleDivVisibility()">
+                                    <div id="checkrecaptcha" class="g-recaptcha" data-sitekey="6Lc2-gQmAAAAAIbh-DQ2dWPwOyPxLRUQSQkamnch" style="margin:auto;display:none"></div>
 
 
 
@@ -161,6 +164,18 @@
             } else {
                 // reCAPTCHA đã được xác nhận
                 return true;
+            }
+        }
+    </script>
+    <script>
+        function toggleDivVisibility() {
+            var checkbox = document.getElementById("myCheckbox");
+            var div = document.getElementById("checkrecaptcha");
+
+            if (checkbox.checked) {
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
             }
         }
     </script>

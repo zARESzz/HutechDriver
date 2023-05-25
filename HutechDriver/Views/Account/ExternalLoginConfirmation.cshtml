@@ -15,42 +15,44 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-md-12">
-            <label class="label" for="name">Email</label>
-            <div style="display:inline-block" class="col-md-10">
-                <input type="text" id="Email" name="Email" class="form-control" value="@Model.Email" readonly>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <label class="label" for="name">Họ Tên</label>
-            <div style="display:inline-block" class="col-md-10">
-                <input type="text" id="FullName" name="FullName" class="form-control" placeholder="Full Name">
-            </div>
-        </div>
-        <div class="col-md-12">
-            @Html.ValidationMessageFor(row => row.FullName)
-        </div>
-
-        <div class="col-md-12">
-            <label class="label" for="Address">Địa Chỉ</label>
-            <div style="display:inline-block" class="col-md-10">
-                <input type="text" id="Address" name="Address" class="form-control" placeholder="Address">
-            </div>
-        </div>
-        <div class="col-md-12">
-            @Html.ValidationMessageFor(row => row.Address)
-        </div>
-        <div class="col-md-12">
-            <label class="label" for="phone">SĐT</label>
-            <div style="display:inline-block" class="col-md-10">
-                <input type="text" id="Phone " name="Phone" class="form-control" placeholder="+84">
-            </div>
-        </div>
-        <div class="col-md-12">
-            @Html.ValidationMessageFor(row => row.Phone)
+<div class="row">
+    <div class="col-md-12">
+        <label class="label" for="name">Email</label>
+        <div style="display:inline-block" class="col-md-10">
+            <input type="text" id="Email" name="Email" class="form-control" value="@Model.Email" readonly>
         </div>
     </div>
+    <div class="col-md-12">
+        <label class="label" for="name">Họ Tên</label>
+        <div style="display:inline-block" class="col-md-10">
+            <input type="text" id="FullName" name="FullName" class="form-control" placeholder="Full Name">
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Html.ValidationMessageFor(row => row.FullName)
+    </div>
+
+    <div class="col-md-12">
+        <label class="label" for="Address">Địa Chỉ</label>
+        <div style="display:inline-block" class="col-md-10">
+            <input type="text" id="Address" name="Address" class="form-control" placeholder="Address">
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Html.ValidationMessageFor(row => row.Address)
+    </div>
+    <div class="col-md-12">
+        <label class="label" for="phone">SĐT</label>
+        <div style="display:inline-block" class="col-md-10">
+            <input type="text" id="Phone " name="Phone" class="form-control" placeholder="+84">
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Html.ValidationMessageFor(row => row.Phone)
+    </div>
+    <a href="/fag" style="margin:auto">Chính sách,Điều khoản</a>
+    <input type="checkbox" id="myCheckbox" onchange="toggleDivVisibility()">
+</div>
     <div class="form-group">
         <div class="col-md-12" style="text-align:center">
             <input type="submit" class="btn btn-default" value="Đăng ký" />

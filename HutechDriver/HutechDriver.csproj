@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder">
-      <HintPath>Content\ckfinder\ckfinder\bin\Debug\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\..\source\repos\HutechDriver\HutechDriver\Content\ckfinder\ckfinder\bin\Debug\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
@@ -368,6 +368,7 @@
     <Compile Include="Controllers\BookingTripController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -4501,6 +4502,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Driver\Data\" />
     <Folder Include="Areas\Manager\Data\" />
+    <Folder Include="Views\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
