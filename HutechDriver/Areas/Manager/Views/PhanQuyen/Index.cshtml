@@ -51,14 +51,15 @@
 
                         var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext)); // Khởi tạo UserManager
 
+
                         if (Model != null && Model.Any())
                         {
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.LockoutEndDateUtc == null)
+                                var roles = userManager.GetRoles(item.Id);
+                                if (item.LockoutEndDateUtc == null && !roles.Contains("Admin"))
                                 {
-                                    var roles = userManager.GetRoles(item.Id);
                                     <tr>
                                         <td>@i</td>
                                         <td>@item.Email</td>
