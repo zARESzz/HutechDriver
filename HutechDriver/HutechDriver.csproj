@@ -350,6 +350,7 @@
     <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Areas\Driver\Controllers\BookingDriverController.cs" />
     <Compile Include="Areas\Driver\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Driver\Controllers\StatisticalController.cs" />
     <Compile Include="Areas\Driver\DriverAreaRegistration.cs" />
     <Compile Include="Areas\Manager\Controllers\BookingController.cs" />
     <Compile Include="Areas\Manager\Controllers\CategoryController.cs" />
@@ -4437,6 +4438,7 @@
     <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
     <Content Include="Areas\Manager\Views\NewDriver\Edit.cshtml" />
+    <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
