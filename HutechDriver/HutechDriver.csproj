@@ -378,6 +378,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305250855466_update1.cs" />
+    <Compile Include="Migrations\202305250855466_update1.designer.cs">
+      <DependentUpon>202305250855466_update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -415,9 +419,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\336607948_704482434784264_7699043778176761523_n.png" />
+    <Content Include="Content\assets\346164342_1002069674506211_7796647170348965451_n.jpg" />
     <Content Include="Content\assets\anh2.jpg" />
     <Content Include="Content\assets\anh3.jpg" />
     <Content Include="Content\assets\anh4.jpg" />
+    <Content Include="Content\assets\anhxe.jpg" />
     <Content Include="Content\assets\css\bootstrap.css" />
     <Content Include="Content\assets\css\bootstrap.min.css" />
     <Content Include="Content\assets\css\bootstrap.min.js" />
@@ -433,17 +439,16 @@
     <Content Include="Content\assets\css\single_responsive.css" />
     <Content Include="Content\assets\css\single_styles.css" />
     <Content Include="Content\assets\css\style.css" />
-    <Content Include="Content\assets\Cuong.jpg" />
     <Content Include="Content\assets\fonts\FernandoForero-Asfalto.svg" />
     <Content Include="Content\assets\fonts\fl-bigmug-line.svg" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\assets\fonts\lg.svg" />
     <Content Include="Content\assets\fonts\Linearicons.svg" />
     <Content Include="Content\assets\fonts\materialdesignicons-webfont.svg" />
-    <Content Include="Content\assets\gioithieu1.jpg" />
-    <Content Include="Content\assets\gioithieu3.jpg" />
+    <Content Include="Content\assets\GioiThieu1.jpg" />
+    <Content Include="Content\assets\GioiThieu13.jpg" />
+    <Content Include="Content\assets\GioiThieu2.jpg" />
     <Content Include="Content\assets\gioithieu4.jpg" />
-    <Content Include="Content\assets\gioitieu2.jpg" />
     <Content Include="Content\assets\hop-bao-cp-3-4.jpg" />
     <Content Include="Content\assets\Hung.jpg" />
     <Content Include="Content\assets\images.jpg" />
@@ -545,7 +550,6 @@
     <Content Include="Content\assets\js\pointer-events.min.js" />
     <Content Include="Content\assets\js\script.js" />
     <Content Include="Content\assets\js\single_custom.js" />
-    <Content Include="Content\assets\maxresdefault.jpg" />
     <Content Include="Content\assets\site\about-us.html" />
     <Content Include="Content\assets\site\contacts.html" />
     <Content Include="Content\assets\site\css\bootstrap.css" />
@@ -648,12 +652,8 @@
     <Content Include="Content\assets\site\js\script.js" />
     <Content Include="Content\assets\site\typography.html" />
     <Content Include="Content\assets\thu-truong-bo-y-te-3-4.jpg" />
-    <Content Include="Content\assets\TuanANH.jpg" />
-    <Content Include="Content\assets\user.jpg" />
+    <Content Include="Content\assets\Tranduyanh.jpg" />
     <Content Include="Content\assets\Vũ-Thị-Phương-Chinh-363%281%29.jpg" />
-    <Content Include="Content\assets\z4239146960757_3782a5695ce4faf4a7fc84c9b3f6ccd0.jpg" />
-    <Content Include="Content\assets\z4239169325295_5d83f1dfb75ec27cb6f83c9f05be975d.jpg" />
-    <Content Include="Content\assets\z4239181041348_bd5456a7d666e01eed3fb3cf437d5acc.jpg" />
     <Content Include="Content\assets\z4278591645887_59ca9b127b937fe5c6ca8bda4274f891.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -4516,6 +4516,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202305250855466_update1.resx">
+      <DependentUpon>202305250855466_update1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
