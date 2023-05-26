@@ -8,6 +8,7 @@ namespace HutechDriver.Controllers
 {
     public class KhuyenMaiController : Controller
     {
+        [Authorize]
         // GET: KhuyenMai
         public ActionResult Index()
         {

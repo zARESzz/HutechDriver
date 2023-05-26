@@ -9,6 +9,7 @@ using HutechDriver.Models.EF;
 
 namespace HutechDriver.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         // GET: Contact

@@ -8,8 +8,10 @@ using System.Web.Mvc;
 
 namespace HutechDriver.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {
+
         // GET: News
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
