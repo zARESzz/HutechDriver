@@ -4474,6 +4474,7 @@
     <Content Include="Areas\Manager\Views\NewDriver\Edit.cshtml" />
     <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Manager\Views\ExportData\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanQuyen\Detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
