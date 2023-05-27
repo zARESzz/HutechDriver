@@ -47,6 +47,17 @@
                             <option value="Đang chạy">Đang chạy</option>
                             <option value="Đang chờ">Chưa nhận</option>
                         </select>
+                        @*<button class="btn btn-primary" ng-click="exportExcel()"> <i class="fas fa-file-csv"></i> Xuất Excel</button>*@
+                    </div>
+
+                }
+
+            </div>
+            <div class="col-6">
+                @using (Html.BeginForm("ExportToExcel", "Booking", FormMethod.Post))
+                {
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary"><i class="fas fa-file-csv"></i>  Export to Excel </button>
                     </div>
                 }
             </div>
@@ -79,33 +90,34 @@
                                     {
                                         var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
 
-                                        <tr data-widget="expandable-table" aria-expanded="false">
-                                            <td>@item.Id</td>
-                                            <td>@item.FullName</td>
-                                            <td>@find.PhoneNumber</td>
-                                            <td>
-                                                @if (item.Status == "Hoàn thành")
-                                                {
-                                                    <i class="fas fa-circle text-success"></i>
-                                                }
-                                                else if (item.Status == "Đang chạy")
-                                                {
-                                                    <i class="fas fa-circle text-warning"></i>
-                                                }
-                                                else if (item.Status == "Chưa nhận")
-                                                {
-                                                    <i class="fas fa-circle text-danger"></i>
-                                                }
-                                                else
-                                                {
-                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                }
-                                                @item.Status
-                                            </td>
-                                            <td> @item.DriverBook</td>
-                                            <td> @item.TimeBook</td>
+                                                        <tr data-widget="expandable-table" aria-expanded="false">
+                                                            <td>@item.Id</td>
+                                                            <td>@item.FullName</td>
+                                                            <td>@find.PhoneNumber</td>
+                                                            <td>
+                                                                @if (item.Status == "Hoàn thành")
+                                                                {
+                                                                    <i class="fas fa-circle text-success"></i>
+                                                                }
+                                                                else if (item.Status == "Đang chạy")
+                                                                {
+                                                                    <i class="fas fa-circle text-warning"></i>
+                                                                }
+                                                                else if (item.Status == "Chưa nhận")
+                                                                {
+                                                                    <i class="fas fa-circle text-danger"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                                }
+                                                                @item.Status
+                                                            </td>
+                                                            <td> @item.DriverBook</td>
+                                                            <td> @item.TimeBook</td>
+                                                       
+                                                        </tr>
 
-                                        </tr>
                                         <tr class="expandable-body">
                                             <td colspan="10">
                                                 <p>
@@ -157,7 +169,7 @@
 <!-- AdminLTE for demo purposes -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="~/Content/js/Excel.js"></script>
 <script>
     $(function () {
         $("#filterStatus").change(function () {

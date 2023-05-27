@@ -2,6 +2,7 @@
 @using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework;
 @using HutechDriver.Models
+<link rel="stylesheet" href="~/Content/clients/plugins/fontawesome-free/css/all.min.css">
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar user (optional) -->
@@ -87,7 +88,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class=" nav-icon fas fa-users-cog"></i>
                     <p>
                         Quản lý tài khoản
                         <i class="right fas fa-angle-left"></i>
@@ -113,25 +114,33 @@
                 <a href="/manager/booking" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                        @*Widgets
-                            <span class="right badge badge-danger">New</span>*@
+
+                        <span class="right badge badge-danger">*</span>
                         Đơn đặt xe
                     </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/manager/news" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                <a href="/manager/category/Index" class="nav-link">
+                    <i class="nav-icon fas fa-terminal"></i>
                     <p>
                         @*Widgets
                             <span class="right badge badge-danger">New</span>*@
+                        Danh mục
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/manager/news" class="nav-link">
+                   <i class=" nav-icon far fa-newspaper"></i>
+                    <p>                       
                         Tin tức
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/manager/posts" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon far fa-edit"></i>
                     <p>
                         @*Widgets
                             <span class="right badge badge-danger">New</span>*@
@@ -141,10 +150,10 @@
             </li>
 
             <!--<li class="nav-item">
-                <a href="/admin/order" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Đơn Hàng-->
+            <a href="/admin/order" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Đơn Hàng-->
             @*Widgets
                 <span class="right badge badge-danger">New</span>*@
             <!--</p>
@@ -177,7 +186,7 @@
             </li>-->
             <li class="nav-item">
                 <a href="/manager/newdriver/Index" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-user-tie"></i>
                     <p>
                         @*Widgets
                             <span class="right badge badge-danger">New</span>*@
@@ -187,7 +196,7 @@
             </li>
             <li class="nav-item">
                 <a href="~/news" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-cog"></i>
                     <p>
                         @*Widgets
                             <span class="right badge badge-danger">New</span>*@
