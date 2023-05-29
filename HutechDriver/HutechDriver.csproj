@@ -49,6 +49,12 @@
     <Reference Include="CKFinder">
       <HintPath>..\..\..\..\source\repos\HutechDriver\HutechDriver\Content\ckfinder\ckfinder\bin\Debug\CKFinder.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
     </Reference>
@@ -102,18 +108,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNetCore.SignalR.1.1.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNetCore.SignalR.Common.1.1.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNetCore.SignalR.Core.1.1.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNetCore.SignalR.Protocols.Json.1.1.0\lib\netstandard2.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.WebSockets, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.WebSockets.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebSockets.dll</HintPath>
@@ -375,6 +369,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4437,7 +4432,6 @@
     <Content Include="Areas\Manager\Views\Category\Add.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\NewDriver\Edit.cshtml" />
     <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -4445,6 +4439,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -4505,6 +4501,7 @@
     <Folder Include="Areas\Driver\Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Views\FAQ\" />
+    <Folder Include="Views\Notify\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

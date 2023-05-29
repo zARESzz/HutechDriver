@@ -108,16 +108,19 @@ namespace HutechDriver.Controllers
                         db.SaveChanges();
                         //Thanh toán thành công
                         ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | \n Mã giao dịch: " + vnpayTranId;
+                        return View();
                     }
                     else
                     {
                         //Thanh toán không thành công. Mã lỗi: vnp_ResponseCode
                         ViewBag.Message = "Có lỗi xảy ra trong quá trình xử lý hóa đơn " + orderId + " | \n Mã giao dịch: " + vnpayTranId + " | Mã lỗi: " + vnp_ResponseCode;
+                        return RedirectToAction("Index","BookingTrip");
                     }
                 }
                 else
                 {
                     ViewBag.Message = "Có lỗi xảy ra trong quá trình xử lý";
+                    return RedirectToAction("Index", "BookingTrip");
                 }
             }
             return View();

@@ -23,7 +23,12 @@ namespace HutechDriver.Areas.Manager.Controllers
         public ActionResult Index(string SearchText, int? page, string filterStatus)
         {
             //var items = db.Trips.OrderByDescending(x => x.OrderDate).ToList();
+            string errorMessage = "Không tìm thấy kết quả.";
             ViewBag.filterStatus = filterStatus;
+            var pageNumber = page ?? 1;
+            var pageSize = 10;
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = pageNumber;
             if (page == null)
             {
                 page = 1;
@@ -33,34 +38,16 @@ namespace HutechDriver.Areas.Manager.Controllers
             if (!string.IsNullOrEmpty(SearchText))
             {
                 items = items.Where(x => x.FullName.Contains(SearchText) || x.DriverBook.Contains(SearchText));
+                if (!items.Any())
+                {
+                    return View("Index",(object)errorMessage);
+                }
             }
             else if (!string.IsNullOrEmpty(filterStatus))
             {
                 items = items.Where(x => x.Status == filterStatus);
             }
-            var pageNumber = page ?? 1;
-            var pageSize = 10;
-            ViewBag.PageSize = pageSize;
-            ViewBag.Page = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
-        //[HttpPost]
-        //public ActionResult Index(string filterStatus,int? page)
-        //{
-        //    if (page == null)
-        //    {
-        //        page = 1;
-        //    }
-        //    IEnumerable<Trip> items = db.Trips.OrderByDescending(x => x.Id);
-        //    if (!string.IsNullOrEmpty(filterStatus))
-        //    {
-        //        items = items.Where(x => x.Status == filterStatus).ToList();
-        //    }
-        //    var pageNumber = page ?? 1;
-        //    var pageSize = 10;
-        //    ViewBag.PageSize = pageSize;
-        //    ViewBag.Page = pageNumber;
-        //    return View(items.ToPagedList(pageNumber, pageSize));
-        //}
     }
 }

@@ -95,7 +95,7 @@
                                 <td>@(item.IsRead==1?"Đã phỏng vấn":"Chưa phỏng vấn")</td>
 
                                 <td>
-                                    <a href="/Manager/NewDriver/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <button id="send-chat" type="button" data-id="@item.Id" class="btn btn-sm btn-success">Chấp nhận</button>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
@@ -206,6 +206,26 @@
 
 
         });
+         const sendBtns = document.querySelectorAll('#send-chat');
+        sendBtns.forEach(sendBtn => {
+            sendBtn.addEventListener('click', function(event) {
+            const chatID = this.getAttribute('data-id');
+            const url = '@Url.Action("Approve", "NewDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: chatID} ,
+                success: function (rs) {
+                    alert('Đã phản hồi thành công!.');
+                    location.reload(true);
+                },
+                error: function (rs) {
+                    alert('Phản hồi không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
     </script>
 }
 

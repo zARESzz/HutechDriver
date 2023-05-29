@@ -217,7 +217,7 @@
             document.getElementById('google-map').style.display = 'none';
             document.getElementById('save-trip-btn').style.display = 'none';
             document.getElementById('reloadtrang').style.display = 'none';
-           
+
             document.getElementById('show-route-btn').addEventListener('click', () => {
 
                 var placeOrigin = autocompleteOrigin.getPlace();
@@ -378,7 +378,6 @@
 
     <!--Start of Fchat.vn-->
     <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=645a418fd8b3622747475bf6" async="async"></script><!--End of Fchat.vn-->
-
     @*check login*@
     <script>
         function checkLoggedInUser() {
@@ -397,7 +396,25 @@
         }
 
     </script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.3.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script>
+        var tripHub = $.connection.tripHub;
+
+            tripHub.client.receiveMessage = function(message) {
+            alert(message);
+        };
+
+        $.connection.hub.start()
+            .done(function () {
+                console.log('Kết nối thành công đến SignalR Hub.');
+            })
+            .fail(function (error) {
+                console.log('Lỗi kết nối đến SignalR Hub: ' + error);
+            });
+    </script>
 
 </body>
 

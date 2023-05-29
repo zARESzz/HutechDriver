@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 namespace HutechDriver.Controllers
 {
     [RequireHttps]
+    [Authorize]
     public class HomeController : Controller
     {
       
@@ -53,7 +54,6 @@ namespace HutechDriver.Controllers
                 Status = "Chưa nhận",
                 TimeBook = DateTime.Parse(timeString),
                 IsPaid = false
-
             };
             dbContext.Trips.Add(trip);
             dbContext.SaveChanges();
