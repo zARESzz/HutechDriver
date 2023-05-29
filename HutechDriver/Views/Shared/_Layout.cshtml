@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
-    <title>Hutech Food</title>
+    <title>Hutech Driver</title>
+ 
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -177,7 +178,7 @@
                                         @{
                                             ApplicationDbContext db = new ApplicationDbContext();
                                             var ID = User.Identity.GetUserId();
-                                            var chuaNhanTrips = db.Trips.Where(p => p.Status != "Hoàn thành" && p.UserId == ID && p.IsPaid != true || p.Status != "Đã hủy" && p.UserId == ID && p.IsPaid!=true);
+                                            var chuaNhanTrips = db.Trips.Where(p => p.Status != "Hoàn thành" && p.UserId == ID && p.IsPaid != true || p.Status != "Đã hủy" && p.UserId == ID && p.IsPaid != true);
 
 
                                             var tripCount = chuaNhanTrips.Count();
@@ -288,7 +289,7 @@
 
         @RenderBody()
 
-       
+
         <!-- Page Footer-->
         <footer class="section footer-modern context-dark footer-modern-2">
             <div class="footer-modern-line">
@@ -338,17 +339,7 @@
                 </div>
             </div>
 
-            <div class="footer-modern-line-3">
-                <div class="container">
-                    <div class="row row-10 justify-content-between">
-                        <div class="col-md-6"><span> 10/80C XL Hà Nội, Phường Tân Phú, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam Alexandria, VA, 2230</span></div>
-                        <div class="col-md-auto">
-                            <!-- Rights-->
-                            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span></span><span>.&nbsp;</span><span>All Rights Reserved.</span><span> Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">PHAC</a></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ 
         </footer>
     </div>
     <!-- Global Mailform Output-->
@@ -357,7 +348,24 @@
     <script src="~/Content/assets/js/core.min.js"></script>
     <script src="~/Content/assets/js/script.js"></script>
     <script src="~/Scripts/jsShopping.js"></script>
-  
+    <script>
+        // Lưu title ban đầu
+        var originalTitle = document.title;
+
+        // Khi người dùng chuyển qua trang khác
+        window.onblur = function () {
+            // Thay đổi title thành "Come back"
+            document.title = "Quay lại với em nào";
+        };
+
+        // Khi người dùng quay lại trang web
+        window.onfocus = function () {
+            // Khôi phục title ban đầu
+            document.title = originalTitle;
+        };
+    </script>
+
+
     @RenderSection("scripts", required: false)
 
     <!-- coded by Himic-->

@@ -90,7 +90,10 @@
                                 <td>@item.PhoneNumber</td>
                                 <td>@item.CCCDorCMND</td>
                                 <td>@item.DiaChi</td>
-                                <td><img src="@item.ImagePeople" width="50" /></td>
+                                <td>
+                                    <img src="@item.ImagePeople" class="zoomable-image" alt="Hình ảnh" onclick="zoomImage(this)"width="50;" />
+                                </td>
+
                                 <td>@item.CreateDate.ToString("dd/MM/yyyy")</td>
                                 <td>@(item.IsRead==1?"Đã phỏng vấn":"Chưa phỏng vấn")</td>
 
@@ -226,6 +229,36 @@
             });
         });
     });
+    </script>
+    <style>
+        .zoomed-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 9999;
+        }
+
+        .zoomable-image {
+            cursor: pointer;
+        }
+
+    </style>
+    <script>
+        function zoomImage(img) {
+            var zoomedImg = document.createElement("img");
+            zoomedImg.src = img.src;
+            zoomedImg.alt = img.alt;
+            zoomedImg.className = "zoomed-image";
+            zoomedImg.onclick = function () {
+                document.body.removeChild(this);
+            };
+
+            document.body.appendChild(zoomedImg);
+        }
+
     </script>
 }
 
