@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,8 @@ namespace HutechDriver.Models
     {
         public Task SendNotificationToPassenger(string passengerId)
         {
-            return Clients.User(passengerId).SendAsync("Đơn của bạn đã được nhận");
+            Clients.User(passengerId).receiveMessage("Đơn của bạn đã được nhận");
+            return Clients.Caller.receiveMessage();
         }
     }
 }

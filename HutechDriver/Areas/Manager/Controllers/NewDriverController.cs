@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace HutechDriver.Areas.Manager.Controllers
 {
@@ -33,10 +34,18 @@ namespace HutechDriver.Areas.Manager.Controllers
             return View(items);
         }
 
-        public ActionResult Edit(int id)
+        [HttpPost]
+        public ActionResult Approve(int id)
         {
-            var item = db.Contacts.Find(id);
-            return View(item);
+            var find = db.Contacts.FirstOrDefault(p => p.Id == id);
+            if (find != null)
+            {
+                find.IsRead = 1;
+                SendMail.SendEmail(find.Email, "Phản hồi từ HutechDriver", "Bạn đã trở thành tài xế của HutechDriver.Nhân viên sẽ liên hệ với bạn sau", "");
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
         }
 
 

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using HutechDriver.Models;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNet.SignalR;
 
 namespace HutechDriver.Areas.Driver.Controllers
 {
@@ -16,12 +16,6 @@ namespace HutechDriver.Areas.Driver.Controllers
     {
         // GET: Driver/BookingDriver
         private ApplicationDbContext db = new ApplicationDbContext();
-        //private readonly IHubContext<TripHub> _hubContext;
-
-        //public BookingDriverController(IHubContext<TripHub> hubContext)
-        //{
-        //    _hubContext = hubContext;
-        //}
         public ActionResult Index(string SearchText, int? page)
         {
             //var items = db.Trips.OrderByDescending(x => x.OrderDate).ToList();
@@ -101,7 +95,6 @@ namespace HutechDriver.Areas.Driver.Controllers
                 trip.DriverBook = find.FullName;
                 db.SaveChanges();
                 var passengerId = trip.UserId;
-                //_hubContext.Clients.User(passengerId).SendAsync("SendNotificationToPassenger", passengerId);
                 return Json(new { success = true });
             }
             return Json(new { success = false });
@@ -141,17 +134,6 @@ namespace HutechDriver.Areas.Driver.Controllers
             {
                 trip.Status = "Đã hủy";
                 db.SaveChanges();
-                return Json(new { success = true });
-            }
-            return Json(new { success = false });
-        }
-
-        [HttpPost]
-        public ActionResult DenyTrip(int id)
-        {
-            var trip = db.Trips.Find(id);
-            if (trip != null)
-            {
                 return Json(new { success = true });
             }
             return Json(new { success = false });

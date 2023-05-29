@@ -1,4 +1,6 @@
 ﻿using HutechDriver.Models;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Owin;
@@ -14,12 +16,12 @@ namespace HutechDriver
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<TripCleanup>();
             services.AddHostedService<TripCleanupServices>();
-            services.AddSignalR();
         }
     }
 }
