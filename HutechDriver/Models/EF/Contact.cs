@@ -33,6 +33,7 @@ namespace HutechDriver.Models.EF
         [StringLength(4000)]
         public string Message { get; set; }
         public int IsRead { get; set; }
+        public int IsStatus { get; set; }
 
     }
 }

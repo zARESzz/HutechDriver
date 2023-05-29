@@ -37,17 +37,33 @@ namespace HutechDriver.Areas.Manager.Controllers
         [HttpPost]
         public ActionResult Approve(int id)
         {
+            string contentApprove = System.IO.File.ReadAllText(Server.MapPath("~/Content/Notification/NotificationNewDriver.html"));
             var find = db.Contacts.FirstOrDefault(p => p.Id == id);
             if (find != null)
             {
                 find.IsRead = 1;
-                SendMail.SendEmail(find.Email, "Phản hồi từ HutechDriver", "Bạn đã trở thành tài xế của HutechDriver.Nhân viên sẽ liên hệ với bạn sau", "");
+                find.IsStatus = 1;
+                SendMail.SendEmail(find.Email, "Thư chúc mừng", contentApprove, "");
                 db.SaveChanges();
                 return Json(new { success = true });
             }
             return Json(new { success = false });
         }
-
+        [HttpPost]
+        public ActionResult Fall(int id)
+        {
+            string contentFall = System.IO.File.ReadAllText(Server.MapPath("~/Content/Notification/NotificationNon.html"));
+            var find = db.Contacts.FirstOrDefault(p => p.Id == id);
+            if (find != null)
+            {
+                find.IsRead = 1;
+                find.IsStatus = 0;
+                SendMail.SendEmail(find.Email, "Rất tiếc ", contentFall, "");
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
 
 
         [HttpPost]

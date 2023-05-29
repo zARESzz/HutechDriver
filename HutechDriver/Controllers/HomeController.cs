@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 namespace HutechDriver.Controllers
 {
     [RequireHttps]
-    [Authorize]
+   
     public class HomeController : Controller
     {
       

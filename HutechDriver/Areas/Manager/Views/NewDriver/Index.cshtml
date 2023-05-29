@@ -72,6 +72,7 @@
                         <th>Địa chỉ</th>
                         <th>Avatar</th>
                         <th>Ngày gửi</th>
+                        <th>Phỏng vấn</th>
                         <th>Tình trạng</th>
                     </tr>
                 </thead>
@@ -96,9 +97,11 @@
 
                                 <td>@item.CreateDate.ToString("dd/MM/yyyy")</td>
                                 <td>@(item.IsRead==1?"Đã phỏng vấn":"Chưa phỏng vấn")</td>
+                                <td>@(item.IsStatus==1?"Duyệt":"Loại")</td>
 
                                 <td>
-                                    <button id="send-chat" type="button" data-id="@item.Id" class="btn btn-sm btn-success">Chấp nhận</button>
+                                    <button id="send-chat" type="button" data-id="@item.Id" class="btn btn-sm btn-success">Duyệt</button>
+                                    <button id="send-chat-non" type="button" data-id="@item.Id" class="btn btn-sm btn-dark">Loại</button>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                 </td>
                             </tr>
@@ -209,6 +212,7 @@
 
 
         });
+
          const sendBtns = document.querySelectorAll('#send-chat');
         sendBtns.forEach(sendBtn => {
             sendBtn.addEventListener('click', function(event) {
@@ -228,7 +232,28 @@
                 }
             });
         });
-    });
+        });
+          const sendBtnsNon = document.querySelectorAll('#send-chat-non');
+        sendBtnsNon.forEach(sendBtn1 => {
+            sendBtn1.addEventListener('click', function(event) {
+            const chatID = this.getAttribute('data-id');
+            const url = '@Url.Action("Fall", "NewDriver")';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: chatID} ,
+                success: function (rs) {
+                    alert('Đã phản hồi thành công!.');
+                    location.reload(true);
+                },
+                error: function (rs) {
+                    alert('Phản hồi không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+        });
+
     </script>
     <style>
         .zoomed-image {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace HutechDriver.Models
 {
@@ -16,6 +17,7 @@ namespace HutechDriver.Models
                 string fromMail = "hutechdriver@gmail.com";
                 string fromPassword = "dlpywleqrnjkjdmm";
                 MailMessage msg = new MailMessage("hutechdriver@gmail.com", to, subject, body);
+                msg.IsBodyHtml = true;
                 using (var client = new SmtpClient("smtp.gmail.com", 587))
                 {
                     client.EnableSsl = true;
@@ -28,6 +30,7 @@ namespace HutechDriver.Models
                     client.UseDefaultCredentials = false;
                     client.Credentials = credential;
                     client.Send(msg);
+                   
                 }
             }
             catch (Exception ex)

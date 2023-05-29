@@ -400,10 +400,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202305250855466_update1.cs" />
-    <Compile Include="Migrations\202305250855466_update1.designer.cs">
-      <DependentUpon>202305250855466_update1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -3571,6 +3567,8 @@
     <Content Include="Content\HutechDriver.png" />
     <Content Include="Content\Map\app.js" />
     <Content Include="Content\Map\style123.css" />
+    <Content Include="Content\Notification\NotificationNewDriver.html" />
+    <Content Include="Content\Notification\NotificationNon.html" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\HutechDriverBG.png" />
     <Content Include="Content\Register\css\bootstrap.min.css" />
@@ -4547,11 +4545,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202305250855466_update1.resx">
-      <DependentUpon>202305250855466_update1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

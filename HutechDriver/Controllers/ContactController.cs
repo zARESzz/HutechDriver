@@ -22,6 +22,7 @@ namespace HutechDriver.Controllers
         public ActionResult Index(Contact model)
         {
             model.IsRead = 0;
+            model.IsStatus = 0;
             model.CreateDate = DateTime.Now;
             model.ModifiedDate = DateTime.Now;
             db.Contacts.Add(model);
