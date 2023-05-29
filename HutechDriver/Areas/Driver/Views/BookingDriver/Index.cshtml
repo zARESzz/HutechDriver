@@ -112,7 +112,7 @@
     denyBtns.forEach(denyBtn => {
         denyBtn.addEventListener('click', function(event) {
             const tripId = $(this).data('id');
-            const url = '@Url.Action("DenyTrip", "BookingDriver")';
+            const url = '@Url.Action("ErrorTrip", "BookingDriver")';
 
             $.ajax({
                 type: "POST",
@@ -132,7 +132,7 @@
     });
         const acceptBtns = document.querySelectorAll('#accept-trip');
         acceptBtns.forEach(acceptBtn => {
-        acceptBtn.addEventListener('click', function(event) {
+            acceptBtn.addEventListener('click', function(event) {
             const tripId = this.getAttribute('data-id');
             const url = '@Url.Action("AcceptTrip", "BookingDriver")';
             $.ajax({
@@ -140,7 +140,8 @@
                 url: url,
                 data: { id: tripId } ,
                 success: function (rs) {
-                    window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                        window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                        alert('Nhận đơn thành công!.');
                 },
                 error: function (rs) {
                     alert('Nhận đơn không thành công!.');
@@ -148,7 +149,7 @@
                 }
             });
         });
-     });
+        });
 
 
 

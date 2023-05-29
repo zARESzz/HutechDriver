@@ -95,7 +95,7 @@ namespace HutechDriver.Areas.Driver.Controllers
                 trip.DriverBook = find.FullName;
                 db.SaveChanges();
                 var passengerId = trip.UserId;
-                return RedirectToAction("NotifyPassenger", "Notify", new { id = passengerId });
+                return Json(new { success = true });
             }
             return Json(new { success = false });
         }
@@ -134,17 +134,6 @@ namespace HutechDriver.Areas.Driver.Controllers
             {
                 trip.Status = "Đã hủy";
                 db.SaveChanges();
-                return Json(new { success = true });
-            }
-            return Json(new { success = false });
-        }
-
-        [HttpPost]
-        public ActionResult DenyTrip(int id)
-        {
-            var trip = db.Trips.Find(id);
-            if (trip != null)
-            {
                 return Json(new { success = true });
             }
             return Json(new { success = false });

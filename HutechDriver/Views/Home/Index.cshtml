@@ -357,7 +357,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM4R4ZQGmaCj3wA4R3ykoEr4EeQPHSvRc&libraries=places&callback=initMap"></script>
 
-
+    <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=645a418fd8b3622747475bf6" async="async"></script><!--End of Fchat.vn-->
     <script src="~/Content/TimePicker/js/jquery.min.js"></script>
 
 
@@ -377,7 +377,6 @@
     <script src="~/Content/TimePicker/js/main.js"></script>
 
     <!--Start of Fchat.vn-->
-    <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=645a418fd8b3622747475bf6" async="async"></script><!--End of Fchat.vn-->
     @*check login*@
     <script>
         function checkLoggedInUser() {
@@ -402,9 +401,9 @@
 
     <script>
         var tripHub = $.connection.tripHub;
-
-            tripHub.client.receiveMessage = function(message) {
-            alert(message);
+        var msg;
+        tripHub.client.receiveMessage = function (message) {
+            msg = message;
         };
 
         $.connection.hub.start()
