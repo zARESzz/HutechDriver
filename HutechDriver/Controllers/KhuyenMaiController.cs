@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HutechDriver.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,11 @@ namespace HutechDriver.Controllers
 {
     public class KhuyenMaiController : Controller
     {
-        [Authorize]
-        // GET: KhuyenMai
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            var items = db.Posts.ToList();
+            return View(items);
         }
     }
 }

@@ -3519,6 +3519,8 @@
     <Content Include="Content\FormMap\js\popper.js" />
     <Content Include="Content\Funnyfood.ico" />
     <Content Include="Content\Funnyfood.png" />
+    <Content Include="Content\HutechDriver.ico" />
+    <Content Include="Content\HutechDriverDark.png" />
     <Content Include="Content\icon.png" />
     <Content Include="Content\ImagesAcc\bahhhh.jpg" />
     <Content Include="Content\ImagesAcc\Hung.jpg" />
@@ -3577,9 +3579,11 @@
     <Content Include="Content\Login\images\tick.png" />
     <Content Include="Content\Login\images\twitter.png" />
     <Content Include="Content\Login\js\jquery.min.js" />
+    <Content Include="Content\HutechDriver.png" />
     <Content Include="Content\Map\app.js" />
     <Content Include="Content\Map\style123.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\HutechDriverBG.png" />
     <Content Include="Content\Register\css\bootstrap.min.css" />
     <Content Include="Content\Register\css\bootstrap\bootstrap.css" />
     <Content Include="Content\Register\css\bootstrap\mixins\_badge.css" />

@@ -141,42 +141,7 @@
     </div>
 
 
-    <script>
-        const countEl = document.getElementById('count');
 
-        updateVisitCount();
-
-
-
-        function updateVisitCount() {
-
-            fetch('https://api.countapi.xyz/hit/[104.28.237.73]')
-                .then(res => res.json())
-                .then(res => {
-                    countEl.innerHTML = res.value;
-
-                })
-        }
-    </script>
-    <script>
-        //$.ajax({
-        //    method: 'GET',
-        //    url: 'https://api.api-ninjas.com/v1/counter?id=test_id&hit=true',
-        //    headers: { 'Count': 'CDfZ/pXWDEyXsQb9kkNDKg==jXGowFqP0IsW46Pe' },
-        //    contentType: 'application/json',
-        //    success: function (result) {
-        //        // Update the HTML content
-        //        document.getElementById('result1').innerHTML = result1;
-        //    },
-        //    error: function (jqXHR) {
-        //        console.error('Error: ', jqXHR.responseText);
-        //    }
-        //});
-
-
-
-
-    </script>
     <script>
 
         var showDetails = 0;
@@ -217,7 +182,7 @@
             document.getElementById('google-map').style.display = 'none';
             document.getElementById('save-trip-btn').style.display = 'none';
             document.getElementById('reloadtrang').style.display = 'none';
-           
+
             document.getElementById('show-route-btn').addEventListener('click', () => {
 
                 var placeOrigin = autocompleteOrigin.getPlace();
@@ -356,7 +321,8 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM4R4ZQGmaCj3wA4R3ykoEr4EeQPHSvRc&libraries=places&callback=initMap"></script>
-
+    <!--Start of Fchat.vn-->
+    <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=645a418fd8b3622747475bf6" async="async"></script><!--End of Fchat.vn-->
 
     <script src="~/Content/TimePicker/js/jquery.min.js"></script>
 
@@ -377,8 +343,6 @@
     <script src="~/Content/TimePicker/js/main.js"></script>
 
     <!--Start of Fchat.vn-->
-    <script type="text/javascript" src="https://cdn.fchat.vn/assets/embed/webchat.js?id=645a418fd8b3622747475bf6" async="async"></script><!--End of Fchat.vn-->
-
     @*check login*@
     <script>
         function checkLoggedInUser() {

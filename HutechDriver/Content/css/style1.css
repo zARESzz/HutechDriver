@@ -951,10 +951,10 @@ button {
 /* contact section start*/
 .contact_section {
     width: 100%;
-    float: left;
+
     background-color: #355764;
     height: auto;
-    padding-bottom: 90px;
+    padding-bottom: 200px;
 }
 
 .contact_main {

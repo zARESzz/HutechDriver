@@ -8504,11 +8504,11 @@ html.rd-navbar-fixed-linked .page {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	padding: 15px 15px 15px 0;
+	
 	margin-bottom: 22px;
 	max-width: 120px;
 	min-width: 100px;
-	z-index: 1;
+	
 }
 
 .rd-navbar-modern.rd-navbar-static .rd-navbar-panel::before {
