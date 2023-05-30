@@ -4,6 +4,11 @@
 
 * Contexts
 */
+@media only screen and (max-width: 767px) {
+	.imagelg {
+		display: none;
+	}
+}
 
 @font-face {
 	font-family: 'SVN-Poppins';

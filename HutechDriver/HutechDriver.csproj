@@ -456,6 +456,7 @@
     <Content Include="Content\assets\css\responsive.css" />
     <Content Include="Content\assets\css\single_responsive.css" />
     <Content Include="Content\assets\css\single_styles.css" />
+    <Content Include="Content\assets\css\social.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\fonts\FernandoForero-Asfalto.svg" />
     <Content Include="Content\assets\fonts\fl-bigmug-line.svg" />
