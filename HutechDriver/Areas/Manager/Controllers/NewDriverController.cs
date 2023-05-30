@@ -58,7 +58,7 @@ namespace HutechDriver.Areas.Manager.Controllers
             {
                 find.IsRead = 1;
                 find.IsStatus = 0;
-                SendMail.SendEmail(find.Email, "Rất tiếc ", contentFall, "");
+                SendMail.SendEmail(find.Email, "Mày đã bị rớt ", contentFall, "");
                 db.SaveChanges();
                 return Json(new { success = true });
             }
