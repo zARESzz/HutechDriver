@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HutechDriver.Areas.Manager.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Manager,Admin")]
     public class ExportDataController : Controller
     {
         // GET: Admin/ExportData

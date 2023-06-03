@@ -147,7 +147,17 @@ namespace HutechDriver.Areas.Manager.Controllers
             }
             return Json(code);
         }
-
+        [HttpGet]
+        public async Task<ActionResult> ViewDetail(string id)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            var allRoles = roleManager.Roles.Where(x => x.Name != "Admin").ToList();
+            ViewBag.Roles = allRoles;
+            var userRoles = await UserManager.GetRolesAsync(id);
+            ViewBag.UserRoles = userRoles;
+            var account = db.Users.Find(id);
+            return View(account);
+        }
 
         [HttpPost]
         public FileResult ExportToExcel(string SearchText, string filterStatus)

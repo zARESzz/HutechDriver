@@ -365,6 +365,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Manager\Controllers\ExportDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanQuyenController.cs" />
@@ -412,6 +413,7 @@
     <Compile Include="Models\EF\Order.cs" />
     <Compile Include="Models\EF\OrderDetail.cs" />
     <Compile Include="Models\EF\Posts.cs" />
+    <Compile Include="Models\EF\PriceTrip.cs" />
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
@@ -3566,6 +3568,7 @@
     <Content Include="Content\Login\images\twitter.png" />
     <Content Include="Content\Login\js\jquery.min.js" />
     <Content Include="Content\HutechDriver.png" />
+    <Content Include="Content\logo.png" />
     <Content Include="Content\Map\app.js" />
     <Content Include="Content\Map\style123.css" />
     <Content Include="Content\Notification\NotificationNewDriver.html" />
@@ -4466,6 +4469,12 @@
     <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Manager\Views\ExportData\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhanQuyen\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\PhanQuyen\ViewDetail.cshtml" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -116,23 +116,23 @@
                                 <!-- RD Navbar Toggle-->
                                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                                 <!-- RD Navbar Brand-->
-                                <div class="rd-navbar-brand imagelg"><a class="brand" href="/Home/Index"><img class="brand-logo-dark" style="margin-left: -80px; max-width: 160px; max-height: 160px;" src="~/Content/HutechDriverBG.png" alt="Hình ảnh"  /></a></div>
+                                <div class="rd-navbar-brand imagelg"><a class="brand" href="/Home/Index"><img class="brand-logo-dark" style="margin-left: -80px; max-width: 160px; max-height: 160px;" src="~/Content/HutechDriverBG.png" alt="Hình ảnh" /></a></div>
                             </div>
                             <div class="rd-navbar-right rd-navbar-nav-wrap">
                                 <div class="rd-navbar-aside">
                                     @*<ul>
-                                        <li>
-                                            <div>
-                                                <a href='/admin/home'>Admin</a>
-                                            </div>
-                                            <div>
-                                                <a href='/driver/home'>Driver</a>
-                                            </div>
-                                            <div>
-                                                <a href='/manager/home'>Manager</a>
-                                            </div>
-                                        </li>
-                                    </ul>*@
+                                            <li>
+                                                <div>
+                                                    <a href='/admin/home'>Admin</a>
+                                                </div>
+                                                <div>
+                                                    <a href='/driver/home'>Driver</a>
+                                                </div>
+                                                <div>
+                                                    <a href='/manager/home'>Manager</a>
+                                                </div>
+                                            </li>
+                                        </ul>*@
                                     <ul class="rd-navbar-contacts-2">
                                         <li>
                                             <div class="unit unit-spacing-xs">
@@ -298,6 +298,8 @@
                     <div class="row row-50">
                         <div class="col-md-6 col-lg-4">
                             <h5 class="footer-modern-title oh-desktop"><span class="d-inline-block wow slideInLeft">Những gì chúng tôi cung cấp</span></h5>
+                            <p style="color:white" id="ip-location"></p>
+
                             <ul class="footer-modern-list d-inline-block d-sm-block wow fadeInUp">
 
 
@@ -340,7 +342,7 @@
                 </div>
             </div>
 
- 
+
         </footer>
     </div>
     <!-- Global Mailform Output-->
@@ -365,10 +367,27 @@
             document.title = originalTitle;
         };
     </script>
+    <script>
+        // Lấy địa chỉ IP của người dùng
+        function getIPAddress() {
+            $.getJSON("https://api.ipify.org?format=json")
+                .done(function (response) {
+                    var ipAddress = response.ip;
+                    // Xử lý địa chỉ IP ở đây (ví dụ: hiển thị trên trang web)
+                    document.getElementById("ip-location").innerText = "Địa chỉ IP của bạn: " + ipAddress;
+                })
+                .fail(function (error) {
+                    console.log("Lỗi khi lấy địa chỉ IP: " + error);
+                });
+        }
+
+        // Gọi hàm để lấy địa chỉ IP khi trang web được tải
+        window.addEventListener("load", getIPAddress);
+    </script>
 
 
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 </html>

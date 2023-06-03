@@ -17,11 +17,10 @@ namespace HutechDriver.Controllers
    
     public class HomeController : Controller
     {
-      
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
-        {
-            
-            return View();
+        {          
+            return View(db.Pricetrips.FirstOrDefault());
         }
 
 

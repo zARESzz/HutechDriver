@@ -1,4 +1,5 @@
-﻿@using HutechDriver.Models
+﻿@model HutechDriver.Models.EF.PriceTrip
+@using HutechDriver.Models
 @using HutechDriver.Common
 @{
     ViewBag.Title = "HutechDriver";
@@ -48,7 +49,7 @@
                 <div class="contact_main">
 
                     <h1 class="request_text">Đặt xe</h1>
-                   
+
                     <form action="/action_page.php">
                         <div class="form-group">
                             <input type="text" id="origin-add" class="email-bt" placeholder="Chọn điểm đi" name="Name">
@@ -122,13 +123,15 @@
                     <button class="button button-xl button-primary button-winona" id="reloadtrang">Đặt Lại</button>
 
                     <button class="button button-xl button-primary button-winona" id="show-route-btn">Hiển thị quãng đường</button>
+                    <p id="ip-location"></p>
+                  
 
                     <div id="google-map"></div>
 
                     <button class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
                 </div>
 
-
+                <input type="hidden" id="priceInput" value="@Model.Price">
 
             </div>
 
@@ -185,6 +188,8 @@
 
             document.getElementById('show-route-btn').addEventListener('click', () => {
 
+
+
                 var placeOrigin = autocompleteOrigin.getPlace();
                 console.log(placeOrigin)
                 var placeDest = autocompleteDest.getPlace();
@@ -199,6 +204,11 @@
                     destination: end,
                     travelMode: selectedMode
                 };
+
+
+
+
+
                 directionsService.route(request, (result, status) => {
                     if (status == 'OK') {
                         console.log(result)
@@ -224,7 +234,7 @@
                     avoidHighways: false,
                     avoidTolls: false,
                 };
-
+                var pricePerKm = document.getElementById('priceInput').value;
                 distanceService.getDistanceMatrix(distanceRequest).then((response) => {
                     if (response !== null) {
                         if (response.rows[0].elements[0].status === 'OK') {
@@ -239,7 +249,7 @@
                             if (distanceInKm <= 1) {
                                 price = 10000;
                             } else {
-                                price = distanceInKm * 5000;
+                                price = distanceInKm * pricePerKm;
                             }
                             document.getElementById('result').innerText = "Giá:  " + price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
 
@@ -258,6 +268,7 @@
                     });
 
             });
+
         }
 
 
