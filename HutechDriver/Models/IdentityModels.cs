@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using HutechDriver.Models.EF;
-
+using System.Collections.Generic;
 
 namespace HutechDriver.Models
 {
@@ -17,7 +17,10 @@ namespace HutechDriver.Models
         public string ImageCCCD { get; set; }
         public string ImageBike { get; set; }
         public string Text { get; set; }
-   
+
+        public bool IsDelete { get; set; }
+        public ICollection<Trip> Trips { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

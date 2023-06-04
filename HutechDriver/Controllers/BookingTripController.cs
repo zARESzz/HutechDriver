@@ -32,6 +32,11 @@ namespace HutechDriver.Controllers
             ViewBag.Page = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult Detail(int id)
+        {
+            var trip = db.Trips.Find(id);
+            return View(trip);
+        }
 
         [HttpPost]
         public ActionResult DeleteTrip(int id)

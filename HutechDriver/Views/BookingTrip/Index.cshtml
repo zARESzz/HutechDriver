@@ -47,45 +47,46 @@
                             {
                                 if ((item.Status == "Chưa nhận" && item.UserId == ID && item.IsPaid != true) || (item.Status == "Đang chạy" && item.UserId == ID && item.IsPaid != true) || (item.Status == "Đã nhận đơn" && item.UserId == ID && item.IsPaid != true))
                                 {
-                                        <tr id=" trow_@item.Id">
-                                            <td>@item.Id</td>
-                                            <td>@item.StartLocation</td>
-                                            <td>@item.EndLocation</td>
-                                            <td>@item.Distance</td>
-                                            <td>@item.Time</td>
-                                            <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
-                                            <td>@item.TimeBook</td>
-                                            <td>
-                                                @if (item.Status == "Đang chạy")
-                                                {
-                                                    <i class="fas fa-motorcycle" style="color: #acc016;"></i>
-                                                }
-                                                else if (item.Status == "Chưa nhận")
-                                                {
-                                                    <i class="fas fa-circle text-danger"  style="color:red;"></i>
-                                                }
-                                                else
-                                                {
-                                                    <i class="far fa-circle" style="color:orange;"></i>
-                                                }
-                                                @item.Status
-                                            </td>
-                                            <td>
-                                                @if (item.IsPaid == false)
-                                                {
-                                                    <i class="fas fa-clock fa-pulse" style="color: #353a82;"></i> <p>Chưa thanh toán</p>
-                                                }
-                                                else
-                                                {
-                                                    <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
-                                                }
-                                            </td>
-                                            <td>
-                                                <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
-                                                <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
-                                            </td>
+                                    <tr id=" trow_@item.Id">
+                                        <td>@item.Id</td>
+                                        <td>@item.StartLocation</td>
+                                        <td>@item.EndLocation</td>
+                                        <td>@item.Distance</td>
+                                        <td>@item.Time</td>
+                                        <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
+                                        <td>@item.TimeBook</td>
+                                        <td>
+                                            @if (item.Status == "Đang chạy")
+                                            {
+                                                <i class="fas fa-motorcycle" style="color: #acc016;"></i>
+                                            }
+                                            else if (item.Status == "Chưa nhận")
+                                            {
+                                                <i class="fas fa-circle text-danger" style="color:red;"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="far fa-circle" style="color:orange;"></i>
+                                            }
+                                            @item.Status
+                                        </td>
+                                        <td>
+                                            @if (item.IsPaid == false)
+                                            {
+                                                <i class="fas fa-clock fa-pulse" style="color: #353a82;"></i> <p>Chưa thanh toán</p>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
+                                            <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
+                                            <a href="/BookingTrip/Detail/@item.Id" class="btn btn-sm btn-info">Chi tiết</a>
+                                        </td>
 
-                                        </tr>
+                                    </tr>
                                     i++;
                                 }
                             }

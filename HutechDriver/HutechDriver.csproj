@@ -4536,6 +4536,7 @@
     <Content Include="Views\BookingTrip\PaymentConfirm.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Detail.cshtml" />
+    <Content Include="Views\BookingTrip\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4543,7 +4544,6 @@
     <Folder Include="Areas\Driver\Data\" />
     <Folder Include="Areas\Manager\Data\" />
     <Folder Include="Views\FAQ\" />
-    <Folder Include="Views\Notify\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

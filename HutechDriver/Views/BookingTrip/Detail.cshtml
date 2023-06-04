@@ -1,0 +1,205 @@
+﻿
+@model HutechDriver.Models.EF.Trip
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using HutechDriver.Models
+@{
+    ViewBag.Title = "DetailsTrip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/css/Style2.css" rel="stylesheet" />
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 20px;
+        background-color: #f8f8f8;
+    }
+
+    .card-header {
+        background-color: #007bff;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        margin: 0;
+        font-size: 30px;
+        color: white;
+    }
+
+    .card-body {
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .data-display {
+        padding: 5px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    /* Thêm các quy tắc CSS tùy chỉnh khác tại đây */
+</style>
+<section class="content">
+
+    <!-- Default box -->
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Chi tiết đơn đặt xe</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                @{
+                                    if (Model.Status == "Đã nhận đơn")
+                                    {
+                                        IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+                                        var find = context.Users.Find(Model.DriverId);
+                                        if (Model.DriverId != null)
+                                        {
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Tên tài xế:</label>
+
+                                                @Html.DisplayFor(model => model.DriverBook)
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">SDT:</label>
+
+                                                @Html.DisplayFor(model => find.PhoneNumber)
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Xe:</label>
+
+                                                <img src="@find.ImageBike" class="zoomable-image" alt="Hình ảnh" width="50" />
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Biển số xe:</label>
+
+                                                @Html.DisplayFor(model => find.Text)
+                                            </div>
+
+                                        }
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Điểm bắt đầu:</label>
+
+                                            @Html.DisplayFor(model => model.StartLocation)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Điểm đến:</label>
+                                            @Html.DisplayFor(model => model.EndLocation)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Khoảng cách:</label>
+
+                                            @Html.DisplayFor(model => model.Distance)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Thời gian:</label>
+
+                                            @Html.DisplayFor(model => model.Time)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Giá:</label>
+
+                                            @Html.DisplayFor(model => model.Price)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Thời gian đặt xe:</label>
+
+                                            @Html.DisplayFor(model => model.TimeBook)
+
+                                        </div>
+
+                                    }
+                                    else if (Model.Status == "Chưa nhận")
+                                    {
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Điểm bắt đầu:</label>
+
+                                            @Html.DisplayFor(model => model.StartLocation)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Điểm đến:</label>
+                                            @Html.DisplayFor(model => model.EndLocation)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Khoảng cách:</label>
+
+                                            @Html.DisplayFor(model => model.Distance)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Thời gian:</label>
+
+                                            @Html.DisplayFor(model => model.Time)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Giá:</label>
+
+                                            @Html.DisplayFor(model => model.Price)
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Thời gian đặt xe:</label>
+
+                                            @Html.DisplayFor(model => model.TimeBook)
+
+                                        </div>
+                                    }
+                                    <div class="form-group">
+                                        <a href="/BookingTrip/Payment/@Model.Id" class="btn btn-sm btn-primary">Thanh toán</a>
+                                        <a href="/BookingTrip/Index" class="btn btn-sm btn-primary">Quay lại</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+            </div>
+            <!-- /.card-footer-->
+        </div>
+    </div>
+    <!-- /.card -->
+    <!-- /.card -->
+</section>
+

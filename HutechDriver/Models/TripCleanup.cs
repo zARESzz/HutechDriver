@@ -18,7 +18,7 @@ namespace HutechDriver.Models
         {
             // Lấy danh sách chuyến đi chưa được nhận và đã đặt trên 12 giờ trước
             var tripsToBeDeleted = db.Trips
-                .Where(t => t.Status == "Chưa nhận" && t.OrderDate < DateTime.Now.AddHours(-12))
+                .Where(t => t.Status == "Chưa nhận" && t.OrderDate < DateTime.Now.AddHours(-2))
                 .ToList();
 
             // Xóa các chuyến đi khỏi database
