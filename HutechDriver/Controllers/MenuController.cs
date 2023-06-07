@@ -21,20 +21,8 @@ namespace HutechDriver.Controllers
             var items = db.Categories.OrderBy(x => x.Position).ToList();
             return PartialView("_MenuTop", items);
         }
-        public ActionResult MenuProductCategory()
-        {
-            var item = db.ProductCategories.ToList();
-            return PartialView("_MenuProductCategory", item);
-        }
-        public ActionResult Menuarrivals()
-        {
-            var item = db.ProductCategories.ToList();
-            return PartialView("_Menuarrivals", item);
-        }
-        public ActionResult MenuLeft()
-        {
-            var item = db.ProductCategories.ToList();
-            return PartialView("_MenuLeft", item);
-        }
+
+
+
     }
 }

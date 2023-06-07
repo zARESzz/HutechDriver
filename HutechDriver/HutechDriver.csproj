@@ -401,6 +401,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306070835148_up1.cs" />
+    <Compile Include="Migrations\202306070835148_up1.designer.cs">
+      <DependentUpon>202306070835148_up1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -410,13 +414,8 @@
     <Compile Include="Models\EF\Chat.cs" />
     <Compile Include="Models\EF\Contact.cs" />
     <Compile Include="Models\EF\News.cs" />
-    <Compile Include="Models\EF\Order.cs" />
-    <Compile Include="Models\EF\OrderDetail.cs" />
     <Compile Include="Models\EF\Posts.cs" />
     <Compile Include="Models\EF\PriceTrip.cs" />
-    <Compile Include="Models\EF\Product.cs" />
-    <Compile Include="Models\EF\ProductCategory.cs" />
-    <Compile Include="Models\EF\ProductImage.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\EF\tb_Driver.cs" />
@@ -4555,6 +4554,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202306070835148_up1.resx">
+      <DependentUpon>202306070835148_up1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
