@@ -8,7 +8,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .cancel-button {
+        display: inline-block;
+        padding: 19px 30px;
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
+    .cancel-button:hover {
+        background-color: #c82333;
+    }
+
+    .detail-button {
+        display: inline-block;
+        padding: 19px 30px;
+        background-color: deepskyblue;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .detaill-button:hover {
+        background-color: #c82333;
+    }
+    .button-container {
+          display: flex;
+          justify-content: space-between;
+    }
+
+    .button-container a {
+      flex: 1;
+      margin-right: 10px;
+}
+</style>
 <link href="~/Content/css/Style2.css" rel="stylesheet" />
 
 <section class="content">
@@ -81,11 +120,13 @@
                                             }
                                         </td>
                                         <td>
-                                            <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
-                                            <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>
-                                            <a href="/BookingTrip/Detail/@item.Id" class="btn btn-sm btn-info">Chi tiết</a>
+                                            <div class="button-container">
+                                                <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
+                                                @*<button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>*@
+                                                <a href="/BookingTrip/Detail/@item.Id" class="btn btn-sm detail-button">Chi tiết</a>
+                                                <a href="#" id="deny-trip" data-id="@item.Id" class="btn btn-sm cancel-button">Hủy đơn</a>
+                                            </div>
                                         </td>
-
                                     </tr>
                                     i++;
                                 }

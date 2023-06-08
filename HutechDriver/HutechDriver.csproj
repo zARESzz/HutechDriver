@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder">
-      <HintPath>..\..\..\..\source\repos\HutechDriver\HutechDriver\Content\ckfinder\ckfinder\bin\Debug\CKFinder.dll</HintPath>
+      <HintPath>bin\ckfinder\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=6.2.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.6.2.4\lib\net462\EPPlus.dll</HintPath>
@@ -439,7 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\336607948_704482434784264_7699043778176761523_n.png" />
-    <Content Include="Content\assets\346164342_1002069674506211_7796647170348965451_n.jpg" />
     <Content Include="Content\assets\anh2.jpg" />
     <Content Include="Content\assets\anh3.jpg" />
     <Content Include="Content\assets\anh4.jpg" />
@@ -571,6 +570,7 @@
     <Content Include="Content\assets\js\pointer-events.min.js" />
     <Content Include="Content\assets\js\script.js" />
     <Content Include="Content\assets\js\single_custom.js" />
+    <Content Include="Content\assets\khoinguyen.jpg" />
     <Content Include="Content\assets\site\about-us.html" />
     <Content Include="Content\assets\site\contacts.html" />
     <Content Include="Content\assets\site\css\bootstrap.css" />
