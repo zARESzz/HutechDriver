@@ -90,6 +90,10 @@ namespace HutechDriver.Controllers
                         AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
                         return View("NotificationEmailConfim");
                     }
+                    else if (mdUser.IsDelete==true)
+                    {
+                        return View("IsDeleted"); // Trả về view cho tài khoản đã bị xóa
+                    }
                     else
                         return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -388,8 +392,17 @@ namespace HutechDriver.Controllers
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
+
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    var mdUser = UserManager.FindByName(loginInfo.Email);
+                   
+                    if (mdUser.IsDelete == true)
+                    {
+                        return View("IsDeleted");
+                    }
+                    else
+                        return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

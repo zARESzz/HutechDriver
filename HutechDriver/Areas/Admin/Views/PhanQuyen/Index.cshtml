@@ -56,7 +56,7 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.LockoutEndDateUtc == null)
+                                if (item.LockoutEndDateUtc == null && item.IsDelete != true)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
                                     <tr>
@@ -74,7 +74,8 @@
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm"> <i class="fas fa-folder"> </i> Xem</a>
                                             <a href="/admin/phanquyen/edit/@item.Id" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"> </i> Sửa</a>
-                                            <button id="lock-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-lock" style="color: #1f8104;"></i> Khóa</button>
+                                            <button id="lock-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-lock" style="color: orange;"></i> Khóa</button>
+                                            <button id="delete-user" type="button" class="btn btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-trash" style="color:red"></i> Xóa</button>
                                         </td>
                                     </tr>
                                     i++;
@@ -121,6 +122,28 @@
                 },
                 error: function (data) {
                     alert('Khóa không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+     const deleteBtns = document.querySelectorAll('#delete-user');
+
+    deleteBtns.forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', function(event) {
+            const userId = this.getAttribute('data-user-id');
+            const url = '@Url.Action("Delete", "PhanQuyen")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: userId } ,
+                success: function (data) {
+                    alert('Xóa tài khoản thành công!.');
+                    location.reload(true);
+                },
+                error: function (data) {
+                    alert('Xóa không thành công!.');
                     location.reload(true);
                 }
             });

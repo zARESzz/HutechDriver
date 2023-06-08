@@ -21,12 +21,15 @@ namespace HutechDriver.Controllers
         public ActionResult Index()
         {
             var price = db.Pricetrips.FirstOrDefault();
-            //if (price==null)
-            //{
-            //    price.Id = 1;
-            //    price.Price = 4000;
-            //    db.SaveChanges();
-            //}
+            if (price == null)
+            {
+                var newprice = new PriceTrip { 
+                    Id = 1,
+                    Price = 4000 };
+                db.Pricetrips.Add(newprice);
+                db.SaveChanges();
+             
+            }
             return View(price);
         }
 
