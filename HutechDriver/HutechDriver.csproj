@@ -391,6 +391,7 @@
     <Compile Include="Controllers\BookingTripController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
@@ -3483,6 +3484,8 @@
     <Content Include="Content\css\slick.css" />
     <Content Include="Content\css\style1.css" />
     <Content Include="Content\css\Style2.css" />
+    <Content Include="Content\Error\Error.css" />
+    <Content Include="Content\Error\Errorrjs.js" />
     <Content Include="Content\fonts\SVN-PoppinsLightItalic.svg" />
     <Content Include="Content\fonts\SVN-PoppinsMediumItalic.svg" />
     <Content Include="Content\fonts\SVN-PoppinsSemiBoldItalic.svg" />
@@ -3832,6 +3835,7 @@
     <Content Include="Content\vendor\select2\select2.min.css" />
     <Content Include="Content\vendor\select2\select2.min.js" />
     <Content Include="Content\vendor\tilt\tilt.jquery.min.js" />
+    <Content Include="Content\Hung.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -4536,6 +4540,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Detail.cshtml" />
     <Content Include="Views\BookingTrip\Detail.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

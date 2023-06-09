@@ -59,6 +59,9 @@ button::-moz-focus-inner {
 	outline: none;
 }
 
+
+
+}
 blockquote {
 	padding: 0;
 	margin: 0;
@@ -8097,6 +8100,19 @@ html.rd-navbar-fixed-linked .page {
 *
 * RD Navbar Sidebar
 */
+
+
+
+.rd-navbar--is-stuck .brand-logo-dark {
+	display: none;
+}
+
+
+
+
+
+
+
 .rd-navbar-sidebar {
 	display: block;
 	background: #ffffff;

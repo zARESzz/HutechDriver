@@ -200,7 +200,9 @@ iframe {
 .login100-pic img {
   max-width: 100%;
 }
-
+.section#loginForm {
+	padding-bottom: 100px;
+}
 
 /*------------------------------------------------------------------
 [  ]*/
@@ -217,7 +219,7 @@ iframe {
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 10px;
 }
 
 

@@ -59,7 +59,7 @@ namespace HutechDriver.Areas.Admin.Controllers
         public async Task<ActionResult> Edit(string id)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-            var allRoles = roleManager.Roles.Where(p => p.Name != "Admin").ToList();
+            var allRoles = roleManager.Roles.ToList();
             ViewBag.Roles = allRoles;
             var userRoles = await UserManager.GetRolesAsync(id);
             ViewBag.UserRoles = userRoles;
