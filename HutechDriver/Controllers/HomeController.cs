@@ -20,7 +20,17 @@ namespace HutechDriver.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View(db.Pricetrips.FirstOrDefault());
+            var price = db.Pricetrips.FirstOrDefault();
+            if (price == null)
+            {
+                var newprice = new PriceTrip { 
+                    Id = 1,
+                    Price = 4000 };
+                db.Pricetrips.Add(newprice);
+                db.SaveChanges();
+             
+            }
+            return View(price);
         }
 
 

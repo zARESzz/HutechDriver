@@ -43,6 +43,7 @@
                         <th>UserName</th>
                         <th>Phone</th>
                         <th>Role</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
 
@@ -57,7 +58,7 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.LockoutEndDateUtc != null)
+                                if (item.LockoutEndDateUtc != null || item.IsDelete==true)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
                                     <tr>
@@ -73,8 +74,25 @@
                                             }
                                         </td>
                                         <td>
-                                            <a href="/admin/phanquyen/edit/@item.Id" class="btn btn-sm btn-success">Sửa</a>
-                                            <button id="open-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id">Mở tài khoản</button>
+                                            @if (item.IsDelete == true)
+                                            {
+                                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fas fa-lock" style="color:red"></i>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.IsDelete != true)
+                                            {
+                                                <button id="open-user" type="button" class="btn btn btn-sm btn-success" data-user-id="@item.Id"><i class="fas fa-lock-open" style="color:green;"></i> Mở</button>
+                                                <button id="delete-user" type="button" class="btn btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-trash" style="color:red"></i> Xóa</button>
+                                            }
+                                            else
+                                            {
+                                                <button id="recover-user" type="button" class="btn btn btn-sm btn-success" data-user-id="@item.Id"><i class="fas fa-lock-open" style="color:green;"></i>Khôi phục</button>
+                                            }
                                         </td>
                                     </tr>
                                     i++;
@@ -104,10 +122,10 @@
 </section>
 
 <script>
-    const lockBtns = document.querySelectorAll('#open-user');
+    const openBtns = document.querySelectorAll('#open-user');
 
-    lockBtns.forEach(lockBtn => {
-        lockBtn.addEventListener('click', function(event) {
+    openBtns.forEach(openBtn => {
+        openBtn.addEventListener('click', function(event) {
             const userId = this.getAttribute('data-user-id');
             const url = '@Url.Action("Open", "PhanQuyen")';
 
@@ -121,6 +139,50 @@
                 },
                 error: function (data) {
                     alert('Mở không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+     const deleteBtns = document.querySelectorAll('#delete-user');
+
+    deleteBtns.forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', function(event) {
+            const userId = this.getAttribute('data-user-id');
+            const url = '@Url.Action("Delete", "PhanQuyen")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: userId } ,
+                success: function (data) {
+                    alert('Xóa tài khoản thành công!.');
+                    location.reload(true);
+                },
+                error: function (data) {
+                    alert('Xóa không thành công!.');
+                    location.reload(true);
+                }
+            });
+        });
+    });
+    const recoverBtns = document.querySelectorAll('#recover-user');
+
+    recoverBtns.forEach(recoverBtn => {
+        recoverBtn.addEventListener('click', function(event) {
+            const userId = this.getAttribute('data-user-id');
+            const url = '@Url.Action("Recover", "PhanQuyen")';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: userId } ,
+                success: function (data) {
+                    alert('Khôi phục tài khoản thành công!.');
+                    location.reload(true);
+                },
+                error: function (data) {
+                    alert('Khôi phục không thành công!.');
                     location.reload(true);
                 }
             });

@@ -120,6 +120,19 @@ namespace HutechDriver.Areas.Admin.Controllers
             }
             return Json(code);
         }
+        [HttpPost]
+        public async Task<ActionResult> Delete(FormCollection form)
+        {
+            var code = new { Success = false, msg = "" };
+            var user = await UserManager.FindByIdAsync(form["id"]);
+            if (user != null)
+            {
+                user.IsDelete = true;
+                await UserManager.UpdateAsync(user);
+                code = new { Success = true, msg = "Xóa tài khoản thành công!" };
+            }
+            return Json(code);
+        }
         [HttpGet]
         public ActionResult Open(int? page)
         {
@@ -143,6 +156,19 @@ namespace HutechDriver.Areas.Admin.Controllers
             if (user != null)
             {
                 user.LockoutEndDateUtc = null;
+                await UserManager.UpdateAsync(user);
+                code = new { Success = true, msg = "Mở tài khoản thành công!" };
+            }
+            return Json(code);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Recover(FormCollection form)
+        {
+            var code = new { Success = false, msg = "" };
+            var user = await UserManager.FindByIdAsync(form["id"]);
+            if (user != null)
+            {
+                user.IsDelete=false;
                 await UserManager.UpdateAsync(user);
                 code = new { Success = true, msg = "Mở tài khoản thành công!" };
             }
