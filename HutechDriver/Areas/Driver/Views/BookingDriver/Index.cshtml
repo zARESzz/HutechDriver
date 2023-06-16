@@ -31,66 +31,74 @@
         <div class="card-header">
             <h3 class="card-title">Danh sách đơn đặt xe</h3>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên khách hàng</th>
-                        <th>SDT</th>
-                        <th>Nơi đi</th>
-                        <th>Nơi đến</th>
-                        <th>Khoảng cách</th>
-                        <th>Thời gian</th>
-                        <th>Giá</th>
-                        @*<th>Ngày đặt</th>*@
-                        <th>Thời gian đặt xe</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
 
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                    <table class="table table-bordered" id="tripTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên khách hàng</th>
+                                <th>Thời gian đặt</th>
+                                <th>Giá</th>
 
-                        if (Model != null && Model.Any())
-                        {
-                            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                            foreach (var item in Model)
-                            {
-                                if (item.Status == "Chưa nhận")
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+                                if (Model != null && Model.Any())
                                 {
-                                    var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
-                                    <tr id=" trow_@item.Id">
-                                        <td>@item.Id</td>
-                                        <td>@item.FullName</td>
-                                        <td>@find.PhoneNumber</td>
-                                        <td>@item.StartLocation</td>
-                                        <td>@item.EndLocation</td>
-                                        <td>@item.Distance</td>
-                                        <td>@item.Time</td>
-                                        <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
-                                        @*<td>@item.OrderDate</td>*@
-                                        <td>@item.TimeBook</td>
+                                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                                    foreach (var item in Model)
+                                    {
+                                        if (item.Status == "Chưa nhận")
+                                        {
+                                            var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
 
-                                        <td>
-                                            <button id="accept-trip" type="button" data-id="@item.Id" data-user-id="@item.UserId" class="btn btn-sm btn-primary">Nhận đơn</button>
-                                            <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Từ chối đơn</button>
-                                        </td>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td>@item.Id</td>
+                                                <td>@item.FullName</td>
+                                                <td> @item.TimeBook</td>
+                                                <td>@HutechDriver.Common.Common.FormatNumber(item.Price) </td>
+                                            </tr>
 
-                                    </tr>
-                                    i++;
+                                            <tr class="expandable-body">
+                                                <td colspan="10">
+                                                    <p>
+
+                                                        Nơi đi :    @item.StartLocation <br />
+                                                        Nơi đến:   @item.EndLocation  <br />
+                                                        @item.Distance      <br />
+
+                                                        @item.Time  <br />
+                                                        Thời gian tạo đơn @item.OrderDate  <br />
+
+                                                        <button id="accept-trip" type="button" data-id="@item.Id" data-user-id="@item.UserId" class="btn btn-sm btn-primary">Nhận đơn</button>
+                                                        <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Từ chối đơn</button>
+
+                                                    </p>
+
+                                                </td>
+                                            </tr>
+
+
+                                        }
+                                    }
                                 }
                             }
-                        }
-                    }
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
 
-            <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6" style="text-align:right;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    <div class="row">
+                        <div class="col-6"></div>
+                        <div class="col-6" style="text-align:right;">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -198,3 +206,11 @@
 });*@
     </script>
 }
+<script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<!-- AdminLTE for demo purposes -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Content/js/Excel.js"></script>

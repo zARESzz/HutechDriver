@@ -24,13 +24,17 @@ namespace HutechDriver.Models.EF
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^(0|84)([0-9]{9})$", ErrorMessage = "Xin vui lòng nhập đúng định dạng số điện thoại")]
         public string PhoneNumber { get; set; }
+        [StringLength(25, ErrorMessage = "Không được vượt quá  kí tự")]
         public string CCCDorCMND { get; set; }
+        [Required(ErrorMessage = "Vui lòng để lại tin nhắn bạn muốn gửi")]
+        [StringLength(4000, ErrorMessage = "Tin nhắn quá dài")]
         public string DiaChi { get; set; }
        
         public string ImagePeople { get; set; }
         
         public string ImagePapers { get; set; }
-        [StringLength(4000)]
+        [Required(ErrorMessage = "Vui lòng để lại tin nhắn bạn muốn gửi")]
+        [StringLength(4000, ErrorMessage = "Tin nhắn quá dài")]
         public string Message { get; set; }
         public int IsRead { get; set; }
         public int IsStatus { get; set; }

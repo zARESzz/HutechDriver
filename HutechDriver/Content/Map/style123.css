@@ -63,17 +63,15 @@ body {
     display:flex; 
     flex-direction:row;
   }
-  
-  #show-route-btn {
-    background-color:darkcyan; 
-    border: 0cm; 
-    font-weight: 780; 
-    border-radius: 5px; 
-   
-    cursor: pointer; 
-   
-  
-  }
+
+#show-route-btn {
+    background-color: darkcyan;
+    margin-top: 20px;
+    border: 0cm;
+    font-weight: 780;
+    border-radius: 5px;
+    cursor: pointer;
+}
   
   #show-details-box {
     border: 0.02cm; 

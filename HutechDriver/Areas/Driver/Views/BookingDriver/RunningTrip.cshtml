@@ -39,13 +39,9 @@
                         <th>ID</th>
                         <th>Tên khách hàng</th>
                         <th>SDT</th>
-                        <th>Nơi đi</th>
-                        <th>Nơi đến</th>
-                        <th>Khoảng cách</th>
-                        <th>Thời gian</th>
-                        <th>Giá</th>
-                        <th>Thời gian đặt xe</th>
-                        <th>Thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                      
                     </tr>
                 </thead>
                 <tbody>
@@ -66,13 +62,7 @@
                                         <tr id=" trow_@item.Id">
                                             <td>@item.Id</td>
                                             <td>@item.FullName</td>
-                                            <td>@find.PhoneNumber</td>
-                                            <td>@item.StartLocation</td>
-                                            <td>@item.EndLocation</td>
-                                            <td>@item.Distance</td>
-                                            <td>@item.Time</td>
-                                            <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
-                                            <td>@item.TimeBook</td>
+                                            <td>@find.PhoneNumber</td>                                            
                                             <td>
                                                 @if (item.IsPaid == false)
                                                 {
@@ -97,12 +87,6 @@
                 </tbody>
             </table>
 
-            <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6" style="text-align:right;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                </div>
-            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

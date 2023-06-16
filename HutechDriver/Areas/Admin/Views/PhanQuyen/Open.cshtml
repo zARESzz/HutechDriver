@@ -134,12 +134,10 @@
                 url: url,
                 data: { id: userId } ,
                 success: function (data) {
-                    alert('Mở tài khoản thành công!.');
-                    location.reload(true);
+                    $('#trow_' + userId).remove();  
                 },
                 error: function (data) {
                     alert('Mở không thành công!.');
-                    location.reload(true);
                 }
             });
         });

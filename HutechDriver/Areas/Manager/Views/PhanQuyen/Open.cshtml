@@ -60,7 +60,7 @@
                                 if (item.LockoutEndDateUtc != null)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
-                                    <tr>
+                                    <tr id="trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>
                                         <td>@item.FullName</td>
@@ -110,17 +110,19 @@
             const userId = this.getAttribute('data-user-id');
             const url = '@Url.Action("Open", "PhanQuyen")';
 
+
+
+
             $.ajax({
                 type: "POST",
                 url: url,
                 data: { id: userId } ,
                 success: function (data) {
-                    alert('Mở tài khoản thành công!.');
-                    location.reload(true);
+                    alert('Mở tài khoản thành công!.');                 
+                        $('#trow_' + userId).remove();                                     
                 },
                 error: function (data) {
-                    alert('Mở không thành công!.');
-                    location.reload(true);
+                    alert('Mở không thành công!.');                 
                 }
             });
         });

@@ -60,6 +60,7 @@
                         <div class="input-group date" id="id_0">
                             <input type="text" value="" class="form-control" id="timepicker" placeholder="DD/MM/YYYY hh:mm:ss" required />
                         </div>
+                        <p id="error-message" style="color: red; display: none;font:20px;" >Vui lòng nhập thời gian!</p>
 
                     </form>
                     <form>
@@ -128,7 +129,7 @@
 
                     <div id="google-map"></div>
 
-                    <button class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
+                    <button onclick="checkInput()" class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
                 </div>
 
                 <input type="hidden" id="priceInput" value="@Model.Price">
@@ -330,6 +331,20 @@
         reloadButton.addEventListener('click', () => {
             location.reload();
         });
+    </script>
+
+    <script>
+        function checkInput() {
+            var timeInput = document.getElementById("timepicker").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if (timeInput === "") {
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.style.display = "none";
+                // Tiếp tục xử lý biểu mẫu hoặc thực hiện các hành động khác tùy theo yêu cầu
+            }
+        }
     </script>
 
 

@@ -57,13 +57,13 @@
         <div class="card-header">
             <h3 class="card-title">Danh sách đơn đặt xe</h3>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
+        <div class="card-body" style="overflow-x: auto; max-width: 100%; ">
+            <table class="table table-bordered  table-container"id="tripTable">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nơi đi</th>
-                        <th>Nơi đến</th>
+                        @*<th>Nơi đi</th>
+                        <th>Nơi đến</th>*@
                         <th>Khoảng cách</th>
                         <th>Thời gian</th>
                         <th>Giá</th>
@@ -88,8 +88,8 @@
                                 {
                                     <tr id=" trow_@item.Id">
                                         <td>@item.Id</td>
-                                        <td>@item.StartLocation</td>
-                                        <td>@item.EndLocation</td>
+                                        @*<td>@item.StartLocation</td>
+                            <td>@item.EndLocation</td>*@
                                         <td>@item.Distance</td>
                                         <td>@item.Time</td>
                                         <td>@HutechDriver.Common.Common.FormatNumber(item.Price)</td>
@@ -119,14 +119,21 @@
                                                 <i class="fas fa-check-circle" style="color: #2f933a;"></i><p>Đã thanh toán</p>
                                             }
                                         </td>
-                                        <td>
-                                            <div class="button-container">
-                                                <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a>
-                                                @*<button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>*@
-                                                <a href="/BookingTrip/Detail/@item.Id" class="btn btn-sm detail-button">Chi tiết</a>
-                                                <a href="#" id="deny-trip" data-id="@item.Id" class="btn btn-sm cancel-button">Hủy đơn</a>
-                                            </div>
+                                    <tr class="expandable-body">
+                                        <td colspan="10">
+                                            <p>
+                                                <div class="button-container">
+                                                    <a href="/BookingTrip/Payment/@item.Id" class="btn btn-sm btn-primary">Thanh toán</a> <br />
+                                                    @*<button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Hủy đơn</button>*@
+                                                    <a href="/BookingTrip/Detail/@item.Id" class="btn btn-sm detail-button">Chi tiết</a> <br />
+                                                    <a href="#" id="deny-trip" data-id="@item.Id" class="btn btn-sm cancel-button">Hủy đơn</a>
+                                                </div>
+
+                                            </p>
+
                                         </td>
+                                    </tr>
+
                                     </tr>
                                     i++;
                                 }
