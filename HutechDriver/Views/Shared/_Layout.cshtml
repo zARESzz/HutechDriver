@@ -302,7 +302,8 @@
                     <div class="row row-50">
                         <div class="col-md-6 col-lg-4">
                             <h5 class="footer-modern-title oh-desktop"><span class="d-inline-block wow slideInLeft">Dịch vụ đặt xe nhanh chóng</span></h5>
-                            <p style="color:white" id="ip-location"></p>
+                            @*//Hienthi IP nguoi dung*@
+                            @*<p style="color:white" id="ip-location"></p>*@
 
 
                         </div>
@@ -362,21 +363,21 @@
         };
     </script>
     <script>
-        // Lấy địa chỉ IP của người dùng
-        function getIPAddress() {
-            $.getJSON("https://api.ipify.org?format=json")
-                .done(function (response) {
-                    var ipAddress = response.ip;
-                    // Xử lý địa chỉ IP ở đây (ví dụ: hiển thị trên trang web)
-                    document.getElementById("ip-location").innerText = "Địa chỉ IP của bạn: " + ipAddress;
-                })
-                .fail(function (error) {
-                    console.log("Lỗi khi lấy địa chỉ IP: " + error);
-                });
-        }
+        //// Lấy địa chỉ IP của người dùng
+        //function getIPAddress() {
+        //    $.getJSON("https://api.ipify.org?format=json")
+        //        .done(function (response) {
+        //            var ipAddress = response.ip;
+        //            // Xử lý địa chỉ IP ở đây (ví dụ: hiển thị trên trang web)
+        //            document.getElementById("ip-location").innerText = "Địa chỉ IP của bạn: " + ipAddress;
+        //        })
+        //        .fail(function (error) {
+        //            console.log("Lỗi khi lấy địa chỉ IP: " + error);
+        //        });
+        //}
 
-        // Gọi hàm để lấy địa chỉ IP khi trang web được tải
-        window.addEventListener("load", getIPAddress);
+        //// Gọi hàm để lấy địa chỉ IP khi trang web được tải
+        //window.addEventListener("load", getIPAddress);
     </script>
 
 
