@@ -62,8 +62,12 @@
                                 <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
 
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">SeoKeywords</label>
+                                        <label for="exampleInputPassword1">Price / 1km</label>
                                         @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Price < 1km</label>
+                                        @Html.TextBoxFor(x => x.PriceLow, new { @class = "form-control" })
                                     </div>
                                     <div class="form-group">
                                         <a style="background-color: red;" href="/admin/price" class="btn btn-primary">Quay lại</a>

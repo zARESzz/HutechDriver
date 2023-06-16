@@ -44,6 +44,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             {
                 var price = db.Pricetrips.Find(model.Id);
                 price.Price = model.Price;
+                price.PriceLow = model.PriceLow;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

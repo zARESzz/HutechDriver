@@ -73,7 +73,7 @@
                                         <td>@item.TimeBook</td>
 
                                         <td>
-                                            <button id="accept-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-primary">Nhận đơn</button>
+                                            <button id="accept-trip" type="button" data-id="@item.Id" data-user-id="@item.UserId" class="btn btn-sm btn-primary">Nhận đơn</button>
                                             <button id="deny-trip" type="button" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Từ chối đơn</button>
                                         </td>
 
@@ -134,6 +134,7 @@
         acceptBtns.forEach(acceptBtn => {
             acceptBtn.addEventListener('click', function(event) {
             const tripId = this.getAttribute('data-id');
+            const userId = this.getAttribute('data-user-id');
             const url = '@Url.Action("AcceptTrip", "BookingDriver")';
             $.ajax({
                 type: "POST",

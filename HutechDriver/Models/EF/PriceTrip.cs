@@ -11,5 +11,6 @@ namespace HutechDriver.Models.EF
     {
         public int Id { get; set; }
         public int Price { get; set; }
+        public int PriceLow { get; set; }
     }
 }

@@ -61,7 +61,7 @@
                                 if (item.LockoutEndDateUtc != null || item.IsDelete==true)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
-                                    <tr>
+                                    <tr id=" trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>
                                         <td>@item.FullName</td>

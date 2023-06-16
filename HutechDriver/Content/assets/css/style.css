@@ -9,7 +9,11 @@
 		display: none;
 	}
 }
-
+@media screen and (min-width: 760px) and (max-width: 990px) {
+	.brand-logo-dark {
+		display: none;
+	}
+}
 @font-face {
 	font-family: 'SVN-Poppins';
 	src: url('../fonts/SVN-PoppinsLightItalic.eot');

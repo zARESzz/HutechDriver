@@ -392,7 +392,7 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -438,6 +438,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\404.css" />
     <Content Include="Content\assets\336607948_704482434784264_7699043778176761523_n.png" />
     <Content Include="Content\assets\anh2.jpg" />
     <Content Include="Content\assets\anh3.jpg" />
@@ -3509,6 +3510,8 @@
     <Content Include="Content\FormMap\js\popper.js" />
     <Content Include="Content\Funnyfood.ico" />
     <Content Include="Content\Funnyfood.png" />
+    <Content Include="Content\Game\game.css" />
+    <Content Include="Content\Game\game.js" />
     <Content Include="Content\HutechDriver.ico" />
     <Content Include="Content\HutechDriverDark.png" />
     <Content Include="Content\icon.png" />
@@ -4479,6 +4482,7 @@
       <Link>.editorconfig</Link>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Home\homemap.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -4542,13 +4546,13 @@
     <Content Include="Views\BookingTrip\Detail.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Account\IsDeleted.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Driver\Data\" />
     <Folder Include="Areas\Manager\Data\" />
-    <Folder Include="Views\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

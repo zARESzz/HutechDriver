@@ -109,11 +109,17 @@ namespace HutechDriver.Controllers
                     if (vnp_ResponseCode == "00")
                     {
                         var trip = db.Trips.Find(tripId);
+                        string customerName = trip.FullName;
                         trip.IsPaid = true;
                         db.SaveChanges();
                         //Thanh toán thành công
+                        ViewBag.CustomerName = customerName;
+                      
                         ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | \n Mã giao dịch: " + vnpayTranId;
+                        ViewBag.TransactionTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); // Thời gian giao dịch
+                        ViewBag.Amount = trip.Price.ToString(); // Số tiền thanh toán
                         return View();
+
                     }
                     else
                     {

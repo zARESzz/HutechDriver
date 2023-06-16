@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HutechDriver.Controllers
 {
-    public class FAQController : Controller
+    public class GameController : Controller
     {
         // GET: FAQ
         public ActionResult Index()

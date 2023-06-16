@@ -11,8 +11,7 @@ namespace HutechDriver.Models
     {
         public Task SendNotificationToPassenger(string passengerId)
         {
-            Clients.User(passengerId).receiveMessage("Đơn của bạn đã được nhận");
-            return Clients.Caller.receiveMessage();
+             return Clients.User(passengerId).receiveMessage("Đơn của bạn đã được nhận");
         }
     }
 }

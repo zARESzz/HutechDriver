@@ -75,17 +75,46 @@
                         }
 
 
-                        
-                    </div>
-                  
 
-                  
+                    </div>
+
+
+
 
                 </div>
 
-</div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                            foreach (var item in Model)
+                            {
+                                <h3 id=" trow_@item.Id">
+                                    Giá: @HutechDriver.Common.Common.FormatNumber(@item.PriceLow) Vnđ
+                                </h3>
+                                <div class="icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div> <br />
+                                <a href="/admin/price/edit/@item.Id" class="small-box-footer">
+                                    Thay đổi <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            }
+                        }
+
+
+
+                    </div>
+
+
+
+
+                </div>
 
             </div>
+        </div>
         </div>
     <!-- /.card -->
 
