@@ -120,19 +120,19 @@
                             </div>
 
 
-                            <div class="col-md-12">
-                                @Html.TextBoxFor(x => x.ImagePapers, new { @id = "txtImage1", @class = "form-control" })
-                                <input type="button" value="Tải ảnh CCCD" onclick="BrowseServer('txtImage1');" />
-                            </div>
-                            <div class="col-md-12">
-                                @Html.TextBoxFor(x => x.ImagePeople, new { @id = "txtImage", @class = "form-control" })
-                                <input type="button" value="Tải ảnh Chụp" onclick="BrowseServer('txtImage');" />
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-wrap">
-                                    <textarea class="form-input textarea-lg" id="DiaChi" name="DiaChi" placeholder="Loại xe:Exciter Màu xe:Xanh dương Biển số:88554"></textarea> @*data-constraints="@Numeric"*@
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(x => x.ImagePapers, new { @id = "txtImage1", @class = "form-control" })
+                                    <input type="button" value="Tải ảnh CCCD" onclick="BrowseServer('txtImage1');" />
                                 </div>
-                                @Html.ValidationMessageFor(row => row.Message)
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(x => x.ImagePeople, new { @id = "txtImage", @class = "form-control" })
+                                    <input type="button" value="Tải ảnh Chụp" onclick="BrowseServer('txtImage');" />
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-wrap">
+                                        <textarea class="form-input textarea-lg" id="Message" name="Message" placeholder="Loại xe:Exciter Màu xe:Xanh dương Biển số:88554"></textarea> @*data-constraints="@Numeric"*@
+                                    </div>
+                                    @Html.ValidationMessageFor(row => row.Message)
 
                             </div>
 
