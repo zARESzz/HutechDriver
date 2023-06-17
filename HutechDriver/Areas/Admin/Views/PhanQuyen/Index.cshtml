@@ -59,7 +59,7 @@
                                 if (item.LockoutEndDateUtc == null && item.IsDelete != true)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
-                                    <tr>
+                                    <tr id="trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>
                                         <td>@item.FullName</td>
@@ -118,7 +118,7 @@
                 data: { id: userId } ,
                 success: function (data) {
                     alert('Khóa tài khoản thành công!.');
-                    location.reload(true);
+                    $('#trow_' + userId).remove();       
                 },
                 error: function (data) {
                     alert('Khóa không thành công!.');
@@ -140,7 +140,7 @@
                 data: { id: userId } ,
                 success: function (data) {
                     alert('Xóa tài khoản thành công!.');
-                    location.reload(true);
+                    $('#trow_' + userId).remove();       
                 },
                 error: function (data) {
                     alert('Xóa không thành công!.');
