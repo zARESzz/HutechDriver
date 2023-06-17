@@ -74,6 +74,14 @@
                             {
                                 <option value="Chưa nhận">Chưa nhận</option>
                             }
+                            @if (ViewBag.filterStatus == "Đã nhận đơn")
+                            {
+                                <option selected value="Đã nhận đơn">Đã nhận đơn</option>
+                            }
+                            else
+                            {
+                                <option value="Đã nhận đơn">Đã nhận đơn</option>
+                            }
                             @if (ViewBag.filterStatus == "Đã hủy")
                             {
                                 <option selected value="Đã hủy">Đã hủy</option>
@@ -83,7 +91,6 @@
                                 <option value="Đã hủy">Đã hủy</option>
                             }
                         </select>
-                        @*<button class="btn btn-primary" ng-click="exportExcel()"> <i class="fas fa-file-csv"></i> Xuất Excel</button>*@
                     </div>
 
                 }
@@ -221,7 +228,7 @@
                 data: { filterStatus: filterStatus },
                 success: function (rs) {
                     // Xử lý kết quả trả về
-                    $('#tripTable').html(rs);
+                    $('body').html(rs);
                 },
                 error: function (rs) {
                     alert("Không tìm thấy đơn");

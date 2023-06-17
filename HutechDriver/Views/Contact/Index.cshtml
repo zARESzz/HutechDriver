@@ -76,47 +76,48 @@
                     <div class="col-lg-8">
                         <h4 class="text-spacing-25 text-transform-none">Recruitment Information Input</h4>
                         @*<form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="Contact/Add">*@
-                        <form action="/Contact/Index" method="post" role="form" class="signup-form">
+                    <form action="/Contact/Index" method="post" role="form" class="signup-form">
 
-                            @Html.AntiForgeryToken()
-                        
-                            <div class="row row-20 gutters-20">
-                                <div class="col-md-6">
-                                    <div class="form-wrap">
-                                        <input class="form-input" id="Name" type="text" name="Name" placeholder="Your Name*" @*data-constraints="@Required"*@>
-                                    </div>
-                                    @Html.ValidationMessageFor(row => row.Name)
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
 
+                        <div class="row row-20 gutters-20">
+                            <div class="col-md-6">
+                                <div class="form-wrap">
+                                    <input class="form-input" id="Name" type="text" name="Name" placeholder="Your Name*" @*data-constraints="@Required"*@>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-wrap">
-                                        <input class="form-input" id="Email" type="email" name="Email" placeholder="Your E-mail*" @*data-constraints="@Email @Required"*@>
-                                    </div>
-                                    @Html.ValidationMessageFor(row => row.Email)
+                                @Html.ValidationMessageFor(row => row.Name)
 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-wrap">
+                                    <input class="form-input" id="Email" type="email" name="Email" placeholder="Your E-mail*" @*data-constraints="@Email @Required"*@>
                                 </div>
+                                @Html.ValidationMessageFor(row => row.Email)
 
-                                <div class="col-md-6">
-                                    <div class="form-wrap">
-                                        <input class="form-input" id="PhoneNumber" type="text" name="PhoneNumber" placeholder="Your Phone*" @*data-constraints="@Numeric"*@>
-                                    </div>
-                                    @Html.ValidationMessageFor(row => row.PhoneNumber)
+                            </div>
 
+                            <div class="col-md-6">
+                                <div class="form-wrap">
+                                    <input class="form-input" id="PhoneNumber" type="text" name="PhoneNumber" placeholder="Your Phone*" @*data-constraints="@Numeric"*@>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-wrap">
-                                        <input class="form-input" id="CCCDorCMND" type="text" name="CCCDorCMND" placeholder="CCCDorCMND*" @*data-constraints="@Numeric"*@>
-                                    </div>
-                                    @Html.ValidationMessageFor(row => row.CCCDorCMND)
+                                @Html.ValidationMessageFor(row => row.PhoneNumber)
 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-wrap">
+                                    <input class="form-input" id="CCCDorCMND" type="text" name="CCCDorCMND" placeholder="CCCDorCMND*" @*data-constraints="@Numeric"*@>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-wrap">
-                                        <textarea class="form-input textarea-lg" id="DiaChi" name="DiaChi" placeholder="Address*"></textarea> @*data-constraints="@Numeric"*@
-                                    </div>
-                                    @Html.ValidationMessageFor(row => row.DiaChi)
+                                @Html.ValidationMessageFor(row => row.CCCDorCMND)
 
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-wrap">
+                                    <textarea class="form-input textarea-lg" id="DiaChi" name="DiaChi" placeholder="Address*"></textarea> @*data-constraints="@Numeric"*@
                                 </div>
+                                @Html.ValidationMessageFor(row => row.DiaChi)
+
+                            </div>
 
 
                                 <div class="col-md-12">
@@ -133,36 +134,11 @@
                                     </div>
                                     @Html.ValidationMessageFor(row => row.Message)
 
-                                </div>
-
-                                @*<div class="col-12">
-                                        <div class="form-wrap">
-                                            <textarea class="form-input textarea-lg" id="Message" name="Message" placeholder="Message*" data-constraints="@Required"></textarea>
-                                        </div>
-                                        @Html.ValidationMessageFor(row => row.Message)
-
-                                    </div>*@
-
-
-
-
-
-
-
-                                @*<div class="form-group">
-                                        <label for="exampleInputFile">Ảnh</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
-                                            </div>
-                                            <div class="input-group-append">
-                                                <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-                                            </div>
-                                        </div>
-                                    </div>*@
                             </div>
-                            <button class="button button-secondary button-winona" type="submit">Contact us</button>
-                        </form>
+
+                        </div>
+                        <button class="button button-secondary button-winona" type="submit">Contact us</button>
+                    </form>
                     </div>
                     <div class="col-lg-4">
                         <div class="aside-contacts">
