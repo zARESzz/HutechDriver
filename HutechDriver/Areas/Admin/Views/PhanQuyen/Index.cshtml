@@ -59,7 +59,7 @@
                                 if (item.LockoutEndDateUtc == null && item.IsDelete != true)
                                 {
                                     var roles = userManager.GetRoles(item.Id);
-                                    <tr>
+                                    <tr id="trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>
                                         <td>@item.FullName</td>
@@ -72,7 +72,7 @@
                                             }
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-sm"> <i class="fas fa-folder"> </i> Xem</a>
+                                            <a href="" class="btn btn-primary btn-sm"> <i class="fas fa-folder"> </i> Xem</a>
                                             <a href="/admin/phanquyen/edit/@item.Id" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"> </i> Sửa</a>
                                             <button id="lock-user" type="button" class="btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-lock" style="color: orange;"></i> Khóa</button>
                                             <button id="delete-user" type="button" class="btn btn btn-sm btn-danger" data-user-id="@item.Id"><i class="fas fa-trash" style="color:red"></i> Xóa</button>
@@ -118,7 +118,7 @@
                 data: { id: userId } ,
                 success: function (data) {
                     alert('Khóa tài khoản thành công!.');
-                    location.reload(true);
+                    $('#trow_' + userId).remove();       
                 },
                 error: function (data) {
                     alert('Khóa không thành công!.');
@@ -140,7 +140,7 @@
                 data: { id: userId } ,
                 success: function (data) {
                     alert('Xóa tài khoản thành công!.');
-                    location.reload(true);
+                    $('#trow_' + userId).remove();       
                 },
                 error: function (data) {
                     alert('Xóa không thành công!.');

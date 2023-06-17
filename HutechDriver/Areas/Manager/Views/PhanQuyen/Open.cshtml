@@ -57,9 +57,10 @@
                             var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                             foreach (var item in Model)
                             {
-                                if (item.LockoutEndDateUtc != null)
+                                var roles = userManager.GetRoles(item.Id);
+                                if (item.LockoutEndDateUtc != null && !roles.Contains("Admin") && item.IsDelete != true)
                                 {
-                                    var roles = userManager.GetRoles(item.Id);
+                                   
                                     <tr id="trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>
