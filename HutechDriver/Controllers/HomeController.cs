@@ -49,26 +49,39 @@ namespace HutechDriver.Controllers
             var find = context.Users.FirstOrDefault(p => p.Id == ID);
 
 
-            var trip = new Trip
+            try
             {
-                UserId = ID,
-                FullName = find.FullName,
-                StartLocation = form["from"],
-                EndLocation = form["to"],
-                Distance = form["distance"],
-                Time = form["time"],
-                Price = Convert.ToDecimal(form["price"]),
-                OrderDate = DateTime.Now,
-                //TimeBook = DateTime.Parse(form["timebook"])
-                Status = "Chưa nhận",
-                TimeBook = DateTime.Parse(timeString),
-                IsPaid = false
-            };
-            dbContext.Trips.Add(trip);
-            dbContext.SaveChanges();
-            code = new { Success = true, msg = "Đặt xe thành công!" };
-            // Trả về kết quả thành công
-            return Json(new { success = false });
+                var trip = new Trip
+                {
+                    UserId = ID,
+                    FullName = find.FullName,
+                    StartLocation = form["from"],
+                    EndLocation = form["to"],
+                    Distance = form["distance"],
+                    Time = form["time"],
+                    Price = Convert.ToDecimal(form["price"]),
+                    OrderDate = DateTime.Now,
+                    Status = "Chưa nhận",
+                    TimeBook = DateTime.Parse(timeString),
+                    IsPaid = false
+                };
+
+                dbContext.Trips.Add(trip);
+                dbContext.SaveChanges();
+
+                code = new { Success = true, msg = "Đặt xe thành công!" };
+
+                // Trả về kết quả thành công
+                return Json(new { success = false });
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi ở đây, ví dụ: ghi log lỗi, hiển thị thông báo lỗi cho người dùng, ...
+                code = new { Success = false, msg = "Đã xảy ra lỗi khi đặt xe!" };
+
+                // Trả về kết quả với thông báo lỗi
+                return Json(code);
+            }
 
             // Lưu chuyến đi vào database
 

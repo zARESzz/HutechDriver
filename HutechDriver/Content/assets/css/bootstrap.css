@@ -47,14 +47,14 @@
 	font-display: swap;
 }
 
-@font-face {
+/*@font-face {
 	font-family: 'SVN-Poppins';
 	src: url('../fonts/SVN-PoppinsMediumItalic.eot');
 	src: url('../fonts/SVN-PoppinsMediumItalic.eot?#iefix') format('embedded-opentype'), url('../fonts/SVN-PoppinsMediumItalic.woff2') format('woff2'), url('../fonts/SVN-PoppinsMediumItalic.woff') format('woff'), url('../fonts/SVN-PoppinsMediumItalic.ttf') format('truetype'), url('../fonts/SVN-PoppinsMediumItalic.svg#SVN-PoppinsMediumItalic') format('svg');
 	font-weight: 500;
 	font-style: italic;
 	font-display: swap;
-}
+}*/
 
 @font-face {
 	font-family: 'SVN-Poppins';
