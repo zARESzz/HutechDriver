@@ -40,10 +40,6 @@ namespace HutechDriver.Areas.Manager.Controllers
             if (!string.IsNullOrEmpty(SearchText))
             {
                 items = items.Where(x => x.FullName.Contains(SearchText) || x.DriverBook.Contains(SearchText));
-                if (!items.Any())
-                {
-                    return View("Index",(object)errorMessage);
-                }
             }
             else if (!string.IsNullOrEmpty(filterStatus))
             {

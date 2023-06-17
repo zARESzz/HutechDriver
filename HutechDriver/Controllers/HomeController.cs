@@ -9,6 +9,7 @@ using HutechDriver.Models;
 using HutechDriver.Models.EF;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using OfficeOpenXml.Sorting;
 
 
 namespace HutechDriver.Controllers
@@ -43,8 +44,16 @@ namespace HutechDriver.Controllers
 
             var code = new { Success = false, msg = "" };
             ApplicationDbContext dbContext = new ApplicationDbContext();
-            string timeString = form["timebook"]; // ví dụ thời gian trong định dạng "ngày tháng năm giờ phút giây buổi PM/AM"
-            // Tạo một đối tượng chuyến đi mới
+            string timeString = form["timebook"];
+            DateTime? timeBook;
+            if (string.IsNullOrEmpty(timeString))
+            {
+                timeBook = DateTime.Now;
+            }
+            else
+            {
+                timeBook = DateTime.Parse(timeString);
+            }
             IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
             var ID = User.Identity.GetUserId();
             var find = context.Users.FirstOrDefault(p => p.Id == ID);
@@ -60,18 +69,16 @@ namespace HutechDriver.Controllers
                 Time = form["time"],
                 Price = Convert.ToDecimal(form["price"]),
                 OrderDate = DateTime.Now,
-                //TimeBook = DateTime.Parse(form["timebook"])
+                //TimeBook = null,
+                TimeBook = timeBook,
                 Status = "Chưa nhận",
-                TimeBook = DateTime.Parse(timeString),
                 IsPaid = false
             };
             dbContext.Trips.Add(trip);
             dbContext.SaveChanges();
             code = new { Success = true, msg = "Đặt xe thành công!" };
             // Trả về kết quả thành công
-            return Json(new { success = true });
-
-            // Lưu chuyến đi vào database
+            return Json(new { success = false });
 
 
 
