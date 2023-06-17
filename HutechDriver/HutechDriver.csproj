@@ -399,12 +399,13 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306070835148_up1.cs" />
-    <Compile Include="Migrations\202306070835148_up1.designer.cs">
-      <DependentUpon>202306070835148_up1.cs</DependentUpon>
+    <Compile Include="Migrations\202306170811134_up1.cs" />
+    <Compile Include="Migrations\202306170811134_up1.designer.cs">
+      <DependentUpon>202306170811134_up1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3597,6 +3598,27 @@
     <Content Include="Content\Register\js\jquery.min.js" />
     <Content Include="Content\Register\js\main.js" />
     <Content Include="Content\Register\js\popper.js" />
+    <Content Include="Content\Rules\css\aos.min.css" />
+    <Content Include="Content\Rules\css\bootstrap.min.css" />
+    <Content Include="Content\Rules\css\owl.carousel.min.css" />
+    <Content Include="Content\Rules\css\owl.theme.default.min.css" />
+    <Content Include="Content\Rules\css\style-ola.min.css" />
+    <Content Include="Content\Rules\css\style.css" />
+    <Content Include="Content\Rules\css\style.min%281%29.css" />
+    <Content Include="Content\Rules\css\style.min.css" />
+    <Content Include="Content\Rules\js\analytics.js" />
+    <Content Include="Content\Rules\js\aos.js" />
+    <Content Include="Content\Rules\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Rules\js\conditionizr-4.3.0.min.js" />
+    <Content Include="Content\Rules\js\demo.js" />
+    <Content Include="Content\Rules\js\functions.js" />
+    <Content Include="Content\Rules\js\ins.js" />
+    <Content Include="Content\Rules\js\jquery.min.js" />
+    <Content Include="Content\Rules\js\modernizr-2.7.1.min.js" />
+    <Content Include="Content\Rules\js\owl.carousel.min.js" />
+    <Content Include="Content\Rules\js\start.min.js" />
+    <Content Include="Content\Rules\js\wp-embed.min.js" />
+    <Content Include="Content\Rules\js\wp-emoji-release.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\site\about-us.html" />
     <Content Include="Content\site\contacts.html" />
@@ -4481,6 +4503,8 @@
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </Content>
+    <Content Include="Content\Rules\css\bootstrap.min.css.map" />
+    <Content Include="Content\Rules\js\bootstrap.bundle.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Home\homemap.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -4547,6 +4571,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Account\IsDeleted.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4566,8 +4591,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202306070835148_up1.resx">
-      <DependentUpon>202306070835148_up1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202306170811134_up1.resx">
+      <DependentUpon>202306170811134_up1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
