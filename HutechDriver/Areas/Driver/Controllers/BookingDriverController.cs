@@ -9,6 +9,7 @@ using HutechDriver.Models;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
+using System.Web.UI.WebControls;
 
 namespace HutechDriver.Areas.Driver.Controllers
 {
@@ -88,13 +89,14 @@ namespace HutechDriver.Areas.Driver.Controllers
             var trip = db.Trips.Find(int.Parse(form["id"]));
             var ID = User.Identity.GetUserId();
             var find = db.Users.FirstOrDefault(p => p.Id == ID);
+            var find1 = db.Users.FirstOrDefault(p => p.Id == trip.UserId);
             if (trip != null)
             {
                 trip.Status = "Đã nhận đơn";
                 trip.DriverId = ID;
                 trip.DriverBook = find.FullName;
                 db.SaveChanges();
-                var passengerId = trip.UserId;
+                SendMail.SendEmail(find1.Email, "Phản hồi từ HutechDriver", "Đơn của bạn đã được nhận\n" + "Thông tin tài xế: " +trip.DriverBook + "\nSDT: " +find.PhoneNumber, "");
                 return Json(new { success = true });
             }
             return Json(new { success = false });

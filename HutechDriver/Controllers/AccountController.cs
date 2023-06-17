@@ -213,8 +213,7 @@ namespace HutechDriver.Controllers
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "Member");
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);                
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

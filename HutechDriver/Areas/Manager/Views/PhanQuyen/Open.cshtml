@@ -58,9 +58,8 @@
                             foreach (var item in Model)
                             {
                                 var roles = userManager.GetRoles(item.Id);
-                                if (item.LockoutEndDateUtc != null && !roles.Contains("Admin") && item.IsDelete != true)
+                                if (item.LockoutEndDateUtc != null && ! roles.Contains("Admin") && item.IsDelete != true)
                                 {
-                                   
                                     <tr id="trow_@item.Id">
                                         <td>@i</td>
                                         <td>@item.Email</td>

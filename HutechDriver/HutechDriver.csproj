@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder">
-      <HintPath>bin\ckfinder\ckfinder\bin\Release\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\ckfinder\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=6.2.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.6.2.4\lib\net462\EPPlus.dll</HintPath>
@@ -1588,6 +1588,7 @@
     <Content Include="Content\clients\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\clients\dist\css\alt\adminlte.plugins.min.css" />
     <Content Include="Content\clients\dist\img\AdminLTELogo.png" />
+    <Content Include="Content\clients\dist\img\anhdaidien.jpg" />
     <Content Include="Content\clients\dist\img\avatar.png" />
     <Content Include="Content\clients\dist\img\avatar2.png" />
     <Content Include="Content\clients\dist\img\avatar3.png" />
@@ -4496,7 +4497,7 @@
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
     <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Manager\Views\ExportData\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\PhanQuyen\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanQuyen\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\PhanQuyen\ViewDetail.cshtml" />
