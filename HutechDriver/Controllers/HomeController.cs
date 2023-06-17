@@ -25,7 +25,8 @@ namespace HutechDriver.Controllers
             {
                 var newprice = new PriceTrip { 
                     Id = 1,
-                    Price = 4000 };
+                    Price = 4000,
+                    PriceLow = 10000};
                 db.Pricetrips.Add(newprice);
                 db.SaveChanges();
              
@@ -68,7 +69,7 @@ namespace HutechDriver.Controllers
             dbContext.SaveChanges();
             code = new { Success = true, msg = "Đặt xe thành công!" };
             // Trả về kết quả thành công
-            return Json(new { success = false });
+            return Json(new { success = true });
 
             // Lưu chuyến đi vào database
 
