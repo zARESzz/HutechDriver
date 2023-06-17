@@ -46,7 +46,7 @@ namespace HutechDriver.Controllers
             ApplicationDbContext dbContext = new ApplicationDbContext();
             string timeString = form["timebook"];
             DateTime? timeBook;
-            if (string.IsNullOrEmpty(timeString))
+            if (string.IsNullOrEmpty(timeString)|| DateTime.Parse(timeString) < DateTime.Now)
             {
                 timeBook = DateTime.Now;
             }

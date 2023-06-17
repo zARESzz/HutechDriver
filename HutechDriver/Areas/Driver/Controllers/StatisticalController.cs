@@ -49,7 +49,7 @@ namespace HutechDriver.Areas.Driver.Controllers
             {
                 Date = x.Date,
                 DoanhThu = x.TotalBuy,
-                LoiNhuan = x.TotalBuy * 15 / 100
+                LoiNhuan = x.TotalBuy * 75 / 100
             });
             return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
         }

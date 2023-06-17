@@ -116,10 +116,10 @@
 @section scripts{
     <script>
        const denyBtns = document.querySelectorAll('#deny-trip');
-
-    denyBtns.forEach(denyBtn => {
+         
+        denyBtns.forEach(denyBtn => {
         denyBtn.addEventListener('click', function(event) {
-            const tripId = $(this).data('id');
+            const tripId = this.getAttribute('data-id');
             const url = '@Url.Action("ErrorTrip", "BookingDriver")';
 
             $.ajax({
@@ -128,7 +128,8 @@
                 data: { id: tripId } ,
                 success: function (rs) {
                     if (rs.success) {
-                        $('#trow_' + tripId).remove();
+                        alert('Hủy đơn thành công!.');
+                        location.reload(true);
                     }
                 },
                 error: function (rs) {
