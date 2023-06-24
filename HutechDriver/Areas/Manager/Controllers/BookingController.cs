@@ -61,12 +61,12 @@ namespace HutechDriver.Areas.Manager.Controllers
                 items = items.Where(x => x.Status == filterStatus);
             }
 
-            // Tạo một tệp Excel mới
+            // tao tep excel
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Booking Data");
 
-                // Đặt tiêu đề cột
+                // dat tieu de
                 worksheet.Cells[1, 1].Value = "ID";
                 worksheet.Cells[1, 2].Value = "Tên khách hàng";
                 worksheet.Cells[1, 3].Value = "Tên tài xế";
@@ -82,7 +82,7 @@ namespace HutechDriver.Areas.Manager.Controllers
              
 
 
-                // Đổ dữ liệu vào các ô
+                // lay du lieu do vao cot
                 int row = 2;
                 foreach (var item in items)
                 {
@@ -102,7 +102,7 @@ namespace HutechDriver.Areas.Manager.Controllers
                     row++;
                 }
 
-                // Tùy chỉnh định dạng và kiểu dữ liệu cho các ô
+                // chỉnh tiêu đề
                 using (var range = worksheet.Cells[1, 1, 1, 12])
                 {
                     range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -110,13 +110,13 @@ namespace HutechDriver.Areas.Manager.Controllers
                     range.Style.Font.Bold = true;
                 }
 
-                // AutoFit các cột
+                // autofit các cột
                 worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
-                // Chuyển đổi tệp Excel thành một mảng byte
+                //chuyen toi thanh dang byte
                 byte[] excelBytes = package.GetAsByteArray();
 
-                // Trả về tệp Excel dưới dạng tải về
+                // tra ve 1 fiel excel
                 return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "booking_data.xlsx");
             }
 
