@@ -363,23 +363,6 @@
             document.title = originalTitle;
         };
     </script>
-    <script>
-        //// Lấy địa chỉ IP của người dùng
-        //function getIPAddress() {
-        //    $.getJSON("https://api.ipify.org?format=json")
-        //        .done(function (response) {
-        //            var ipAddress = response.ip;
-        //            // Xử lý địa chỉ IP ở đây (ví dụ: hiển thị trên trang web)
-        //            document.getElementById("ip-location").innerText = "Địa chỉ IP của bạn: " + ipAddress;
-        //        })
-        //        .fail(function (error) {
-        //            console.log("Lỗi khi lấy địa chỉ IP: " + error);
-        //        });
-        //}
-
-        //// Gọi hàm để lấy địa chỉ IP khi trang web được tải
-        //window.addEventListener("load", getIPAddress);
-    </script>
 
 
     @RenderSection("scripts", required: false)

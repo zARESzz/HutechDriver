@@ -91,8 +91,9 @@
                                 <td>@item.PhoneNumber</td>
                                 <td>@item.CCCDorCMND</td>
                                 <td>@item.DiaChi</td>
+
                                 <td>
-                                    <img src="@item.ImagePeople" class="zoomable-image" alt="Hình ảnh" onclick="zoomImage(this)" width="50" />
+                                    <img src="~/Content/ImagesAcc/@item.ImagePeople" class="zoomable-image" alt="Hình ảnh" onclick="zoomImage(this)" width="50" />
                                 </td>
 
                                 <td>@item.CreateDate.ToString("dd/MM/yyyy")</td>
@@ -109,7 +110,7 @@
                                 <td colspan="10">
                                     <p>
 
-                                        Ảnh CCCD :  <img src="@item.ImagePapers"   /> <br />
+                                        Ảnh CCCD :  <img src="~/Content/ImagesAcc/@item.ImagePapers"   /> <br />
                                         Thông tin:     @item.Message
 
                                     </p>
