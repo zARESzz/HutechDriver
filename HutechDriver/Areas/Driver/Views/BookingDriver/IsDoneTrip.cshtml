@@ -50,14 +50,15 @@
                         <tbody>
                             @{
                                 IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
+
+                                var ID = User.Identity.GetUserId();
                                 if (Model != null && Model.Any())
                                 {
                                     var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                                     foreach (var item in Model)
                                     {
-                                        if (item.Status == "Hoàn thành")
+                                        if (item.Status == "Hoàn thành" && item.DriverId == ID)
                                         {
-                                            var find = context.Users.FirstOrDefault(p => p.Id == item.UserId);
 
                                             <tr data-widget="expandable-table" aria-expanded="false">
                                                 <td>@item.Id</td>

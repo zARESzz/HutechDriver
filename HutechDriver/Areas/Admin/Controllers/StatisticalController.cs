@@ -18,7 +18,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult GetStatistical(string fromDate, string toDate)
+        public ActionResult GetStatistical(string fromDate, string toDate,string Searchtext)
         {
             var query = from t in db.Trips
                         where t.IsPaid == true
@@ -27,6 +27,17 @@ namespace HutechDriver.Areas.Admin.Controllers
                             CreatedDate = t.OrderDate,
                             Price = t.Price,
                         };
+            if (Searchtext != null)
+            {
+                query = from t in db.Trips
+                        where t.IsPaid == true
+                        && (t.DriverId == Searchtext || t.DriverBook == Searchtext)
+                        select new
+                        {
+                            CreatedDate = t.OrderDate,
+                            Price = t.Price,
+                        };
+            }
             if (!string.IsNullOrEmpty(fromDate))
             {
                 DateTime startDate = DateTime.ParseExact(fromDate, "dd/MM/yyyy", null);
