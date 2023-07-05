@@ -18,7 +18,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult GetStatistical(string fromDate, string toDate,string Searchtext)
+        public ActionResult GetStatistical(string fromDate, string toDate)
         {
             var query = from t in db.Trips
                         where t.IsPaid == true
@@ -26,12 +26,46 @@ namespace HutechDriver.Areas.Admin.Controllers
                         {
                             CreatedDate = t.OrderDate,
                             Price = t.Price,
+                        }; 
+            if (!string.IsNullOrEmpty(fromDate))
+            {
+                DateTime startDate = DateTime.ParseExact(fromDate, "dd/MM/yyyy", null);
+                query = query.Where(x => x.CreatedDate >= startDate);
+            }
+            if (!string.IsNullOrEmpty(toDate))
+            {
+                DateTime endDate = DateTime.ParseExact(toDate, "dd/MM/yyyy", null);
+                query = query.Where(x => x.CreatedDate < endDate);
+            }
+
+            var result = query.GroupBy(x => DbFunctions.TruncateTime(x.CreatedDate)).Select(x => new
+            {
+                Date = x.Key.Value,
+                TotalBuy = x.Sum(y => y.Price)
+            }).Select(x => new
+            {
+                Date = x.Date,
+                DoanhThu = x.TotalBuy,
+                LoiNhuan = x.TotalBuy * 15 / 100
+            });
+            return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult GetStatisticalDriver(string fromDate, string toDate,FormCollection form)
+        {
+            string driverId = form["driverId"];
+            var query = from t in db.Trips
+                        where t.IsPaid == true
+                        select new
+                        {
+                            CreatedDate = t.OrderDate,
+                            Price = t.Price,
                         };
-            if (Searchtext != null)
+            if (driverId != null)
             {
                 query = from t in db.Trips
                         where t.IsPaid == true
-                        && (t.DriverId == Searchtext || t.DriverBook == Searchtext)
+                        && (t.DriverId == driverId || t.DriverBook == driverId)
                         select new
                         {
                             CreatedDate = t.OrderDate,
