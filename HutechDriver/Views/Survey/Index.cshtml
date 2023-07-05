@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HutechDriver.Models.EF.Survey>
+@{
+    ViewBag.Title = "View";
+}
+
+<link href="~/Content/css/Style2.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/clients/dist/css/adminlte.min.css">
+<div class="container news_section_container" style="margin-top:50px">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 text-align:justify;>Danh sách</h5>
+            <i class="fa-solid fa-plus"></i>
+            <a class="btn btn-primary btn-sm"  href="/survey/add">Đăng tin</a>
+        </div>
+
+    </div>
+
+
+</div>
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- Timelime example  -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- The time line -->
+                <div class="timeline">
+                    <!-- timeline time label -->
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+
+                        {
+
+                            <div>
+                                <i class="fas fa-user bg-green"></i>
+                                <div class="timeline-item" style="text-align:left">
+                                    <span class="time"><i class="fas fa-clock"></i> @item.CreateDate</span>
+                                    <h3 class="timeline-header"><a href="~/survey/detail/@item.Id">@item.FullName</a> commented on your post</h3>
+                                    <div class="timeline-body">
+                                        @item.Description
+                                    </div>
+                                    <div class="timeline-footer">
+                                        <a href="~/survey/detail/@item.Id" class="btn btn-warning btn-sm">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                            <!-- timeline time label -->
+                            <!-- /.timeline-label -->
+                            <!-- timeline item -->
+                            <!-- END timeline item -->
+                            <!-- timeline item -->
+                            <!-- END timeline item -->
+                        }
+                    }
+                    else
+                    {
+                        <p>There are no surveys available.</p>
+                    }
+
+                    <div>
+                        <i class="fas fa-clock bg-gray"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+    <!-- /.timeline -->
+
+</section>

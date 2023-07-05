@@ -15,7 +15,7 @@ using OfficeOpenXml.Sorting;
 namespace HutechDriver.Controllers
 {
     [RequireHttps]
-   
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -1,0 +1,65 @@
+﻿@model HutechDriver.Models.EF.Survey
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"></h3>
+        </div>
+        <div class="card-body">
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Add", "Survey", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tiêu đề</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Mô tả ngắn</label>
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Form về gì,...." })
+                        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Chi tiết yêu cầu </label>
+                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @placeholder = "Yêu cầu về form khảo sát,chú thích,...." })
+                        @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Đường link khảo sát</label>
+                        @Html.TextBoxFor(x => x.Link, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Link, null, new { @class = "text-danger" })
+                    </div>
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                    }
+                    <div class="form-group">
+                        <a style="background-color: red;" href="/Survey/Index" class="btn btn-primary">Quay lại</a>
+                        <button style="background-color: green;" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                }
+                <!-- your steps content here -->
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+
+    </div>
+    <!-- /.card-footer-->
+
+    <!-- /.card -->
+
+</section>
+

@@ -19,6 +19,7 @@ namespace HutechDriver.Models
         public string Text { get; set; }
 
         public bool IsDelete { get; set; }
+        public int Point { get;set; }
         public ICollection<Trip> Trips { get; set; }
 
 
@@ -50,6 +51,7 @@ namespace HutechDriver.Models
         public DbSet<PriceTrip> Pricetrips { get; set; }
 
         public DbSet<TripReview> TripReviews { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

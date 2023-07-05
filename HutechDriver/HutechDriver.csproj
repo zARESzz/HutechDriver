@@ -400,12 +400,13 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202306170811134_up1.cs" />
-    <Compile Include="Migrations\202306170811134_up1.designer.cs">
-      <DependentUpon>202306170811134_up1.cs</DependentUpon>
+    <Compile Include="Migrations\202307050523561_u3.cs" />
+    <Compile Include="Migrations\202307050523561_u3.designer.cs">
+      <DependentUpon>202307050523561_u3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -419,6 +420,7 @@
     <Compile Include="Models\EF\Posts.cs" />
     <Compile Include="Models\EF\PriceTrip.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
+    <Compile Include="Models\EF\Survey.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\EF\tb_Driver.cs" />
     <Compile Include="Models\EF\Trip.cs" />
@@ -4573,6 +4575,9 @@
     <Content Include="Views\Account\IsDeleted.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Rules\Index.cshtml" />
+    <Content Include="Views\Survey\Index.cshtml" />
+    <Content Include="Views\Survey\Add.cshtml" />
+    <Content Include="Views\Survey\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4592,8 +4597,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202306170811134_up1.resx">
-      <DependentUpon>202306170811134_up1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202307050523561_u3.resx">
+      <DependentUpon>202307050523561_u3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
