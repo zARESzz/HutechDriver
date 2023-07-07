@@ -20,7 +20,7 @@ namespace HutechDriver.Controllers
              _hubContext = hubContext;
         }
 
-        public async Task<IActionResult> NotifyPassenger(string passengerId)
+        //public async Task<IActionResult> NotifyPassenger(string passengerId)
         {
             await _hubContext.Clients.User(passengerId).SendNotificationToPassenger(passengerId);
             return (IActionResult)Json(new { success = true });
