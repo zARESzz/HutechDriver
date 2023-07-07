@@ -24,13 +24,15 @@ namespace HutechDriver.Controllers
             var price = db.Pricetrips.FirstOrDefault();
             if (price == null)
             {
-                var newprice = new PriceTrip { 
+                var newprice = new PriceTrip
+                {
                     Id = 1,
                     Price = 4000,
-                    PriceLow = 10000};
+                    PriceLow = 10000
+                };
                 db.Pricetrips.Add(newprice);
                 db.SaveChanges();
-             
+
             }
             return View(price);
         }
@@ -46,7 +48,7 @@ namespace HutechDriver.Controllers
             ApplicationDbContext dbContext = new ApplicationDbContext();
             string timeString = form["timebook"];
             DateTime? timeBook;
-            if (string.IsNullOrEmpty(timeString)|| DateTime.Parse(timeString) < DateTime.Now)
+            if (string.IsNullOrEmpty(timeString) || DateTime.Parse(timeString) < DateTime.Now)
             {
                 timeBook = DateTime.Now;
             }

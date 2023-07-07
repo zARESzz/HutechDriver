@@ -25,48 +25,90 @@
 
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
-    <style>
-        .circle-badge {
-            position: absolute;
-            top: -1px;
-            right: -8px;
-            display: inline-block;
-            border-radius: 50%;
-            background-color: red;
-            color: white;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 20px;
-            font-size: 12px;
+<style>
+    .circle-badge {
+        position: absolute;
+        top: -1px;
+        right: -8px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+    }
+
+    .checkout_items {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 20px;
+        left: 22px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fe4c50;
+        font-size: 12px;
+        color: #FFFFFF;
+    }
+
+    .services-terri-figure img {
+        display: inline-block;
+        width: 100%;
+        height: 250px;
+        transition: all .2s ease;
+    }
+
+   
+    .dropbtn {
+        background-color: transparent;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
         }
 
-        .checkout_items {
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 20px;
-            left: 22px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #fe4c50;
-            font-size: 12px;
-            color: #FFFFFF;
-        }
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
 
-        .services-terri-figure img {
-            display: inline-block;
-            width: 100%;
-            height: 250px;
-            transition: all .2s ease;
-        }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        /*   background-color: #3e8e41;*/
+    }
+
     </style>
 </head>
 <body>
@@ -178,13 +220,21 @@
                                             <a class="rd-nav-link" href="/Contact/Index">Tuyển dụng</a>
                                         </li>
 
-                                        <li class="rd-nav-item">
+                                        @*<li class="rd-nav-item">
                                             <a class="rd-nav-link" href="/Game/Index">Game</a>
-                                        </li>
+                                        </li>*@
+                                        <div class="dropdown">
+                                            <button class="dropbtn ">    Khác</button>
+                                            <div class="dropdown-content">
+                                                <a href="/Survey/Index">Khảo sát</a>
+                                                <a href="/Game/Index">Game</a>
+                                                <a href="/SleepCalculator">Đồng hồ sinh học</a>
+                                            </div>
+                                        </div>
                                         @{
                                             ApplicationDbContext db = new ApplicationDbContext();
                                             var ID = User.Identity.GetUserId();
-                                            var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận" && p.UserId == ID && p.IsPaid != true || p.Status == "Đã nhận đơn" && p.UserId == ID && p.IsPaid != true|| p.Status == "Đang chạy" && p.UserId == ID && p.IsPaid != true);
+                                            var chuaNhanTrips = db.Trips.Where(p => p.Status == "Chưa nhận" && p.UserId == ID && p.IsPaid != true || p.Status == "Đã nhận đơn" && p.UserId == ID && p.IsPaid != true || p.Status == "Đang chạy" && p.UserId == ID && p.IsPaid != true);
 
 
                                             var tripCount = chuaNhanTrips.Count();
@@ -367,6 +417,6 @@
 
     @RenderSection("scripts", required: false)
 
-
+   
 </body>
 </html>

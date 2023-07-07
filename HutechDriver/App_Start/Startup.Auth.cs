@@ -22,7 +22,7 @@ namespace HutechDriver
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
-           
+
 
 
             // Enable the application to use a cookie to store information for the signed in user
@@ -68,6 +68,9 @@ namespace HutechDriver
                 ClientId = "736670165141-vk8qn4vrb3mv1g6prdri9nfrua7l5e77.apps.googleusercontent.com",
                 ClientSecret = "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"
             });
+
+
+            app.MapSignalR();
         }
     }
 }

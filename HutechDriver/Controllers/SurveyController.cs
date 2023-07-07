@@ -45,9 +45,9 @@ namespace HutechDriver.Controllers
                 var userId = User.Identity.GetUserId();
                 var user = db.Users.Find(userId);
 
-                if (user != null && user.Point < 10)
+                if (user == null && user.Point < 10)
                 {
-                    ModelState.AddModelError("", "Không đủ điểm để thêm khảo sát mới.");
+                    ModelState.AddModelError("", "Xin lỗi bạn không đủ điểm để thêm khảo sát mới.");
                     return View(model);
                 }
 

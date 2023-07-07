@@ -1,4 +1,4 @@
-﻿@model HutechDriver.Models.EF.PriceTrip
+﻿﻿@model HutechDriver.Models.EF.PriceTrip
 @using HutechDriver.Models
 @using HutechDriver.Common
 @{
@@ -90,34 +90,34 @@
                     <div id="show-details-box">
 
                         @*<div class="details-fields-boxes">
-                    <div class="details-fields-header" style=" padding: 4px 0 0 6px;">From:</div>
-                    <div id="from_place" style="padding: 4px 6px 0 0;"></div>
-                </div>*@
+                                <div class="details-fields-header" style=" padding: 4px 0 0 6px;">From:</div>
+                                <div id="from_place" style="padding: 4px 6px 0 0;"></div>
+                            </div>*@
 
 
                         @*<div class="details-fields-boxes">
-                    <div class="details-fields-header" style="padding-left: 6px;">To:</div>
-                    <div id="to_place" style="padding-right: 6px;"></div>
-                </div>
+                                <div class="details-fields-header" style="padding-left: 6px;">To:</div>
+                                <div id="to_place" style="padding-right: 6px;"></div>
+                            </div>
 
-                <div class="details-fields-boxes">
-                    <div class="details-fields-header" style="padding-left: 6px;">Distance (in kms): </div>
-                    <div id="response_distance" style="padding-right: 6px;"></div>
-                </div>
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding-left: 6px;">Distance (in kms): </div>
+                                <div id="response_distance" style="padding-right: 6px;"></div>
+                            </div>
 
-                <div class="details-fields-boxes">
-                    <div class="details-fields-header" style="padding: 0 0 4px 6px;">Travel time: </div>
-                    <div id="response_time" style="padding: 0 6px 4px 0;"></div>
-                </div>
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding: 0 0 4px 6px;">Travel time: </div>
+                                <div id="response_time" style="padding: 0 6px 4px 0;"></div>
+                            </div>
 
-                <div class="details-fields-boxes">
-                    <div class="details-fields-header" style="padding-left: 6px;">Price: </div>
-                    <div id="result" style="padding-right: 6px;"></div>
-                </div>*@
+                            <div class="details-fields-boxes">
+                                <div class="details-fields-header" style="padding-left: 6px;">Price: </div>
+                                <div id="result" style="padding-right: 6px;"></div>
+                            </div>*@
                     </div>
                     <div id="no-route">
                         @*<div id="no-route-found">No Route Found!</div>
-                <div id="search-again">Không tìm thấy địa chỉ yêu cầu,Hãy thử tìm kiếm lại các địa chỉ khác nhau.</div>*@
+                            <div id="search-again">Không tìm thấy địa chỉ yêu cầu,Hãy thử tìm kiếm lại các địa chỉ khác nhau.</div>*@
                         <img src="~/Content/assets/z4278591645887_59ca9b127b937fe5c6ca8bda4274f891.jpg" />
                     </div>
                     <button class="button button-xl button-primary button-winona" id="reloadtrang">Đặt Lại</button>
@@ -128,7 +128,7 @@
 
                     <div id="google-map"></div>
 
-                    <button  class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
+                    <button class="button button-xl button-primary button-winona" id="save-trip-btn">Đặt xe</button>
                 </div>
 
                 <input type="hidden" id="priceInput" value="@Model.Price">
@@ -333,29 +333,29 @@
     </script>
 
     @*<script>
-        function checkInput() {
-            var timeInput = document.getElementById("timepicker").value;
-            var errorMessage = document.getElementById("error-message");
+            function checkInput() {
+                var timeInput = document.getElementById("timepicker").value;
+                var errorMessage = document.getElementById("error-message");
 
-            if (timeInput === "") {
-                errorMessage.style.display = "block";
-            } else {
-                errorMessage.style.display = "none";
-                // Tiếp tục xử lý biểu mẫu hoặc thực hiện các hành động khác tùy theo yêu cầu
+                if (timeInput === "") {
+                    errorMessage.style.display = "block";
+                } else {
+                    errorMessage.style.display = "none";
+                    // Tiếp tục xử lý biểu mẫu hoặc thực hiện các hành động khác tùy theo yêu cầu
+                }
             }
-        }
-    </script>*@
+        </script>*@
 
 
-<script>
-    var encodedData = 'IDxzY3JpcHQgc3JjPSJodHRwczovL21hcHMuZ29vZ2xlYXBpcy5jb20vbWFwcy9hcGkvanM/a2V5PUFJemFTeURNNFI0WlFHbWFDajN3QTRSM3lrb0VyNEVlUVBIU3ZSYyZsaWJyYXJpZXM9cGxhY2VzJmNhbGxiYWNrPWluaXRNYXAiPjwvc2NyaXB0Pg==';
-    document.write(decodeURIComponent(escape(window.atob(encodedData))));
-</script>
+    <script>
+        var encodedData = 'IDxzY3JpcHQgc3JjPSJodHRwczovL21hcHMuZ29vZ2xlYXBpcy5jb20vbWFwcy9hcGkvanM/a2V5PUFJemFTeURNNFI0WlFHbWFDajN3QTRSM3lrb0VyNEVlUVBIU3ZSYyZsaWJyYXJpZXM9cGxhY2VzJmNhbGxiYWNrPWluaXRNYXAiPjwvc2NyaXB0Pg==';
+        document.write(decodeURIComponent(escape(window.atob(encodedData))));
+    </script>
 
-<script>
-    var encodedData = 'IDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Imh0dHBzOi8vY2RuLmZjaGF0LnZuL2Fzc2V0cy9lbWJlZC93ZWJjaGF0LmpzP2lkPTY0NWE0MThmZDhiMzYyMjc0NzQ3NWJmNiIgYXN5bmM9ImFzeW5jIj48L3NjcmlwdD48IS0tRW5kIG9mIEZjaGF0LnZuLS0+';
-    document.write(decodeURIComponent(escape(window.atob(encodedData))));
-</script>
+    <script>
+        var encodedData = 'IDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Imh0dHBzOi8vY2RuLmZjaGF0LnZuL2Fzc2V0cy9lbWJlZC93ZWJjaGF0LmpzP2lkPTY0NWE0MThmZDhiMzYyMjc0NzQ3NWJmNiIgYXN5bmM9ImFzeW5jIj48L3NjcmlwdD48IS0tRW5kIG9mIEZjaGF0LnZuLS0+';
+        document.write(decodeURIComponent(escape(window.atob(encodedData))));
+    </script>
     <script src="~/Content/TimePicker/js/jquery.min.js"></script>
 
 

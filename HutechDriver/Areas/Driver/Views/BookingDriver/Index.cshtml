@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<HutechDriver.Models.EF.Trip>
+﻿﻿@model PagedList.IPagedList<HutechDriver.Models.EF.Trip>
 @using PagedList.Mvc;
 @using HutechDriver.Models
 @using Microsoft.AspNet.Identity
@@ -116,7 +116,7 @@
 @section scripts{
     <script>
        const denyBtns = document.querySelectorAll('#deny-trip');
-         
+
         denyBtns.forEach(denyBtn => {
         denyBtn.addEventListener('click', function(event) {
             const tripId = this.getAttribute('data-id');

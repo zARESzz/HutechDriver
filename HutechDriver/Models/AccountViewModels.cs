@@ -69,7 +69,7 @@ namespace HutechDriver.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Nhớ tài khoản?")]
         public bool RememberMe { get; set; }
     }
     public class UpData

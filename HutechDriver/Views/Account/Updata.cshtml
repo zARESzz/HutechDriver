@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Information</title>
+   
 
     <link href="~/Content/css/Style2.css" rel="stylesheet" />
 
@@ -86,7 +86,7 @@
 
 </head>
 <body>
-    <h1>User Information</h1>
+   
     <form action="/Account/Updata" method="post" role="form" class="signup-form" enctype="multipart/form-data">
         @{
             @Html.AntiForgeryToken()
@@ -104,13 +104,16 @@
             }
             <label></label>
             <input type="file" name="ImageFile" id="ImageFile" value="@find.Avatar" accept=".png, .jpg, .jpeg" />
+            <label for="email">Point:</label>
+            <input type="text" id="Point" name="Point" value="@find.Point" readonly>
+
+            <label for="username">User Name:</label>
+            <input onclick="showAlert()" type="text" id="UserName" name="UserName" value="@find.UserName" readonly>
+            <label for="email">Email:</label>
+            <input onclick="showAlert()" type="email" id="Email" name="Email" value="@find.Email" readonly>
             <label for="fullname">Full Name:</label>
             <input type="text" id="FullName" name="FullName" value="@find.FullName">
             @Html.ValidationMessageFor(row => row.FullName)
-            <label for="username">User Name:</label>
-            <input type="text" id="UserName" name="UserName" value="@find.UserName" readonly>
-            <label for="email">Email:</label>
-            <input type="email" id="Email" name="Email" value="@find.Email" readonly>
             <label for="phone">Phone:</label>
             <input type="tel" id="Phone" name="Phone" value="@find.PhoneNumber">
             @Html.ValidationMessageFor(row => row.Phone)
@@ -121,8 +124,7 @@
         }
         <hr />
         <div style="float:right">
-            @Html.ActionLink("Tính năng khác!", "Index", "Manage", new { area = "" }, htmlAttributes: new { title = "Manage" })
-
+           <a href="/Manage/ChangePassword">Đổi mật khẩu</a>
         </div>
     </form>
     <script src="~/Content/Register/js/bootstrap.min.js"></script>
@@ -134,3 +136,10 @@
     }
 </body>
 </html>
+<script>
+    function showAlert() {
+        alert("Đây là thuộc tính không thể sửa đổi!");
+        document.getElementById("UserName").readOnly = true;
+    }
+
+</script>
