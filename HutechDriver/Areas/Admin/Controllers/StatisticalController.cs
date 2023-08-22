@@ -1,5 +1,4 @@
 ﻿using HutechDriver.Models;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,9 +13,12 @@ namespace HutechDriver.Areas.Admin.Controllers
     {
         // GET: Admin/Statistical
         private ApplicationDbContext db = new ApplicationDbContext();
-       
+        public ActionResult Index()
+        {
+            return View();
+        }
         [HttpGet]
-        public ActionResult GetStatisticalDay(string fromDate, string toDate)
+        public ActionResult GetStatistical(string fromDate, string toDate)
         {
             var query = from t in db.Trips
                         where t.IsPaid == true
@@ -24,7 +26,7 @@ namespace HutechDriver.Areas.Admin.Controllers
                         {
                             CreatedDate = t.OrderDate,
                             Price = t.Price,
-                        };
+                        }; 
             if (!string.IsNullOrEmpty(fromDate))
             {
                 DateTime startDate = DateTime.ParseExact(fromDate, "dd/MM/yyyy", null);
@@ -49,7 +51,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public ActionResult GetStatisticalDriver(string fromDate, string toDate, FormCollection form)
+        public ActionResult GetStatisticalDriver(string fromDate, string toDate,FormCollection form)
         {
             string driverId = form["driverId"];
             var query = from t in db.Trips
@@ -91,42 +93,6 @@ namespace HutechDriver.Areas.Admin.Controllers
                 DoanhThu = x.TotalBuy,
                 LoiNhuan = x.TotalBuy * 15 / 100
             });
-            return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
-        }
-        [HttpGet]
-        public ActionResult GetStatisticalMonth(string fromDate, string toDate)
-        {
-            var ID = User.Identity.GetUserId();
-            var query = from t in db.Trips
-                        where t.IsPaid == true
-                        select new
-                        {
-                            CreatedDate = t.OrderDate,
-                            Price = t.Price,
-                        };
-            if (!string.IsNullOrEmpty(fromDate))
-            {
-                DateTime startDate = DateTime.ParseExact(fromDate, "dd/MM/yyyy", null);
-                query = query.Where(x => x.CreatedDate >= startDate);
-            }
-            if (!string.IsNullOrEmpty(toDate))
-            {
-                DateTime endDate = DateTime.ParseExact(toDate, "dd/MM/yyyy", null);
-                query = query.Where(x => x.CreatedDate < endDate.AddDays(1)); // Đảm bảo cả ngày kết thúc được bao gồm
-            }
-
-            var result = query.GroupBy(x => DbFunctions.TruncateTime(x.CreatedDate)).Select(x => new
-            {
-                Date = x.Key.Value,
-                TotalBuy = x.Sum(y => y.Price)
-            }).Select(x => new
-            {
-                Year = x.Date.Year, // Truy cập thuộc tính Year thông qua x.Date
-                Month = x.Date.Month, // Truy cập thuộc tính Month thông qua x.Date
-                DoanhThu = x.TotalBuy,
-                LoiNhuan = x.TotalBuy * 15 / 100
-            });
-
             return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
         }
     }
