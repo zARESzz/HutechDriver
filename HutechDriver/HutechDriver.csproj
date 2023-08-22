@@ -425,7 +425,6 @@
     <Compile Include="Models\EF\tb_Driver.cs" />
     <Compile Include="Models\EF\Trip.cs" />
     <Compile Include="Models\EF\TripReview.cs" />
-    <Compile Include="Models\Hubs.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
@@ -4494,11 +4493,9 @@
     <Content Include="Areas\Manager\Views\News\Index.cshtml" />
     <Content Include="Areas\Manager\Views\NewDriver\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Add.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Driver\Views\Statistical\Index.cshtml" />
     <Content Include="Areas\Manager\Views\ExportData\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhanQuyen\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
@@ -4509,6 +4506,10 @@
     </Content>
     <Content Include="Content\Rules\css\bootstrap.min.css.map" />
     <Content Include="Content\Rules\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Areas\Driver\Views\Statistical\GetStatisticalMonth.cshtml" />
+    <Content Include="Areas\Driver\Views\Statistical\GetStatisticalDay.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistical\GetStatisticalDay.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistical\GetStatisticalMonth.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Home\homemap.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
