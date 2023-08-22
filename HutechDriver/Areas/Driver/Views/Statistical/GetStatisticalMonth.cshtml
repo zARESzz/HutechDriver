@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "GetStatisticalMonth";
     Layout = "~/Areas/Driver/Views/Shared/_Layout.cshtml";
 }
 
@@ -60,19 +60,6 @@
                         <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Ngày</th>
-                                <th>Doanh thu</th>
-                                <th>Lợi nhuận</th>
-                            </tr>
-                        </thead>
-                        <tbody id="load_data"></tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <!-- /.card-body -->
@@ -95,7 +82,7 @@
             var arrDoanhThu = [];
             var arrLoiNhuan = [];
             var arrDate = [];
-            const url = '@Url.Action("GetStatistical","Statistical")';
+            const url = '@Url.Action("GetStatisticalMonth","Statistical")';
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -162,19 +149,5 @@
 
 
         })
-
-        function load_data(data) {
-            var strHtml = "";
-            $.each(data, function (i, item) {
-                var strDate = moment(item.Date).format('DD/MM/yyyy');
-                strHtml += "<tr>";
-                strHtml += "<td>" + (i + 1) + "</td>";
-                strHtml += "<td>" + strDate + "</td>";
-                strHtml += "<td>" + item.DoanhThu + "</td>";
-                strHtml += "<td>" + item.LoiNhuan + "</td>";
-                strHtml += "</tr>";
-            });
-            $('#load_data').html(strHtml);
-        }
     </script>
 }
