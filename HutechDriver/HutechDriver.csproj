@@ -425,7 +425,6 @@
     <Compile Include="Models\EF\tb_Driver.cs" />
     <Compile Include="Models\EF\Trip.cs" />
     <Compile Include="Models\EF\TripReview.cs" />
-    <Compile Include="Models\Hubs.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
