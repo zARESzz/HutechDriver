@@ -48,6 +48,20 @@ namespace HutechDriver.Areas.Manager.Controllers
             return View(items.ToPagedList(pageNumber, pageSize));
         }
         [HttpPost]
+        public ActionResult Errortrip(int id)
+        {
+            var trip = db.Trips.Find(id);
+            if (trip != null)
+            {
+                trip.Status = "Đã hủy";
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+
+
+        [HttpPost]
         public FileResult ExportToExcel(string SearchText, string filterStatus)
         {
             IEnumerable<Trip> items = db.Trips.OrderByDescending(x => x.Id);

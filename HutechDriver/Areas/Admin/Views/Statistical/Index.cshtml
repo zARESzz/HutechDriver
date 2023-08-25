@@ -1,4 +1,8 @@
-﻿
+﻿@model PagedList.IPagedList<HutechDriver.Models.EF.Trip>
+@using PagedList.Mvc;
+@using HutechDriver.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -20,6 +24,7 @@
             </div>
         </div>
     </div><!-- /.container-fluid -->
+
 </section>
 
 <!-- Main content -->
@@ -28,11 +33,14 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thống kê danh thu</h3>
-            @Html.TextBox("SearchText", "", new { @class = "form-control" , id = "searchText" })
-            <span class="input-group-append">
-                <button type="submit" class="btn btn-info btn-flat" id="search-driver">Tìm kiếm</button>
-            </span>
+            <button id="error-trip" type="button" class="btn btn-sm btn-danger btnDelete">
+                Reset
+            </button>
+            <button id="restore-all" type="button" class="btn btn-sm btn-success">
+               Restore
+            </button>
+
+
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
@@ -65,7 +73,6 @@
             </div>
         </div>
         <!-- /.card-body -->
-
         <!-- /.card-footer-->
     </div>
     <!-- /.card -->
@@ -166,7 +173,7 @@
             });
             $('#load_data').html(strHtml);
         }
-    
+
     </script>
     <script>
     var arrDoanhThu = [];
@@ -254,6 +261,83 @@
                     strHtml += "</tr>";
                 });
                 $('#load_data').html(strHtml);
+        }
+
+
+     $(function () {
+    $('#error-trip').click(function () {
+        // Show a confirmation dialog
+        if (confirm("M có chắc là m muốn xóa hết thống kê chuyến đi ?")) {
+            // User clicked OK, proceed with the deletion
+            $.ajax({
+                url: '@Url.Action("DeleteAllRecords", "Statistical")', // Replace with the actual URL
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        // Clear the content of the table body
+                        $('#load_data').empty();
+                    } else {
+                        console.error(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if needed
+                    console.error(error);
+                }
+            });
+        } else {
+            // User clicked Cancel, do nothing
+        }
+    });
+
+    // Other JavaScript code...
+});
+
+
+
+$(function () {
+    // ... Your existing code ...
+
+    // Add an event listener for the "Restore All" button
+    $('#restore-all').click(function () {
+        if (confirm("Bạn có chắc chắn muốn khôi phục tất cả dữ liệu?")) {
+            $.ajax({
+                url: '@Url.Action("RestoreAllRecords", "Statistical")', // Replace with the actual URL
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        // Refresh the table after successful restoration
+                        refreshTable();
+                    } else {
+                        console.error(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error if needed
+                    console.error(error);
+                }
+            });
+        }
+    });
+
+    // Function to refresh the table
+    function refreshTable() {
+        // Perform an AJAX request to reload the table data
+        $.ajax({
+            url: '@Url.Action("GetStatistical", "Statistical")', // Replace with the actual URL
+            type: 'GET',
+            success: function (rs) {
+                // Reload the table with updated data
+                load_data(rs.Data);
             }
+        });
+    }
+
+    // ... Your other existing code ...
+});
+
+
+
+
     </script>
 }

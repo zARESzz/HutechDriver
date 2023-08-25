@@ -104,13 +104,23 @@
             }
             <label></label>
             <input type="file" name="ImageFile" id="ImageFile" value="@find.Avatar" accept=".png, .jpg, .jpeg" />
-            <label for="email">Point:</label>
-            <input type="text" id="Point" name="Point" value="@find.Point" readonly>
+            <style>
+                .highlight-label {
+                    font-weight: bold;
+                    color: #007bff; /* Change this color to the desired highlight color */
+                    margin-right: 10px; /* Add some spacing between label and input */
+                }
+            </style>
 
-            <label for="username">User Name:</label>
-            <input onclick="showAlert()" type="text" id="UserName" name="UserName" value="@find.UserName" readonly>
-            <label for="email">Email:</label>
-            <input onclick="showAlert()" type="email" id="Email" name="Email" value="@find.Email" readonly>
+            <label  for="Point">Point:</label>
+            <input class="highlight-label" type="text" id="Point" name="Point" value="@find.Point" readonly>
+
+            <label  for="UserName">User Name:</label>
+            <input class="highlight-label" onclick="showAlert()" type="text" id="UserName" name="UserName" value="@find.UserName" readonly>
+
+            <label  for="Email">Email:</label>
+            <input class="highlight-label" onclick="showAlert()" type="email" id="Email" name="Email" value="@find.Email" readonly>
+
             <label for="fullname">Full Name:</label>
             <input type="text" id="FullName" name="FullName" value="@find.FullName">
             @Html.ValidationMessageFor(row => row.FullName)
@@ -124,7 +134,7 @@
         }
         <hr />
         <div style="float:right">
-           <a href="/Manage/ChangePassword">Đổi mật khẩu</a>
+            <a href="/Manage/ChangePassword">Đổi mật khẩu</a>
         </div>
     </form>
     <script src="~/Content/Register/js/bootstrap.min.js"></script>

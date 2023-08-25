@@ -17,6 +17,55 @@ namespace HutechDriver.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult DeleteAllRecords()
+        {
+            try
+            {
+               
+                var tripsToDelete = db.Trips.Where(t => t.IsPaid == true);
+                foreach (var record in tripsToDelete)
+                {
+                   
+                    record.IsPaid = false;
+                }
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        [HttpPost]
+
+        public ActionResult RestoreAllRecords()
+        {
+            try
+            {
+              
+                var recordsToRestore = db.Trips.Where(t => t.IsPaid == false); 
+
+                
+                foreach (var record in recordsToRestore)
+                {
+                  
+                    record.IsPaid = true;
+                }
+
+             
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
         [HttpGet]
         public ActionResult GetStatistical(string fromDate, string toDate)
         {
@@ -50,6 +99,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             });
             return Json(new { Data = result }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public ActionResult GetStatisticalDriver(string fromDate, string toDate,FormCollection form)
         {

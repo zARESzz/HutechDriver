@@ -24,7 +24,7 @@ namespace HutechDriver.Areas.Driver.Controllers
             var ID = User.Identity.GetUserId();
             var query = from t in db.Trips
                         where t.Status=="Hoàn thành"
-                        && t.DriverId == ID
+                        && t.DriverId == ID &&  t.IsPaid == true
                         select new
                         {
                             CreatedDate = t.OrderDate,

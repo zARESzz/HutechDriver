@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HutechDriver.Models
 {
-    public class TripHub : Hub
+    public class TripHub : Microsoft.AspNet.SignalR.Hub
     {
         public Task SendNotificationToPassenger(string passengerId)
         {

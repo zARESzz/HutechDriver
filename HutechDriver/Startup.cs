@@ -17,6 +17,7 @@ namespace HutechDriver
         {
             ConfigureAuth(app);
             app.MapSignalR();
+
         }
         public void ConfigureServices(IServiceCollection services)
         {
