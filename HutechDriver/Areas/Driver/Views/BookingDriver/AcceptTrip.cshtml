@@ -169,8 +169,6 @@
                 data: { id: tripId } ,
                 success: function (rs) {
                     if (rs.success) {
-                        document.getElementById('running-trip').style.display = 'none';
-                        document.getElementById('done-trip').style.display = 'block';
                         alert('Bắt đầu chạy!.');
                     }
                 },
@@ -202,6 +200,7 @@
         });
         });
     </script>
+}
 
 
 
