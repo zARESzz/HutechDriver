@@ -58,14 +58,8 @@
     <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.2.2\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
@@ -400,6 +394,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotifyController.cs" />
     <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\SleepCalculatorController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -438,6 +433,7 @@
     <Compile Include="Models\Util.cs" />
     <Compile Include="Models\ViewModels\RevenueStatisticViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="bookingHub.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3824,6 +3820,12 @@
     <Content Include="Content\site\site\js\script.js" />
     <Content Include="Content\site\site\typography.html" />
     <Content Include="Content\site\typography.html" />
+    <Content Include="Content\SleepCalculator\cdnjs.cloudflare.com_ajax_libs_jquery_3.1.1_jquery.min.js" />
+    <Content Include="Content\SleepCalculator\cdnjs.cloudflare.com_ajax_libs_twitter-bootstrap_4.0.0-alpha.6_css_bootstrap.min.css" />
+    <Content Include="Content\SleepCalculator\script.js" />
+    <Content Include="Content\SleepCalculator\style.css" />
+    <Content Include="Content\SleepCalculator\vitalets.github.io_combodate_combodate.js" />
+    <Content Include="Content\SleepCalculator\vitalets.github.io_combodate_momentjs_moment.min.2.5.0.js" />
     <Content Include="Content\templates\send1.html" />
     <Content Include="Content\templates\send2.html" />
     <Content Include="Content\th.jpg" />
@@ -4578,6 +4580,7 @@
     <Content Include="Views\Survey\Index.cshtml" />
     <Content Include="Views\Survey\Add.cshtml" />
     <Content Include="Views\Survey\Detail.cshtml" />
+    <Content Include="Views\SleepCalculator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
