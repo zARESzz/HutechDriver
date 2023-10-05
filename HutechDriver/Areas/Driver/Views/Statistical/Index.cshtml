@@ -99,7 +99,7 @@
             var arrDoanhThu = [];
             var arrLoiNhuan = [];
             var arrDate = [];
-            const url = '@Url.Action("GetStatistical","Statistical")';
+            const url = '@Url.Action("GetStatisticalDay","Statistical")';
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -152,7 +152,14 @@
                     var barChartOptions = {
                         responsive: true,
                         maintainAspectRatio: false,
-                        datasetFill: false
+                        datasetFill: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
 
                     new Chart(barChartCanvas, {

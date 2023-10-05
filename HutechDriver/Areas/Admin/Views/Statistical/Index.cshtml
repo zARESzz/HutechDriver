@@ -23,6 +23,14 @@
                 </ol>
             </div>
         </div>
+        <select id="driverSelect">
+            <option value="">Chọn tài xế</option>
+            @foreach (var driverName in ViewBag.DriverNames)
+            {
+                <option value="@driverName">@driverName</option>
+            }
+        </select>
+        <button id="searchButton">Thống kê</button>
     </div><!-- /.container-fluid -->
 
 </section>
@@ -92,7 +100,7 @@
             var arrDoanhThu = [];
             var arrLoiNhuan = [];
             var arrDate = [];
-            const url = '@Url.Action("GetStatistical","Statistical")';
+            const url = '@Url.Action("GetStatisticalDay","Statistical")';
             $.ajax({
                 url: url,
                 type: 'GET',
@@ -120,7 +128,7 @@
                                 data: arrLoiNhuan
                             },
                             {
-                                label: 'Danh thu',
+                                label: 'Doanh thu',
                                 backgroundColor: 'rgba(210, 214, 222, 1)',
                                 borderColor: 'rgba(210, 214, 222, 1)',
                                 pointRadius: false,
@@ -176,94 +184,6 @@
 
     </script>
     <script>
-    var arrDoanhThu = [];
-    var arrLoiNhuan = [];
-    var arrDate = [];
-     const searchBtns = document.querySelectorAll('#search-driver');
-        searchBtns.forEach(searchBtns => {
-            searchBtns.addEventListener('click', function(event) {
-            const driverId = document.getElementById('searchText').value;
-            const url = '@Url.Action("GetStatisticalDriver","Statistical")';
-            $.ajax({
-                type: "GET",
-                url: url,
-                data: { driverId: driverId } ,
-                success: function (rs) {
-                    $.each(rs.Data, function (i, item) {
-                        var strDate = moment(item.Date).format('DD/MM/yyyy');
-                        arrDate.push(strDate);
-                        arrDoanhThu.push(item.DoanhThu);
-                        arrLoiNhuan.push(item.LoiNhuan);
-                    });
-                    var areaChartData = {
-                        labels: arrDate,
-                        datasets: [
-                            {
-                                label: 'Lợi nhuận',
-                                backgroundColor: 'rgba(60,141,188,0.9)',
-                                borderColor: 'rgba(60,141,188,0.8)',
-                                pointRadius: false,
-                                pointColor: '#3b8bba',
-                                pointStrokeColor: 'rgba(60,141,188,1)',
-                                pointHighlightFill: '#fff',
-                                pointHighlightStroke: 'rgba(60,141,188,1)',
-                                data: arrLoiNhuan
-                            },
-                            {
-                                label: 'Danh thu',
-                                backgroundColor: 'rgba(210, 214, 222, 1)',
-                                borderColor: 'rgba(210, 214, 222, 1)',
-                                pointRadius: false,
-                                pointColor: 'rgba(210, 214, 222, 1)',
-                                pointStrokeColor: '#c1c7d1',
-                                pointHighlightFill: '#fff',
-                                pointHighlightStroke: 'rgba(220,220,220,1)',
-                                data: arrDoanhThu
-                            },
-                        ]
-                    }
-                    //-------------
-                    //- BAR CHART -
-                    //-------------
-                    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-                    var barChartData = $.extend(true, {}, areaChartData)
-                    var temp0 = areaChartData.datasets[0]
-                    var temp1 = areaChartData.datasets[1]
-                    barChartData.datasets[0] = temp1
-                    barChartData.datasets[1] = temp0
-
-                    var barChartOptions = {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        datasetFill: false
-                    }
-
-                    new Chart(barChartCanvas, {
-                        type: 'bar',
-                        data: barChartData,
-                        options: barChartOptions
-                    });
-                    load_data(rs.Data);
-                }
-            });
-            });
-        });
-
-            function load_data(data) {
-                var strHtml = "";
-                $.each(data, function (i, item) {
-                    var strDate = moment(item.Date).format('DD/MM/yyyy');
-                    strHtml += "<tr>";
-                    strHtml += "<td>" + (i + 1) + "</td>";
-                    strHtml += "<td>" + strDate + "</td>";
-                    strHtml += "<td>" + item.DoanhThu + "</td>";
-                    strHtml += "<td>" + item.LoiNhuan + "</td>";
-                    strHtml += "</tr>";
-                });
-                $('#load_data').html(strHtml);
-        }
-
-
      $(function () {
     $('#error-trip').click(function () {
         // Show a confirmation dialog
@@ -324,7 +244,7 @@ $(function () {
     function refreshTable() {
         // Perform an AJAX request to reload the table data
         $.ajax({
-            url: '@Url.Action("GetStatistical", "Statistical")', // Replace with the actual URL
+            url: '@Url.Action("GetStatisticalDay", "Statistical")', // Replace with the actual URL
             type: 'GET',
             success: function (rs) {
                 // Reload the table with updated data
@@ -339,5 +259,99 @@ $(function () {
 
 
 
+    </script>
+    <script>
+           $(document).ready(function () {
+       const searchBtns = document.querySelectorAll('#searchButton');
+
+       searchBtns.forEach(searchBtn => {
+           searchBtn.addEventListener('click', function (event) {
+               var employeeName = $("#employeeSearchInput").val();
+               const url = '@Url.Action("SearchEmployeeDay", "Statistical")';
+               var arrDoanhThu = [];
+               var arrLoiNhuan = [];
+               var arrMonthYear = [];
+               $.ajax({
+                   type: "POST",
+                   url: url,
+                   data: { name: employeeName },
+                   success: function (data) {
+                       $.each(data.Data, function (i, item) {
+                           var strMonthYear = moment(item.Year + '-' + item.Month, 'YYYY-MM').format('MM/YYYY');
+                           arrMonthYear.push(strMonthYear);
+                           arrDoanhThu.push(item.DoanhThu);
+                           arrLoiNhuan.push(item.LoiNhuan);
+                       });
+
+                       var areaChartData = {
+                           labels: arrMonthYear,
+                           datasets: [
+                               {
+                                   label: 'Lợi nhuận',
+                                   backgroundColor: 'rgba(60,141,188,0.9)',
+                                   borderColor: 'rgba(60,141,188,0.8)',
+                                   pointRadius: false,
+                                   pointColor: '#3b8bba',
+                                   pointStrokeColor: 'rgba(60,141,188,1)',
+                                   pointHighlightFill: '#fff',
+                                   pointHighlightStroke: 'rgba(60,141,188,1)',
+                                   data: arrLoiNhuan
+                               },
+                               {
+                                   label: 'Doanh thu',
+                                   backgroundColor: 'rgba(210, 214, 222, 1)',
+                                   borderColor: 'rgba(210, 214, 222, 1)',
+                                   pointRadius: false,
+                                   pointColor: 'rgba(210, 214, 222, 1)',
+                                   pointStrokeColor: '#c1c7d1',
+                                   pointHighlightFill: '#fff',
+                                   pointHighlightStroke: 'rgba(220,220,220,1)',
+                                   data: arrDoanhThu
+                               },
+                           ]
+                       };
+
+                       var barChartCanvas = $('#barChart').get(0).getContext('2d');
+                       if (window.myBar) {
+                           window.myBar.destroy(); // Xóa biểu đồ cũ nếu có
+                       }
+                       window.myBar = new Chart(barChartCanvas, {
+                           type: 'bar',
+                           data: areaChartData,
+                           options: {
+                               responsive: true,
+                               maintainAspectRatio: false,
+                               datasetFill: false,
+                               plugins: {
+                                   datalabels: {
+                                       anchor: 'end',
+                                       align: 'top',
+                                       formatter: function (value, context) {
+                                           return value.toFixed(2);
+                                       }
+                                   }
+                               },
+                               scales: {
+                                   x: {
+                                       ticks: {
+                                           callback: function (value, index, values) {
+                                               return value;
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       });
+
+                       load_data(data.Data);
+                   },
+                   error: function (data) {
+                       alert('Tìm không thành công!.');
+                       location.reload(true);
+                   }
+               });
+           });
+       });
+   });
     </script>
 }

@@ -360,6 +360,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RevenueController.cs" />
     <Compile Include="Areas\Manager\Controllers\ExportDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanQuyenController.cs" />
@@ -4510,6 +4511,9 @@
     </Content>
     <Content Include="Content\Rules\css\bootstrap.min.css.map" />
     <Content Include="Content\Rules\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Areas\Admin\Views\Statistical\Month.cshtml" />
+    <Content Include="Areas\Driver\Views\Statistical\Month.cshtml" />
+    <Content Include="Areas\Admin\Views\Revenue\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Home\homemap.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -4585,6 +4589,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Salary\" />
     <Folder Include="Areas\Driver\Data\" />
     <Folder Include="Areas\Manager\Data\" />
   </ItemGroup>

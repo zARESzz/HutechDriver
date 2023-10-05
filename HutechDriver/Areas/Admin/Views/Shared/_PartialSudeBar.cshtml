@@ -110,14 +110,28 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="/Admin/Statistical/Index" class="nav-link">
-                    <i class="nav-icon fas fa-chart-bar"></i>
+                <a href="#" class="nav-link">
+                    <i class=" nav-icon fas fa-users-cog"></i>
                     <p>
-                        @*Widgets
-                    <span class="right badge badge-danger">New</span>*@
                         Thống kê
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="~/admin/statistical/index" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Theo ngày</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="~/admin/statistical/month" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Theo tháng</p>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
             <li class="nav-item">
                 <a href="/Manager/ExportData/Index" class="nav-link">
@@ -134,8 +148,18 @@
                     <i class="nav-icon fas fa-dollar-sign"></i>
                     <p>
                         @*Widgets
-            <span class="right badge badge-danger">New</span>*@
+                    <span class="right badge badge-danger">New</span>*@
                         Giá
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/revenue/index" class="nav-link">
+                    <i class="nav-icon fas fa-dollar-sign"></i>
+                    <p>
+                        @*Widgets
+                    <span class="right badge badge-danger">New</span>*@
+                        Thu tiền
                     </p>
                 </a>
             </li>
