@@ -63,18 +63,20 @@
                                 var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                                 foreach (var item in Model)
                                 {
-                                    if (item.IsRead == false)
-                                    {
-                                        <tr>
-                                            <td>@item.Id</td>
-                                            <td>@item.Name</td>
-                                            <td>@item.Gmail</td>
-                                            <td>@item.DateCreate</td>
-                                            <td>@item.Writing</td>
-                                            <td>
-                                                <a href="/manager/customerchat/reply/@item.Id" class="btn btn-sm btn-primary">Phản hồi</a>
-                                            </td>
-                                        </tr>
+                                   
+                                                <tr>
+                                                    <td>@item.Id</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Gmail</td>
+                                                    <td>@item.DateCreate</td>
+                                                    <td>@item.Writing</td>
+                                                    @if (item.IsRead == false)
+                                                    {
+                                                    <td>
+                                                        <a href="/manager/customerchat/reply/@item.Id" class="btn btn-sm btn-primary">Phản hồi</a>
+                                                    </td>
+                                                    }
+                                                </tr>
                                         i++;
                                     }
                                 }

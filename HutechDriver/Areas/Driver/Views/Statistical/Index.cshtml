@@ -152,7 +152,14 @@
                     var barChartOptions = {
                         responsive: true,
                         maintainAspectRatio: false,
-                        datasetFill: false
+                        datasetFill: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
 
                     new Chart(barChartCanvas, {
@@ -160,6 +167,7 @@
                         data: barChartData,
                         options: barChartOptions
                     });
+
                     load_data(rs.Data);
                 }
             });

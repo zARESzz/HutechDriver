@@ -38,6 +38,7 @@ namespace HutechDriver.Models.EF
         public string DriverId { get; set; }
 
         public bool? IsPaid { get; set; }
+        public string LocationIP { get; set; }
 
         public ICollection<TripReview> TripReviews { get; set; }
 

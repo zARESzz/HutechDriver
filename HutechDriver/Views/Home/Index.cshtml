@@ -219,6 +219,9 @@
                         document.getElementById('no-route').style.display = 'none';
                         document.getElementById('google-map').style.display = 'block';
                         document.getElementById('save-trip-btn').style.display = 'block';
+                        document.getElementById('origin-add').style.display = 'none';
+                        document.getElementById('dest-add').style.display = 'none';
+                        document.getElementById('timepicker').style.display = 'none';
                     } else {
                         directionsRenderer.setDirections({ routes: [] });
                         document.getElementById('show-details-box').style.display = 'none';
@@ -397,21 +400,7 @@
     <script src="~/Scripts/jquery.signalR-2.4.3.js"></script>
     <script src="/signalr/hubs"></script>
 
-    <script>
-        var tripHub = $.connection.tripHub;
-        var msg;
-        tripHub.client.receiveMessage = function (message) {
-            msg = message;
-        };
 
-        $.connection.hub.start()
-            .done(function () {
-                console.log('Kết nối thành công đến SignalR Hub.');
-            })
-            .fail(function (error) {
-                console.log('Lỗi kết nối đến SignalR Hub: ' + error);
-            });
-    </script>
 </body>
 
 
