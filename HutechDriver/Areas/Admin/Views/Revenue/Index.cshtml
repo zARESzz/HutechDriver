@@ -43,6 +43,7 @@
                         <th>Phone</th>
                         <th>Revenue</th>
                         <th>Profit</th>
+                        <th>Collect</th>
                     </tr>
                 </thead>
 
@@ -58,7 +59,7 @@
                             foreach (var item in Model)
                             {
                                 var roles = userManager.GetRoles(item.Id);
-                                if (item.LockoutEndDateUtc == null && roles.Contains("Driver") && item.IsDelete != true)
+                                if (item.LockoutEndDateUtc == null && roles.Contains("Driver") && item.IsDelete != true )
                                 {
                                     var driverId = item.Id;
 

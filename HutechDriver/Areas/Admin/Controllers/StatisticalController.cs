@@ -39,7 +39,7 @@ namespace HutechDriver.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            var drivers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == "2"))
+            var drivers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == "4"))
                                      .Select(u => u.UserName)
                                      .ToList();
             ViewBag.DriverNames = drivers;
@@ -47,7 +47,7 @@ namespace HutechDriver.Areas.Admin.Controllers
         }
         public ActionResult Month()
         {
-            var drivers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == "2"))
+            var drivers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == "4"))
                                      .Select(u => u.Id)
                                      .ToList();
             ViewBag.DriverNames = drivers;

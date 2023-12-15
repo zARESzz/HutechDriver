@@ -15,100 +15,100 @@
     <!-- Stylesheets-->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,600,700,900%7CRaleway:500">
     <link rel="stylesheet" href="~/Content/clients/plugins/fontawesome-free/css/all.min.css">
-    
+
     <link href="~/Content/assets/css/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/assets/css/fonts.css" rel="stylesheet" />
     <link href="~/Content/assets/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/new.css" rel="stylesheet" />
     <script src="~/Content/assets/js/html5shiv.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
 
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
-<style>
-    .circle-badge {
-        position: absolute;
-        top: -1px;
-        right: -8px;
-        display: inline-block;
-        border-radius: 50%;
-        background-color: red;
-        color: white;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-        line-height: 20px;
-        font-size: 12px;
-    }
+    <style>
+        .circle-badge {
+            position: absolute;
+            top: -1px;
+            right: -8px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
 
-    .checkout_items {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 20px;
-        left: 22px;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #fe4c50;
-        font-size: 12px;
-        color: #FFFFFF;
-    }
+        .checkout_items {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            left: 22px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fe4c50;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
 
-    .services-terri-figure img {
-        display: inline-block;
-        width: 100%;
-        height: 250px;
-        transition: all .2s ease;
-    }
+        .services-terri-figure img {
+            display: inline-block;
+            width: 100%;
+            height: 250px;
+            transition: all .2s ease;
+        }
 
-   
-    .dropbtn {
-        background-color: transparent;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-    }
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+        .dropbtn {
+            background-color: transparent;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
             display: block;
         }
 
-            .dropdown-content a:hover {
-                background-color: #ddd;
-            }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .dropdown:hover .dropbtn {
-        /*   background-color: #3e8e41;*/
-    }
-
+        .dropdown:hover .dropbtn {
+            /*   background-color: #3e8e41;*/
+        }
     </style>
 </head>
 <body>
@@ -146,7 +146,36 @@
         </div>
     </div>
     <div class="page">
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/Home/Index" class="nav__link active-link">
+                        <i class='fas fa-home nav__icon'></i>
+                        <span class="nav__name">Trang Chủ</span>
+                    </a>
+                </li>
 
+                <li class="nav__item">
+                    <a href="/BookingTrip/Index" class="nav__link">
+                        <i class='fas fa-clock nav__icon'></i>
+                        <span class="nav__name">Hoạt động</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/khuyenmai/index" class="nav__link">
+                        <i class='fas fa-tags  nav__icon'></i>
+                        <span class="nav__name">Khuyến mãi</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/Account/Updata" class="nav__link">
+                        <i class='fas fa-user nav__icon'></i>
+                        <span class="nav__name">Tài khoản</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
         <!-- Page Header-->
         <header class="section page-header">
             <!-- RD Navbar-->
@@ -164,18 +193,18 @@
                             <div class="rd-navbar-right rd-navbar-nav-wrap">
                                 <div class="rd-navbar-aside">
                                     @*<ul>
-                                            <li>
-                                                <div>
-                                                    <a href='/admin/home'>Admin</a>
-                                                </div>
-                                                <div>
-                                                    <a href='/driver/home'>Driver</a>
-                                                </div>
-                                                <div>
-                                                    <a href='/manager/home'>Manager</a>
-                                                </div>
-                                            </li>
-                                        </ul>*@
+                                        <li>
+                                            <div>
+                                                <a href='/admin/home'>Admin</a>
+                                            </div>
+                                            <div>
+                                                <a href='/driver/home'>Driver</a>
+                                            </div>
+                                            <div>
+                                                <a href='/manager/home'>Manager</a>
+                                            </div>
+                                        </li>
+                                    </ul>*@
                                     <ul class="rd-navbar-contacts-2">
                                         <li>
                                             <div class="unit unit-spacing-xs">
@@ -224,11 +253,11 @@
                                             <a class="rd-nav-link" href="/Game/Index">Game</a>
                                         </li>*@
                                         <div class="dropdown">
-                                            <button class="dropbtn ">    Khác</button>
+                                            <button class="dropbtn"><strong>Khác</strong></button>
                                             <div class="dropdown-content">
-                                                <a href="/Survey/Index">Khảo sát</a>
-                                                <a href="/Game/Index">Game</a>
-                                                <a href="/SleepCalculator">Đồng hồ sinh học</a>
+                                                <a href="/Survey/Index"><strong>Khảo sát</strong></a>
+                                                <a href="/Game/Index"><strong>Game</strong></a>
+                                                <a href="/SleepCalculator"><strong>Đồng hồ sinh học</strong></a>
                                             </div>
                                         </div>
                                         @{
@@ -252,91 +281,91 @@
                                 </div>
                             </div>
                             @*<div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-open rd-navbar-fixed-element-1" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
-                                    <div class="project-hamburger">
-                                        <span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
+                                <div class="project-hamburger">
+                                    <span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span><span class="project-hamburger-arrow"></span>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-project">
+                                <div class="rd-navbar-project-header">
+
+                                    <h5 class="rd-navbar-project-title">Gallery</h5>
+                                    <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-close" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
+                                        <div class="project-close"><span></span><span></span></div>
                                     </div>
                                 </div>
-                                <div class="rd-navbar-project">
-                                    <div class="rd-navbar-project-header">
-
-                                        <h5 class="rd-navbar-project-title">Gallery</h5>
-                                        <div class="rd-navbar-project-hamburger rd-navbar-project-hamburger-close" data-multitoggle=".rd-navbar-inner" data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate="data-multitoggle-isolate">
-                                            <div class="project-close"><span></span><span></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="rd-navbar-project-content rd-navbar-content">
-                                        <div>
-                                            <div class="row gutters-20" data-lightgallery="group">
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-1-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-1-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-2-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-2-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-3-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-3-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-4-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-4-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-5-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-5-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
-                                                <div class="col-6">
-                                                    Thumbnail Creative
-                                                    <article class="thumbnail thumbnail-creative">
-                                                        <a href="~/Content/assets/images/project-6-1200x800-original.jpg" data-lightgallery="item">
-                                                            <div class="thumbnail-creative-figure">
-                                                                <img src="~/Content/assets/images/project-6-195x164.jpg" alt="" width="195" height="164" />
-                                                            </div>
-                                                            <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
-                                                        </a>
-                                                    </article>
-                                                </div>
+                                <div class="rd-navbar-project-content rd-navbar-content">
+                                    <div>
+                                        <div class="row gutters-20" data-lightgallery="group">
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-1-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-1-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-2-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-2-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-3-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-3-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-4-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-4-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-5-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-5-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                            <div class="col-6">
+                                                Thumbnail Creative
+                                                <article class="thumbnail thumbnail-creative">
+                                                    <a href="~/Content/assets/images/project-6-1200x800-original.jpg" data-lightgallery="item">
+                                                        <div class="thumbnail-creative-figure">
+                                                            <img src="~/Content/assets/images/project-6-195x164.jpg" alt="" width="195" height="164" />
+                                                        </div>
+                                                        <div class="thumbnail-creative-caption"><span class="icon thumbnail-creative-icon linearicons-magnifier"></span></div>
+                                                    </a>
+                                                </article>
                                             </div>
                                         </div>
                                     </div>
-                                </div>*@
+                                </div>
+                            </div>*@
                         </div>
                     </div>
                 </nav>
@@ -395,7 +424,7 @@
     <!-- Javascript-->
     <script src="~/Content/assets/js/core.min.js"></script>
     <script src="~/Content/assets/js/script.js"></script>
-
+    <script src="~/Content/js/new.js"></script>
 
     <script>
         // Lưu title ban đầu
