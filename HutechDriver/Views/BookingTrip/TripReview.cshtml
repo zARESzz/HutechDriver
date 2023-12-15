@@ -1,0 +1,77 @@
+﻿@model HutechDriver.Models.TripReviewModel
+@{
+    ViewBag.Title = "TripReview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đánh giá chuyến đi</h2>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@using (Html.BeginForm("TripReview", "BookingTrip", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="exampleInputEmail1">Điểm bắt đầu:</label>
+
+        @Html.DisplayFor(model => model.startLocation)
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Điểm đến:</label>
+        @Html.DisplayFor(model => model.endLocation)
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Tên tài xế:</label>
+
+        @Html.DisplayFor(model => model.driverName)
+
+    </div>
+    <div class="rating">
+        <span class="fa fa-star-o rating-star" data-rating="1"></span>
+        <span class="fa fa-star-o rating-star" data-rating="2"></span>
+        <span class="fa fa-star-o rating-star" data-rating="3"></span>
+        <span class="fa fa-star-o rating-star" data-rating="4"></span>
+        <span class="fa fa-star-o rating-star" data-rating="5"></span>
+    </div>
+
+    <input type="hidden" name="rate" id="rating" value="5">
+    @Html.HiddenFor(model => model.Rating, new { id = "model-rating" })
+    <div class="col-md-12">
+        <label for="Comment">Nhận xét:</label>
+        <div class="form-wrap">
+            @Html.TextAreaFor(model => model.Comment, new { @class = "form-input textarea-lg", rows = 2, cols = 20, placeholder = "Nhập đánh giá của bạn ở đây..." })
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+    </div>
+    <input type="hidden" name="TripId" value="@Model.Id" />
+
+    <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+}
+
+@section scripts{
+    <script>
+        const stars = document.querySelectorAll(".rating-star");
+        const ratingInput = document.querySelector("#rating");
+        const modelRatingInput = document.querySelector("#model-rating");
+
+        // Đánh dấu sẵn 5 ngôi sao
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].classList.replace("fa-star-o", "fa-star");
+        }
+
+        stars.forEach((star, index) => {
+            star.addEventListener("click", (e) => {
+                const selectedRating = e.target.getAttribute("data-rating");
+                ratingInput.value = selectedRating;
+                modelRatingInput.value = selectedRating;
+
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.replace("fa-star-o", "fa-star");
+                }
+                for (let i = index + 1; i < stars.length; i++) {
+                    stars[i].classList.replace("fa-star", "fa-star-o");
+                }
+            });
+        });
+    </script>
+}

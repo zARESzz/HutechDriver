@@ -136,5 +136,38 @@ namespace HutechDriver.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public ActionResult TripReview(int tripId,string userid)
+        {
+            var trip = db.Trips.FirstOrDefault(p => p.Id == tripId);
+            var model = new TripReviewModel
+            {
+                Id = tripId,
+                startLocation = trip.StartLocation,
+                endLocation = trip.EndLocation,
+                driverName = trip.DriverBook,
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult TripReview(TripReviewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var review = new TripReview
+                {
+                    Id = model.Id,
+                    Comment = model.Comment,
+                    Rating = model.Rating.ToString(),
+                    CreatedDate = DateTime.Now,
+                };
+
+                db.TripReviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
+        }
     }
 }
