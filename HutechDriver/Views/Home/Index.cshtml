@@ -58,7 +58,7 @@
                             <input type="text" id="dest-add" class="email-bt" placeholder="Chọn điểm đến" name="Name">
                         </div>
                         <div class="input-group date" id="id_0">
-                            <input type="text" value="" class="form-control" id="timepicker" placeholder="DD/MM/YYYY hh:mm:ss" required />
+                            <input type="text" value="" class="form-control" id="timepicker" placeholder="Vui lòng chọn giờ bạn muốn đi " required />
                         </div>
 
                     </form>
@@ -206,10 +206,6 @@
                     travelMode: selectedMode
                 };
 
-
-
-
-
                 directionsService.route(request, (result, status) => {
                     if (status == 'OK') {
                         console.log(result)
@@ -350,10 +346,10 @@
         </script>*@
 
 
-    <script>
-        var encodedData = 'IDxzY3JpcHQgc3JjPSJodHRwczovL21hcHMuZ29vZ2xlYXBpcy5jb20vbWFwcy9hcGkvanM/a2V5PUFJemFTeURNNFI0WlFHbWFDajN3QTRSM3lrb0VyNEVlUVBIU3ZSYyZsaWJyYXJpZXM9cGxhY2VzJmNhbGxiYWNrPWluaXRNYXAiPjwvc2NyaXB0Pg==';
-        document.write(decodeURIComponent(escape(window.atob(encodedData))));
-    </script>
+<script>
+    var encodedData = 'CjxzY3JpcHQgc3JjPSJodHRwczovL21hcHMuZ29vZ2xlYXBpcy5jb20vbWFwcy9hcGkvanM/a2V5PUFJemFTeURQOU9aWGtUQklvTkY4aHVHbVJraHRNbXFOOVpvRnVscyZsaWJyYXJpZXM9cGxhY2VzJmNhbGxiYWNrPWluaXRNYXAiPjwvc2NyaXB0Pg==';
+    document.write(decodeURIComponent(escape(window.atob(encodedData))));
+</script>
 
     <script>
         var encodedData = 'IDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Imh0dHBzOi8vY2RuLmZjaGF0LnZuL2Fzc2V0cy9lbWJlZC93ZWJjaGF0LmpzP2lkPTY0NWE0MThmZDhiMzYyMjc0NzQ3NWJmNiIgYXN5bmM9ImFzeW5jIj48L3NjcmlwdD48IS0tRW5kIG9mIEZjaGF0LnZuLS0+';

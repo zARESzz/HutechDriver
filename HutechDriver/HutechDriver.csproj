@@ -3479,6 +3479,7 @@
     <Content Include="Content\css\jquery.fancybox.min.css" />
     <Content Include="Content\css\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\css\meanmenu.css" />
+    <Content Include="Content\css\new.css" />
     <Content Include="Content\css\nice-select.css" />
     <Content Include="Content\css\normalize.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
@@ -3530,6 +3531,7 @@
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Content\js\modernizer.js" />
+    <Content Include="Content\js\new.js" />
     <Content Include="Content\js\plugin.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\slider-setting.js" />
