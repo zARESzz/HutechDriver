@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/HutechDriver/Migrations/202308250344372_create.cs
+/HutechDriver/Migrations/202308250344372_create.Designer.cs
+/HutechDriver/Migrations/202308250344372_create.resx
