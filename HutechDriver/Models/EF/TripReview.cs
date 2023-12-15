@@ -17,7 +17,5 @@ namespace HutechDriver.Models.EF
         public DateTime CreatedDate { get; set; }
 
         public string Comment { get; set; }
-
-        public virtual Trip Trip { get; set; }
     }
 }

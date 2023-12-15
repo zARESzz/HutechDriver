@@ -118,16 +118,18 @@ namespace HutechDriver.Areas.Driver.Controllers
         public ActionResult Donetrip(int id)
         {
             var trip = db.Trips.Find(id);
+            var user = db.Users.FirstOrDefault(p => p.Id == trip.UserId);
             if (trip != null)
             {
                 trip.IsPaid = true;
                 trip.Status = "Hoàn thành";
                 db.SaveChanges();
+                var callbackUrl = Url.Action("TripReview","BookingTrip", new {tripId = trip.Id,userid = trip.UserId, area = (string)null }, protocol: Request.Url.Scheme);
+                SendMail.SendEmail(user.Email, "Đánh giá chuyến đi", "Đơn của bạn đã hoàn thành.\nMong bạn hãy đánh giá chuyến đi  <a href=\"" + callbackUrl + "\">tại đây</a>", "");
                 return Json(new { success = true });
             }
             return Json(new { success = false });
         }
-
         [HttpPost]
         public ActionResult Errortrip(int id)
         {
