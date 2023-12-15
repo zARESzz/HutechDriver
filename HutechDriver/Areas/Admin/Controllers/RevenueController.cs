@@ -50,5 +50,7 @@ namespace HutechDriver.Areas.Admin.Controllers
             ViewBag.Page = pageNumber;
             return View(items.ToPagedList(pageNumber, pageSize));
         }
+
+
     }
 }

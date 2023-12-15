@@ -112,7 +112,7 @@ namespace HutechDriver.Models
         public string UserName { get; set; }
         [Required(ErrorMessage = "Xin vui lòng nhập mật khẩu")]
         [StringLength(100, ErrorMessage = "{0} phải dài ít nhất {2} ký tự.", MinimumLength = 6)]
-        [DataType(DataType.Password, ErrorMessage = "Mật khẩu phải có kí tự chữ số, chữ hoa, chữ thường và 1 kí tự đặc biệt")]
+      
         [Display(Name = "Mật Khẩu")]
         public string Password { get; set; }
 
