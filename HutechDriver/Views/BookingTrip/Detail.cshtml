@@ -75,7 +75,7 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
                                 @{
-                                    if (Model.Status == "Đã nhận đơn")
+                                    if (Model.Status != "Chưa nhận")
                                     {
                                         IdentityDbContext<ApplicationUser> context = new IdentityDbContext<ApplicationUser>();
                                         var find = context.Users.Find(Model.DriverId);

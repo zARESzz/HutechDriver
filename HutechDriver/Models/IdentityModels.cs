@@ -20,6 +20,7 @@ namespace HutechDriver.Models
 
         public bool IsDelete { get; set; }
         public int Point { get;set; }
+        public bool Collect { get; set; }
         public ICollection<Trip> Trips { get; set; }
 
 

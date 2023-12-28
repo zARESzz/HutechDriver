@@ -396,7 +396,33 @@
     <script src="~/Scripts/jquery.signalR-2.4.3.js"></script>
     <script src="/signalr/hubs"></script>
 
+    <script>
+        const acceptBtns = document.querySelectorAll('#accept-trip');
+acceptBtns.forEach(acceptBtn => {
+    acceptBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định
+        const tripId = this.getAttribute('data-id');
+        const userId = this.getAttribute('data-user-id');
+        const url = '@Url.Action("AcceptTrip", "BookingDriver")';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { id: tripId } ,
+            success: function (rs) {
+                if (rs.success) {
+                    window.location.href = "/driver/bookingdriver/accepttrip?id=" + tripId;
+                } else {
+                    alert('Nhận đơn không thành công!.');
+                }
+            },
+            error: function (rs) {
+                alert('Nhận đơn không thành công!.');
+            }
+        });
+    });
+});
 
+    </script>
 </body>
 
 

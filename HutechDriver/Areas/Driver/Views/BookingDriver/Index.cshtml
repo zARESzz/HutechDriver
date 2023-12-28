@@ -165,7 +165,31 @@
 
 
     </script>
+    debugger;
+
+    <script>
+        $(function () {
+            // Kết nối đến hub
+            var bookingHub = $.connection.bookingHub;
+
+            // Xác định hàm để xử lý thông báo
+            bookingHub.client.updateBookings = function () {
+                // Reload trang hoặc cập nhật danh sách đơn đặt xe
+                location.reload();
+                console(bookingHub);
+            };
+
+            // Bắt đầu kết nối
+            $.connection.hub.start().done(function () {
+                console.log("Connected to Booking Hub");
+            });
+        });
+
+    </script>
 }
+<script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
+<script src="~/signalr/hubs"></script>
+
 <script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -10,12 +10,13 @@ using HutechDriver.Models.EF;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using OfficeOpenXml.Sorting;
-
+using Microsoft.AspNet.SignalR;
+using HutechDriver.Hubs;
 
 namespace HutechDriver.Controllers
 {
     [RequireHttps]
-    [Authorize]
+
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -78,6 +79,8 @@ namespace HutechDriver.Controllers
             };
             dbContext.Trips.Add(trip);
             dbContext.SaveChanges();
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<BookingHub>();
+            hubContext.Clients.All.SendBookingUpdate();
             code = new { Success = true, msg = "Đặt xe thành công!" };
             // Trả về kết quả thành công
             return Json(new { success = false });
